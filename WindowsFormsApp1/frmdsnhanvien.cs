@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.DAO;
 
 namespace WindowsFormsApp1
 {
@@ -21,12 +22,20 @@ namespace WindowsFormsApp1
         private void frmdsnhanvien_Load(object sender, EventArgs e)
         {
             loadnv();
+
         }
-       
+		
         void loadnv()
         {
-         
-        }
+			DAONhanVien nv = new DAONhanVien();
+			DataTable dt = new DataTable();
+			dt = nv.getNhanVien();
+			try
+			{
+				dataGridView1.DataSource = dt;
+			}
+			catch { }
+		}
 
        
 

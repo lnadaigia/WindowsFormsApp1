@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.DAO;
+using WindowsFormsApp1.Model;
 
 namespace WindowsFormsApp1
 {
@@ -91,11 +93,7 @@ namespace WindowsFormsApp1
         }
         private void frmquanli_Load(object sender, EventArgs e)
         {
-            try
-            {
-               
-            }
-            catch { }
+			
         }
 
         private void btn_dsnhanvien_Click(object sender, EventArgs e)

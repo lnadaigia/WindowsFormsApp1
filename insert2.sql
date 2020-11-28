@@ -39,3 +39,5 @@ and m.ngay=CONVERT(date,getdate()) and m.Mamonan=ct.Mamonan and ma.Mamonan=m.Mam
 select * from Hoadon where CONVERT(date,Hoadon.Thoigian)=convert(date,GETDATE())
 select * from Monantheongay where ngay=CONVERT(date,getdate())
 go
+
+insert into nhanvien values(1, 'linh', '12345678', '')

@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>WindowsFormsApp1</RootNamespace>
     <AssemblyName>WindowsFormsApp1</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -27,6 +27,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -62,6 +63,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\DAOChiTietHoaDon.cs" />
+    <Compile Include="DAO\DAOHoaDon.cs" />
+    <Compile Include="DAO\DAOMonAn.cs" />
+    <Compile Include="DAO\DAONguyenLieu.cs" />
+    <Compile Include="DAO\DAONhanVien.cs" />
     <Compile Include="frmdatdonhang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,11 @@
     <Compile Include="frmVoucher.Designer.cs">
       <DependentUpon>frmVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\ChiTietHoaDon.cs" />
+    <Compile Include="Model\HoaDon.cs" />
+    <Compile Include="Model\MonAn.cs" />
+    <Compile Include="Model\NguyenLieu.cs" />
+    <Compile Include="Model\NhanVien.cs" />
     <Compile Include="MY_DB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -235,6 +246,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -261,5 +273,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
