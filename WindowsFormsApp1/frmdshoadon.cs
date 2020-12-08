@@ -21,15 +21,18 @@ namespace WindowsFormsApp1
         
         void load_hoadon(string query)
         {
-            
-        }
-        private void frmdanhsachdonhang_Load(object sender, EventArgs e)
-        {
 			DAOHoaDon hd = new DAOHoaDon();
 			DataTable tb = new DataTable();
-			tb = hd.getHoaDon();
+			tb = hd.locHoaDon(query);
+			dtg_hoadon.DataSource = tb;
+		}
+        private void frmdanhsachdonhang_Load(object sender, EventArgs e)
+        {
 			try
 			{
+				DAOHoaDon hd = new DAOHoaDon();
+				DataTable tb = new DataTable();
+				tb = hd.getHoaDon();
 				dtg_hoadon.DataSource = tb;
 			}
 			catch
@@ -56,9 +59,52 @@ namespace WindowsFormsApp1
         {
             try
             {
+				string query = "";
+				//lọc theo hóa đơn đã thanh toán chưa
+				if (rdb_chontatca.Checked)
+				{
+					if (rdb_yes.Checked)
+					{
+							string dau = dt_dau.Value.ToString("yyyy-MM-dd");
+							string cuoi = dt_sau.Value.ToString("yyyy-MM-dd");
+							query = "select * from hoadon where thoigian between '" + dau + "' and '" + cuoi + "'";
+					}
+					else
+					{
+						query = "select * from hoadon";
+					}
+				}
+				else if (rdb_dathanhtoan.Checked)
+				{
+					if (rdb_yes.Checked)
+					{
+						string dau = dt_dau.Value.ToString("yyyy-MM-dd");
+						string cuoi = dt_sau.Value.ToString("yyyy-MM-dd");
+						query = "select * from hoadon where thoigian between '" + dau + "' and '" + cuoi + "' and trangthai = 1";
+					}
+					else
+					{
+						query = "select * from hoadon where trangthai = 1";
+					}
+				}
+				else
+				{
+					if (rdb_yes.Checked)
+					{
+						string dau = dt_dau.Value.ToString("yyyy-MM-dd");
+						string cuoi = dt_sau.Value.ToString("yyyy-MM-dd");
+						query = "select * from hoadon where thoigian between '" + dau + "' and '" + cuoi + "' and trangthai = 0";
+					}
+					else
+					{
+						query = "select * from hoadon where trangthai = 0";
+					}
+				}
+				load_hoadon(query);
+				//lọc theo bàn
             }
-            catch
-            { }
+            catch(Exception ex)
+            { MessageBox.Show(ex.ToString()); }
         }
     }
 }

@@ -20,5 +20,13 @@ namespace WindowsFormsApp1.DAO
 			adapter.Fill(table);
 			return table;
 		}
+		public DataTable locHoaDon(String sql)
+		{
+			SqlCommand command = new SqlCommand(sql, db.GetConnection);
+			SqlDataAdapter adapter = new SqlDataAdapter(command);
+			DataTable table = new DataTable();
+			adapter.Fill(table);
+			return table;
+		}
 	}
 }

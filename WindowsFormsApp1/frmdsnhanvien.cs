@@ -109,11 +109,16 @@ namespace WindowsFormsApp1
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
-            txt_idnv.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            txt_hovaten.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            dt_namsinh.Value = (DateTime)dataGridView1.CurrentRow.Cells[2].Value;
-            txt_sdt.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            txt_cmnd.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+			try
+			{
+				txt_idnv.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+				txt_hovaten.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+				txt_sdt.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+				dt_namsinh.Value = (DateTime)dataGridView1.CurrentRow.Cells[3].Value;
+				txt_cmnd.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+
+			}
+			catch(Exception ex) { MessageBox.Show(ex.ToString()); }
 
         }
 
