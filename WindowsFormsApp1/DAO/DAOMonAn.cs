@@ -19,5 +19,6 @@ namespace WindowsFormsApp1.DAO
 			adapter.Fill(table);
 			return table;
 		}
+		
 	}
 }

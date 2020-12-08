@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\DAOChiTietHoaDon.cs" />
+    <Compile Include="DAO\DAODoAntheongay.cs" />
     <Compile Include="DAO\DAOHoaDon.cs" />
     <Compile Include="DAO\DAOMonAn.cs" />
     <Compile Include="DAO\DAONguyenLieu.cs" />
@@ -179,6 +180,7 @@
     <Compile Include="Model\ChiTietHoaDon.cs" />
     <Compile Include="Model\HoaDon.cs" />
     <Compile Include="Model\MonAn.cs" />
+    <Compile Include="Model\MonAnTheoNgay.cs" />
     <Compile Include="Model\NguyenLieu.cs" />
     <Compile Include="Model\NhanVien.cs" />
     <Compile Include="MY_DB.cs" />

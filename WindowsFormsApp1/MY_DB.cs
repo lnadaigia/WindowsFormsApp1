@@ -10,7 +10,7 @@ namespace WindowsFormsApp1
 {
     class MY_DB
     {
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-7SGI237;Initial Catalog=dbms;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\2021\sql\final\data.mdf;Integrated Security=True;Connect Timeout=30");
         public SqlConnection GetConnection
         {
             get { return con; }
