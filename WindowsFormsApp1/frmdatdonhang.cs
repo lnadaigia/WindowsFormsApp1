@@ -152,6 +152,10 @@ namespace WindowsFormsApp1
                 }
                 MessageBox.Show("Dat hang thanh cong");
                 Globals.SetMahoadon(mahoadon);
+                //update trang thai ban
+                DAOTable tb = new DAOTable();
+                tb.UpdatetableStatus(Globals.Maban,0);
+
             }
             catch (SqlException oke)
             {
@@ -166,6 +170,9 @@ namespace WindowsFormsApp1
                 DAOHoaDon a = new DAOHoaDon();
                 a.ThanhToan(Globals.Mahoadon);
                 MessageBox.Show("Thanh toan thanh cong");
+                //update trang thai ban
+                DAOTable tb = new DAOTable();
+                tb.UpdatetableStatus(Globals.Maban, 1);
             }
             catch
             {

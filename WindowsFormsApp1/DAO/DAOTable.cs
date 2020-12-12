@@ -121,5 +121,32 @@ namespace WindowsFormsApp1.DAO
             return 0;
         }
 
+
+        public bool UpdatetableStatus(int maban,int index)
+        {
+            
+            SqlCommand command = new SqlCommand("UPDATE Ban SET	Trangthai=@Trangthai WHERE Maban=@Maban	", db.GetConnection);
+            command.Parameters.Add("@Maban", SqlDbType.Int).Value = maban;
+            if (index == 1)
+            {
+                command.Parameters.Add("@Trangthai", SqlDbType.NVarChar).Value = "Available";
+            }
+            else
+            {
+                command.Parameters.Add("@Trangthai", SqlDbType.NVarChar).Value = "UnAvailable";
+            }
+            db.openConection();
+            if (command.ExecuteNonQuery() == 1)
+            {
+                db.closedConection();
+                return true;
+            }
+            else
+            {
+                db.closedConection();
+                return false;
+            }
+
+        }
     }
 }
