@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.DAO;
+using WindowsFormsApp1.Model;
+using GlobalVariables;
 
 namespace WindowsFormsApp1
 {
@@ -38,6 +40,14 @@ namespace WindowsFormsApp1
             int[] mang = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             comboBox1.DataSource = mang;
         }
+        void loadVoucher()
+        {
+            DAOVoucher a = new DAOVoucher();
+            cbVoucher.DataSource = a.getvoucher();
+            cbVoucher.DisplayMember = "mavoucher";
+            cbVoucher.ValueMember = "Discount";
+            
+        }
         void loadmonan()
         {
             DAODoAntheongay doan = new DAODoAntheongay();
@@ -56,6 +66,8 @@ namespace WindowsFormsApp1
                 numericUpDown1.Visible = false;
                 loadkhach();
                 loadmonan();
+                loadVoucher();
+
             }
             catch { }
 
@@ -87,26 +99,98 @@ namespace WindowsFormsApp1
         }
         float tongtien=0;
         //int hang = 0;
-        void loaddonhang()
-        {
-            
-           
-            
-        }
+        
+
         private void btn_xemdonhang_Click(object sender, EventArgs e)
         {
-           
+            dtg_chitiet.DataSource = dtg_doan.DataSource;
+            tongtien = 0;
+            
+
+            for (int i=0;i< dtg_chitiet.Rows.Count-1;i++)
+            {
+                try
+                {
+                   // MessageBox.Show(dtg_chitiet.Rows[i].Cells[1].Value.ToString());
+                    tongtien += int.Parse(dtg_chitiet.Rows[i].Cells[1].Value.ToString()) * int.Parse(dtg_chitiet.Rows[i].Cells[4].Value.ToString());
+                }
+                catch
+                {
+                    MessageBox.Show("Failed");
+                }
+               
+            }
+            this.txt_tongtien.Text = tongtien.ToString();
         }
 
         private void btn_dathang_Click(object sender, EventArgs e)
         {
-                
-
+            try
+            {
+                HoaDon hd = new HoaDon();
+                hd.Maban = Globals.Maban;
+                hd.Manv = Globals.NV;
+                hd.Thoigian = DateTime.Now;
+                hd.Tongbill = tongtien;
+                hd.Trangthai = false;
+                hd.Mavoucher = int.Parse(cbVoucher.Text);
+                DAOHoaDon a = new DAOHoaDon();
+                DAOChiTietHoaDon DCT = new DAOChiTietHoaDon();
+                a.DatHang(hd);
+                int mahoadon = a.getCurrentMahoadon();
+                for (int i = 0; i < dtg_chitiet.Rows.Count - 1; i++)
+                {
+                    int soluong = int.Parse(dtg_chitiet.Rows[i].Cells[4].Value.ToString());
+                    ChiTietHoaDon ct = new ChiTietHoaDon();
+                    if (soluong != 0)
+                    {
+                        ct.Mahoadon = mahoadon;
+                        ct.Mamonan = int.Parse(dtg_chitiet.Rows[i].Cells[0].Value.ToString());
+                        ct.Soluong = soluong;
+                        DCT.Themvaochitiethoadon(ct);
+                    }
+                }
+                MessageBox.Show("Dat hang thanh cong");
+                Globals.SetMahoadon(mahoadon);
+            }
+            catch (SqlException oke)
+            {
+                MessageBox.Show(oke.Message);
+            }
         }
 
         private void btn_thanhtoan_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                DAOHoaDon a = new DAOHoaDon();
+                a.ThanhToan(Globals.Mahoadon);
+                MessageBox.Show("Thanh toan thanh cong");
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        private void cbVoucher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            float a = tongtien;
+            try
+            {
+                //MessageBox.Show(cbVoucher.Text.ToString());
+                if (cbVoucher.SelectedValue!=null)
+                {
+                    //MessageBox.Show(cbVoucher.SelectedValue.ToString());
+                    a = tongtien * float.Parse(cbVoucher.SelectedValue.ToString());
+                     this.txt_tongtien.Text = a.ToString();
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

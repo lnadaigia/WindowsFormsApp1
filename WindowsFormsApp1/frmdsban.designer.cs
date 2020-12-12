@@ -28,75 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_1 = new System.Windows.Forms.Button();
-            this.btn_5 = new System.Windows.Forms.Button();
-            this.btn_4 = new System.Windows.Forms.Button();
-            this.btn_3 = new System.Windows.Forms.Button();
-            this.btn_2 = new System.Windows.Forms.Button();
+            this.btRefresh = new System.Windows.Forms.Button();
+            this.btDelete = new System.Windows.Forms.Button();
+            this.btAddTabel = new System.Windows.Forms.Button();
+            this.flp = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // btn_1
+            // btRefresh
             // 
-            this.btn_1.Location = new System.Drawing.Point(-2, 37);
-            this.btn_1.Name = "btn_1";
-            this.btn_1.Size = new System.Drawing.Size(100, 40);
-            this.btn_1.TabIndex = 0;
-            this.btn_1.Text = "bàn số 1";
-            this.btn_1.UseVisualStyleBackColor = true;
-            this.btn_1.Click += new System.EventHandler(this.btn_2_Click);
+            this.btRefresh.Location = new System.Drawing.Point(846, 136);
+            this.btRefresh.Name = "btRefresh";
+            this.btRefresh.Size = new System.Drawing.Size(110, 36);
+            this.btRefresh.TabIndex = 10;
+            this.btRefresh.Text = "Refresh";
+            this.btRefresh.UseVisualStyleBackColor = true;
+            this.btRefresh.Click += new System.EventHandler(this.btRefresh_Click);
             // 
-            // btn_5
+            // btDelete
             // 
-            this.btn_5.Location = new System.Drawing.Point(164, 128);
-            this.btn_5.Name = "btn_5";
-            this.btn_5.Size = new System.Drawing.Size(100, 40);
-            this.btn_5.TabIndex = 1;
-            this.btn_5.Text = "bàn số 5";
-            this.btn_5.UseVisualStyleBackColor = true;
-            this.btn_5.Click += new System.EventHandler(this.btn_2_Click);
+            this.btDelete.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btDelete.Location = new System.Drawing.Point(846, 78);
+            this.btDelete.Name = "btDelete";
+            this.btDelete.Size = new System.Drawing.Size(110, 36);
+            this.btDelete.TabIndex = 9;
+            this.btDelete.Text = "Delete Table ";
+            this.btDelete.UseVisualStyleBackColor = false;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
-            // btn_4
+            // btAddTabel
             // 
-            this.btn_4.Location = new System.Drawing.Point(-2, 128);
-            this.btn_4.Name = "btn_4";
-            this.btn_4.Size = new System.Drawing.Size(100, 40);
-            this.btn_4.TabIndex = 2;
-            this.btn_4.Text = "bàn số 4";
-            this.btn_4.UseVisualStyleBackColor = true;
-            this.btn_4.Click += new System.EventHandler(this.btn_2_Click);
+            this.btAddTabel.BackColor = System.Drawing.Color.PeachPuff;
+            this.btAddTabel.Location = new System.Drawing.Point(846, 24);
+            this.btAddTabel.Name = "btAddTabel";
+            this.btAddTabel.Size = new System.Drawing.Size(110, 36);
+            this.btAddTabel.TabIndex = 8;
+            this.btAddTabel.Text = "Add Table";
+            this.btAddTabel.UseVisualStyleBackColor = false;
+            this.btAddTabel.Click += new System.EventHandler(this.btAddTabel_Click);
             // 
-            // btn_3
+            // flp
             // 
-            this.btn_3.Location = new System.Drawing.Point(348, 37);
-            this.btn_3.Name = "btn_3";
-            this.btn_3.Size = new System.Drawing.Size(100, 40);
-            this.btn_3.TabIndex = 3;
-            this.btn_3.Text = "bàn số 3";
-            this.btn_3.UseVisualStyleBackColor = true;
-            this.btn_3.Click += new System.EventHandler(this.btn_2_Click);
+            this.flp.Location = new System.Drawing.Point(13, 15);
+            this.flp.Name = "flp";
+            this.flp.Size = new System.Drawing.Size(797, 522);
+            this.flp.TabIndex = 7;
             // 
-            // btn_2
+            // frmdsban
             // 
-            this.btn_2.Location = new System.Drawing.Point(164, 37);
-            this.btn_2.Name = "btn_2";
-            this.btn_2.Size = new System.Drawing.Size(100, 40);
-            this.btn_2.TabIndex = 4;
-            this.btn_2.Text = "bàn số 2";
-            this.btn_2.UseVisualStyleBackColor = true;
-            this.btn_2.Click += new System.EventHandler(this.btn_2_Click);
-            // 
-            // frmgiaodienchinh
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(565, 302);
-            this.Controls.Add(this.btn_2);
-            this.Controls.Add(this.btn_3);
-            this.Controls.Add(this.btn_4);
-            this.Controls.Add(this.btn_5);
-            this.Controls.Add(this.btn_1);
-            this.Name = "frmgiaodienchinh";
+            this.ClientSize = new System.Drawing.Size(992, 563);
+            this.Controls.Add(this.btRefresh);
+            this.Controls.Add(this.btDelete);
+            this.Controls.Add(this.btAddTabel);
+            this.Controls.Add(this.flp);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "frmdsban";
             this.Text = "frmgiaodienchinh";
             this.Load += new System.EventHandler(this.frmgiaodienchinh_Load);
             this.ResumeLayout(false);
@@ -105,10 +93,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_1;
-        private System.Windows.Forms.Button btn_5;
-        private System.Windows.Forms.Button btn_4;
-        private System.Windows.Forms.Button btn_3;
-        private System.Windows.Forms.Button btn_2;
+        private System.Windows.Forms.Button btRefresh;
+        private System.Windows.Forms.Button btDelete;
+        private System.Windows.Forms.Button btAddTabel;
+        public System.Windows.Forms.FlowLayoutPanel flp;
     }
 }

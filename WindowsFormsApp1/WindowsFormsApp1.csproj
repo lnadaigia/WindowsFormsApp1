@@ -69,6 +69,8 @@
     <Compile Include="DAO\DAOMonAn.cs" />
     <Compile Include="DAO\DAONguyenLieu.cs" />
     <Compile Include="DAO\DAONhanVien.cs" />
+    <Compile Include="DAO\DAOTable.cs" />
+    <Compile Include="DAO\DAOVoucher.cs" />
     <Compile Include="frmdatdonhang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +185,8 @@
     <Compile Include="Model\MonAnTheoNgay.cs" />
     <Compile Include="Model\NguyenLieu.cs" />
     <Compile Include="Model\NhanVien.cs" />
+    <Compile Include="Model\Table.cs" />
+    <Compile Include="Model\Voucher.cs" />
     <Compile Include="MY_DB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

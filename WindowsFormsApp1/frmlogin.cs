@@ -33,7 +33,6 @@ namespace WindowsFormsApp1
                     command.Parameters.Add("@user", SqlDbType.NVarChar).Value = txt_user.Text;
                     command.Parameters.Add("@pass", SqlDbType.NVarChar).Value = txt_pass.Text;
                   //  DataTable table = pv.getnhanvien(command);
-                 
                 }
             }
             catch(Exception ex)
@@ -61,3 +60,42 @@ namespace WindowsFormsApp1
         }
     }
 }
+namespace GlobalVariables
+{
+    public static class Globals
+    {
+        // parameterless constructor required for static class
+        static Globals()
+        {   
+            Maban = 1234;
+            NumberofPeople = 0;
+            NV = 1;
+            Mahoadon = 30;
+        } // default value
+
+        // public get, and private set for strict access control
+        public static int Mahoadon { get; private set; }
+        public static int Maban { get; private set; }
+        public static int NumberofPeople { get; private set; }
+        public static int NV { get; private set; }
+        // GlobalInt can be changed only via this method
+        public static void SetMaban(int newInt)
+        {
+            Maban = newInt;
+        }
+        public static void SetMahoadon(int newInt)
+        {
+            Mahoadon = newInt;
+        }
+        public static void SetNumbleOfpeople(int newInt)
+        {
+            NumberofPeople = newInt;
+        }
+        public static void SetNV(int newInt)
+        {
+            NV = newInt;
+        }
+
+    }
+}
+

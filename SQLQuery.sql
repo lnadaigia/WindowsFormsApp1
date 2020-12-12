@@ -67,7 +67,9 @@ go
 create table Ban
 (
 	Maban int primary key  IDENTITY(1,1),
-	Tenban nvarchar(50) not null
+	Tenban nvarchar(50) not null,
+	Trangthai nvarchar(50),
+	SoLuongKhach int,
 )
 go
 create table voucher
