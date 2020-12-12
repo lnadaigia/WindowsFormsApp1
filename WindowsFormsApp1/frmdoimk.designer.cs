@@ -28,97 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmdoimk));
             this.label1 = new System.Windows.Forms.Label();
-            this.txt_mkcu = new System.Windows.Forms.TextBox();
-            this.btn_doimk = new System.Windows.Forms.Button();
-            this.txt_mkmoi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_mkmoi2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btn_cancer = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.btn_doimk = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.btn_cancer = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.txt_mkcu = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txt_mkmoi = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txt_mkmoi2 = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 38);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(52, 56);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 20);
+            this.label1.Size = new System.Drawing.Size(119, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Mật khẩu cũ";
-            // 
-            // txt_mkcu
-            // 
-            this.txt_mkcu.Location = new System.Drawing.Point(212, 38);
-            this.txt_mkcu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txt_mkcu.Name = "txt_mkcu";
-            this.txt_mkcu.Size = new System.Drawing.Size(148, 26);
-            this.txt_mkcu.TabIndex = 1;
-            this.txt_mkcu.UseSystemPasswordChar = true;
-            // 
-            // btn_doimk
-            // 
-            this.btn_doimk.ForeColor = System.Drawing.Color.Black;
-            this.btn_doimk.Location = new System.Drawing.Point(36, 225);
-            this.btn_doimk.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btn_doimk.Name = "btn_doimk";
-            this.btn_doimk.Size = new System.Drawing.Size(141, 35);
-            this.btn_doimk.TabIndex = 2;
-            this.btn_doimk.Text = "Đổi mật khẩu";
-            this.btn_doimk.UseVisualStyleBackColor = true;
-            this.btn_doimk.Click += new System.EventHandler(this.btn_doimk_Click);
-            // 
-            // txt_mkmoi
-            // 
-            this.txt_mkmoi.Location = new System.Drawing.Point(212, 94);
-            this.txt_mkmoi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txt_mkmoi.Name = "txt_mkmoi";
-            this.txt_mkmoi.Size = new System.Drawing.Size(148, 26);
-            this.txt_mkmoi.TabIndex = 4;
-            this.txt_mkmoi.UseSystemPasswordChar = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 94);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(52, 115);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 20);
+            this.label2.Size = new System.Drawing.Size(133, 28);
             this.label2.TabIndex = 3;
             this.label2.Text = "Mật khẩu mới";
-            // 
-            // txt_mkmoi2
-            // 
-            this.txt_mkmoi2.Location = new System.Drawing.Point(212, 146);
-            this.txt_mkmoi2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txt_mkmoi2.Name = "txt_mkmoi2";
-            this.txt_mkmoi2.Size = new System.Drawing.Size(148, 26);
-            this.txt_mkmoi2.TabIndex = 6;
-            this.txt_mkmoi2.UseSystemPasswordChar = true;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 151);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(52, 173);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 20);
+            this.label3.Size = new System.Drawing.Size(171, 28);
             this.label3.TabIndex = 5;
             this.label3.Text = "Nhập lại mật khẩu";
-            // 
-            // btn_cancer
-            // 
-            this.btn_cancer.ForeColor = System.Drawing.Color.Black;
-            this.btn_cancer.Location = new System.Drawing.Point(249, 225);
-            this.btn_cancer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btn_cancer.Name = "btn_cancer";
-            this.btn_cancer.Size = new System.Drawing.Size(112, 35);
-            this.btn_cancer.TabIndex = 7;
-            this.btn_cancer.Text = "Cancer";
-            this.btn_cancer.UseVisualStyleBackColor = true;
-            this.btn_cancer.Click += new System.EventHandler(this.btn_cancer_Click);
             // 
             // label4
             // 
@@ -126,23 +82,145 @@
             this.label4.Location = new System.Drawing.Point(207, 14);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 20);
+            this.label4.Size = new System.Drawing.Size(0, 25);
             this.label4.TabIndex = 8;
+            // 
+            // btn_doimk
+            // 
+            this.btn_doimk.ActiveBorderThickness = 1;
+            this.btn_doimk.ActiveCornerRadius = 40;
+            this.btn_doimk.ActiveFillColor = System.Drawing.Color.White;
+            this.btn_doimk.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
+            this.btn_doimk.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
+            this.btn_doimk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
+            this.btn_doimk.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_doimk.BackgroundImage")));
+            this.btn_doimk.ButtonText = "Đổi mật khẩu";
+            this.btn_doimk.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_doimk.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_doimk.ForeColor = System.Drawing.Color.White;
+            this.btn_doimk.IdleBorderThickness = 1;
+            this.btn_doimk.IdleCornerRadius = 40;
+            this.btn_doimk.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
+            this.btn_doimk.IdleForecolor = System.Drawing.Color.White;
+            this.btn_doimk.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
+            this.btn_doimk.Location = new System.Drawing.Point(63, 246);
+            this.btn_doimk.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_doimk.Name = "btn_doimk";
+            this.btn_doimk.Size = new System.Drawing.Size(160, 60);
+            this.btn_doimk.TabIndex = 76;
+            this.btn_doimk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btn_cancer
+            // 
+            this.btn_cancer.ActiveBorderThickness = 1;
+            this.btn_cancer.ActiveCornerRadius = 40;
+            this.btn_cancer.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btn_cancer.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
+            this.btn_cancer.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
+            this.btn_cancer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
+            this.btn_cancer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_cancer.BackgroundImage")));
+            this.btn_cancer.ButtonText = "Cancel";
+            this.btn_cancer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_cancer.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancer.ForeColor = System.Drawing.Color.White;
+            this.btn_cancer.IdleBorderThickness = 1;
+            this.btn_cancer.IdleCornerRadius = 40;
+            this.btn_cancer.IdleFillColor = System.Drawing.Color.White;
+            this.btn_cancer.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
+            this.btn_cancer.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
+            this.btn_cancer.Location = new System.Drawing.Point(265, 246);
+            this.btn_cancer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_cancer.Name = "btn_cancer";
+            this.btn_cancer.Size = new System.Drawing.Size(160, 60);
+            this.btn_cancer.TabIndex = 78;
+            this.btn_cancer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txt_mkcu
+            // 
+            this.txt_mkcu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_mkcu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
+            this.txt_mkcu.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
+            this.txt_mkcu.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_mkcu.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_mkcu.ForeColor = System.Drawing.Color.White;
+            this.txt_mkcu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txt_mkcu.Location = new System.Drawing.Point(280, 53);
+            this.txt_mkcu.Name = "txt_mkcu";
+            this.txt_mkcu.Size = new System.Drawing.Size(157, 31);
+            this.txt_mkcu.TabIndex = 80;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(103)))), ((int)(((byte)(113)))));
+            this.panel1.Location = new System.Drawing.Point(280, 86);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(157, 1);
+            this.panel1.TabIndex = 79;
+            // 
+            // txt_mkmoi
+            // 
+            this.txt_mkmoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_mkmoi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
+            this.txt_mkmoi.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
+            this.txt_mkmoi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_mkmoi.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_mkmoi.ForeColor = System.Drawing.Color.White;
+            this.txt_mkmoi.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txt_mkmoi.Location = new System.Drawing.Point(280, 112);
+            this.txt_mkmoi.Name = "txt_mkmoi";
+            this.txt_mkmoi.Size = new System.Drawing.Size(157, 31);
+            this.txt_mkmoi.TabIndex = 82;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(103)))), ((int)(((byte)(113)))));
+            this.panel2.Location = new System.Drawing.Point(280, 145);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(157, 1);
+            this.panel2.TabIndex = 81;
+            // 
+            // txt_mkmoi2
+            // 
+            this.txt_mkmoi2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_mkmoi2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
+            this.txt_mkmoi2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
+            this.txt_mkmoi2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_mkmoi2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_mkmoi2.ForeColor = System.Drawing.Color.White;
+            this.txt_mkmoi2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txt_mkmoi2.Location = new System.Drawing.Point(280, 171);
+            this.txt_mkmoi2.Name = "txt_mkmoi2";
+            this.txt_mkmoi2.Size = new System.Drawing.Size(157, 31);
+            this.txt_mkmoi2.TabIndex = 84;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(103)))), ((int)(((byte)(113)))));
+            this.panel3.Location = new System.Drawing.Point(280, 204);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(157, 1);
+            this.panel3.TabIndex = 83;
             // 
             // frmdoimk
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(435, 289);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.btn_cancer);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
+            this.ClientSize = new System.Drawing.Size(504, 344);
             this.Controls.Add(this.txt_mkmoi2);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.txt_mkmoi);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.btn_doimk);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.txt_mkcu);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btn_cancer);
+            this.Controls.Add(this.btn_doimk);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
@@ -157,13 +235,16 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_mkcu;
-        private System.Windows.Forms.Button btn_doimk;
-        private System.Windows.Forms.TextBox txt_mkmoi;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_mkmoi2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btn_cancer;
         private System.Windows.Forms.Label label4;
+        private Bunifu.Framework.UI.BunifuThinButton2 btn_doimk;
+        private Bunifu.Framework.UI.BunifuThinButton2 btn_cancer;
+        private WindowsFormsControlLibrary1.BunifuCustomTextbox txt_mkcu;
+        private System.Windows.Forms.Panel panel1;
+        private WindowsFormsControlLibrary1.BunifuCustomTextbox txt_mkmoi;
+        private System.Windows.Forms.Panel panel2;
+        private WindowsFormsControlLibrary1.BunifuCustomTextbox txt_mkmoi2;
+        private System.Windows.Forms.Panel panel3;
     }
 }

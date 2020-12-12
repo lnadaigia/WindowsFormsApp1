@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.DAO;
 
 namespace WindowsFormsApp1
 {
@@ -22,20 +21,12 @@ namespace WindowsFormsApp1
         private void frmdsnhanvien_Load(object sender, EventArgs e)
         {
             loadnv();
-
         }
-		
+       
         void loadnv()
         {
-			DAONhanVien nv = new DAONhanVien();
-			DataTable dt = new DataTable();
-			dt = nv.getNhanVien();
-			try
-			{
-				dataGridView1.DataSource = dt;
-			}
-			catch { }
-		}
+         
+        }
 
        
 
@@ -43,7 +34,7 @@ namespace WindowsFormsApp1
         {
             string idnv = txt_idnv.Text;
             string hovaten = txt_hovaten.Text;
-            DateTime namsinh = dt_namsinh.Value;
+            DateTime namsinh = dt_nsinh.Value;
             string sdt = txt_sdt.Text;
             string cmnd = txt_cmnd.Text;
             if (rong())
@@ -76,7 +67,7 @@ namespace WindowsFormsApp1
             }
             txt_idnv.Text = "";
             txt_hovaten.Text = "";
-            dt_namsinh.Value = DateTime.Now;
+            dt_nsinh.Value = DateTime.Now;
             txt_sdt.Text = "";
             txt_cmnd.Text = "";
            
@@ -92,7 +83,7 @@ namespace WindowsFormsApp1
         {
             txt_idnv.Text = "";
             txt_hovaten.Text = "";
-            dt_namsinh.Value = DateTime.Now;
+            dt_nsinh.Value = DateTime.Now;
             txt_sdt.Text = "";
             txt_cmnd.Text = "";
         }
@@ -111,7 +102,7 @@ namespace WindowsFormsApp1
         {
             txt_idnv.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             txt_hovaten.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            dt_namsinh.Value = (DateTime)dataGridView1.CurrentRow.Cells[2].Value;
+            dt_nsinh.Value = (DateTime)dataGridView1.CurrentRow.Cells[2].Value;
             txt_sdt.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             txt_cmnd.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
 
@@ -152,6 +143,34 @@ namespace WindowsFormsApp1
             }
         }
 
-       
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txt_user_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txt_cmnd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txt_sdt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

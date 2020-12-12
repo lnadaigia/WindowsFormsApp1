@@ -17,6 +17,37 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
         private string idql;
+        private int imgNumber = 1;
+        void MoveIndicator(Control control)
+        {
+            indicator.Top = control.Top;
+            indicator.Height = control.Height;
+        }
+        private void loadNextImage()
+        {
+            if (imgNumber == 1)
+            {
+                slidePic.ImageLocation = string.Format(@"Images\1.jpg");
+                slidePic.BackgroundImageLayout = ImageLayout.Stretch;
+                imgNumber = 2;
+                img_1.Checked = true;
+            }
+            else if (imgNumber == 2)
+            {
+                slidePic.ImageLocation = string.Format(@"Images\2.jpg");
+                slidePic.BackgroundImageLayout = ImageLayout.Stretch;
+                imgNumber = 3;
+                img_2.Checked = true;
+            }
+            else
+            {
+                slidePic.ImageLocation = string.Format(@"Images\3.jpg");
+                slidePic.BackgroundImageLayout = ImageLayout.Stretch;
+                imgNumber = 1;
+                img_3.Checked = true;
+            }
+            imgNumber++;
+        }
         public string setid
         {
             set { idql = value; }
@@ -45,54 +76,119 @@ namespace WindowsFormsApp1
             childform.Show();
         }
 
-        private void btn_home_Click(object sender, EventArgs e)
-        {
-            openchildform(new frmquanli());
-        }
-
-        private void btn_dsbanan_Click(object sender, EventArgs e)
-        {
-            openchildform(new frmdsban());
-        }
-
-        private void btn_dshoadon_Click(object sender, EventArgs e)
-        {
-            openchildform(new frmdshoadon());
-        }
-
-        private void btn_dsmonan_Click(object sender, EventArgs e)
-        {
-            openchildform(new frmdsdoan());
-        }
-
-        private void btn_dsnhanvien_Click_1(object sender, EventArgs e)
-        {
-            openchildform(new frmdsnhanvien());
-        }
-
-        private void btn_muanguyenlieu_Click(object sender, EventArgs e)
-        {
-            openchildform(new frmmuanguyenlieu());
-        }
-
-        private void btn_thongke_Click(object sender, EventArgs e)
-        {
-            openchildform(new frmthongke());
-        }
-
-        private void btn_dsca_Click(object sender, EventArgs e)
-        {
-            openchildform(new frmdanhsachca());
-        }
-
-        private void btn_Voucher_Click(object sender, EventArgs e)
-        {
-            openchildform(new frmVoucher());
-        }
-
         private void btn_thongtin_Click(object sender, EventArgs e)
         {
             openchildform(new frmthongtin());
+        }
+
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmquanli());
+            MoveIndicator((Control)sender);
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmdsnhanvien());
+            MoveIndicator((Control)sender);
+        }
+
+        private void bunifuFlatButton3_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmdanhsachca());
+            MoveIndicator((Control)sender);
+        }
+
+        private void bunifuFlatButton4_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmVoucher());
+            MoveIndicator((Control)sender);
+        }
+
+        private void bunifuFlatButton5_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmmuanguyenlieu());
+            MoveIndicator((Control)sender);
+        }
+
+        private void bunifuFlatButton6_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmthongke());
+            MoveIndicator((Control)sender);
+        }
+
+        private void btn_dsban_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmdsban());
+            MoveIndicator((Control)sender);
+        }
+
+        private void btn_dsbill_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmdshoadon());
+            MoveIndicator((Control)sender);
+        }
+
+        private void btn_dsmon_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmdsdoan());
+            MoveIndicator((Control)sender);
+        }
+
+        private void btn_thongtincanhan_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmthongtin());
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            openchildform(new frmthongtin());
+        }
+        private void pn_childform_Paint(object sender, PaintEventArgs e)
+        {
+            loadNextImage();
+        }
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (activeform != null)
+                activeform.Close();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            loadNextImage();
+        }
+
+        private void img_1_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            slidePic.ImageLocation = string.Format(@"Images\1.jpg");
+            slidePic.BackgroundImageLayout = ImageLayout.Stretch;
+            imgNumber = 2;
+            timer1.Start();
+        }
+
+        private void img_2_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            slidePic.ImageLocation = string.Format(@"Images\2.jpg");
+            slidePic.BackgroundImageLayout = ImageLayout.Stretch;
+            imgNumber = 3;
+            timer1.Start();
+        }
+
+        private void img_3_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            slidePic.ImageLocation = string.Format(@"Images\3.jpg");
+            slidePic.BackgroundImageLayout = ImageLayout.Stretch;
+            imgNumber = 1;
+            timer1.Start();
+        }
+
+        private void bunifuThinButton21_Click(object sender, EventArgs e)
+        {
+            openchildform(new frmthongke());
         }
     }
 }

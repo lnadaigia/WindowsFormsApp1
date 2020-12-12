@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.DAO;
 
 namespace WindowsFormsApp1
 {
@@ -43,21 +42,7 @@ namespace WindowsFormsApp1
 
         private void frmthemdoan_nguyenlieu_Load(object sender, EventArgs e)
         {
-			try
-			{
-				DAOMonAn monan = new DAOMonAn();
-				DataTable tb = new DataTable();
-				DAONguyenLieu nl = new DAONguyenLieu();
-				DataTable tb1 = new DataTable();
-				tb = monan.getMonAn();
-				dataGridView1.DataSource = tb;
-				tb1 = nl.getNguyenLieu();
-				dataGridView2.DataSource = tb1;
-			}
-			catch
-			{
-
-			}
+           
         }
 
         private void btn_themdoan_Click(object sender, EventArgs e)
@@ -139,5 +124,14 @@ namespace WindowsFormsApp1
         {
             
         }
-	}
+
+        private void btn_chinhsua_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+    }
 }

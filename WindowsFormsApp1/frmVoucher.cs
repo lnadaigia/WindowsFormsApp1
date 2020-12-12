@@ -16,5 +16,15 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        private void frmVoucher_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_discount_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

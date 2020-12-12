@@ -250,27 +250,3 @@ begin
 		select @gia=gia from Monantheongay where Mamonan=@mamonan and ngay=convert(date,getdate())
 		update Hoadon set Tongbill=Tongbill-@soluong*@gia where Mahoadon=@mahoadon
 end
-go
-create procedure themdonhang(@mahoadon int,@mamonan int,@soluong int)
-as
-begin
-	if((select count(*) from Chitiethoadon where Mahoadon=@mahoadon and Mamonan=@mamonan)>0)
-	begin
-		update Chitiethoadon set Soluong=@soluong where Mahoadon=@mahoadon and Mamonan=@mamonan
-	end
-	else
-	begin
-		insert into Chitiethoadon values(@mahoadon,@mamonan,@soluong)
-	end
-end
-drop function if exists dsmonan
-go
-create function dsmonan()
-returns table
-as
-return
-select ct.Mamonan,isnull(sum(ct.Soluong),0) as 'soluong_daban',convert(date,hd.Thoigian) as 'ngay' 
-	from Chitiethoadon as ct,hoadon as hd 
-	where hd.Mahoadon=ct.Mahoadon and convert(date,hd.Thoigian)=CONVERT(date,getdate()) 
-	group by ct.Mamonan,convert(date,hd.Thoigian)
-go

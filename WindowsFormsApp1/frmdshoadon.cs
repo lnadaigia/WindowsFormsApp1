@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.DAO;
 
 namespace WindowsFormsApp1
 {
@@ -25,28 +24,13 @@ namespace WindowsFormsApp1
         }
         private void frmdanhsachdonhang_Load(object sender, EventArgs e)
         {
-			DAOHoaDon hd = new DAOHoaDon();
-			DataTable tb = new DataTable();
-			tb = hd.getHoaDon();
-			try
-			{
-				dtg_hoadon.DataSource = tb;
-			}
-			catch
-			{
-
-			}
+            
         }
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
             try
             {
-				int mahoadon = (int)dtg_hoadon.CurrentRow.Cells[0].Value;
-				DAOChiTietHoaDon cthd = new DAOChiTietHoaDon();
-				DataTable tb = new DataTable();
-				tb = cthd.getChiTietHoaDon(mahoadon);
-				dtg_chitiet_hoa_don.DataSource = tb;
                
             }
             catch { }
