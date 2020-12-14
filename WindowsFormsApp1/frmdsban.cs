@@ -40,7 +40,7 @@ namespace WindowsFormsApp1
                         break;
                     default:
                         bt.BackColor = Color.Red;
-                        bt.Text = item.Tenban + Environment.NewLine + item.TableStatus1 + Environment.NewLine + item.Soluongnguoi + " People";
+                        bt.Text = item.Tenban + Environment.NewLine + item.TableStatus1 + Environment.NewLine ;
                         break;
 
                 }
@@ -59,6 +59,13 @@ namespace WindowsFormsApp1
             frmdatdonhang frm = new frmdatdonhang();
 
             frm.Show();
+            frm.FormClosed += Frm_FormClosed;
+        }
+
+        private void Frm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            flp.Controls.Clear();
+            createButton();
         }
 
         private void frmgiaodienchinh_Load(object sender, EventArgs e)
@@ -85,7 +92,7 @@ namespace WindowsFormsApp1
                     default:
                         bt.BackColor = Color.Red;
                         
-                        bt.Text = item.Tenban + Environment.NewLine + item.TableStatus1 + Environment.NewLine + item.Soluongnguoi + " People";
+                        bt.Text = item.Tenban + Environment.NewLine + item.TableStatus1 + Environment.NewLine ;
                         break;
 
                 }
