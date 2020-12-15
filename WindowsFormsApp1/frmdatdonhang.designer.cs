@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmdatdonhang));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmdatdonhang));
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbVoucher = new System.Windows.Forms.ComboBox();
             this.btn_thanhtoan = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btn_dathang = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.txt_tongtien = new Bunifu.Framework.UI.BunifuTextbox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtg_chitiet = new System.Windows.Forms.DataGridView();
             this.dtg_doan = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_xemdon = new Bunifu.Framework.UI.BunifuTileButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.cbVoucher = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.txt_tongtien = new Bunifu.Framework.UI.BunifuTextbox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_chitiet)).BeginInit();
@@ -62,17 +62,39 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txt_tongtien);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cbVoucher);
             this.panel1.Controls.Add(this.btn_thanhtoan);
             this.panel1.Controls.Add(this.btn_dathang);
-            this.panel1.Controls.Add(this.txt_tongtien);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dtg_chitiet);
             this.panel1.Location = new System.Drawing.Point(0, 208);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(527, 318);
             this.panel1.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(115, 160);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(101, 30);
+            this.label2.TabIndex = 79;
+            this.label2.Text = "Voucher:";
+            // 
+            // cbVoucher
+            // 
+            this.cbVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(56)))), ((int)(((byte)(69)))));
+            this.cbVoucher.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
+            this.cbVoucher.FormattingEnabled = true;
+            this.cbVoucher.Location = new System.Drawing.Point(241, 163);
+            this.cbVoucher.Name = "cbVoucher";
+            this.cbVoucher.Size = new System.Drawing.Size(137, 21);
+            this.cbVoucher.TabIndex = 64;
+            this.cbVoucher.SelectedIndexChanged += new System.EventHandler(this.cbVoucher_SelectedIndexChanged);
             // 
             // btn_thanhtoan
             // 
@@ -125,19 +147,6 @@
             this.btn_dathang.TabIndex = 77;
             this.btn_dathang.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_dathang.Click += new System.EventHandler(this.btn_dathang_Click);
-            // 
-            // txt_tongtien
-            // 
-            this.txt_tongtien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(56)))), ((int)(((byte)(69)))));
-            this.txt_tongtien.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txt_tongtien.BackgroundImage")));
-            this.txt_tongtien.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.txt_tongtien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
-            this.txt_tongtien.Icon = ((System.Drawing.Image)(resources.GetObject("txt_tongtien.Icon")));
-            this.txt_tongtien.Location = new System.Drawing.Point(241, 202);
-            this.txt_tongtien.Name = "txt_tongtien";
-            this.txt_tongtien.Size = new System.Drawing.Size(194, 42);
-            this.txt_tongtien.TabIndex = 59;
-            this.txt_tongtien.text = "Tổng tiền";
             // 
             // label1
             // 
@@ -249,6 +258,7 @@
             this.btn_xemdon.LabelPosition = 30;
             this.btn_xemdon.LabelText = "Xem đơn";
             this.btn_xemdon.Location = new System.Drawing.Point(385, 126);
+            this.btn_xemdon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_xemdon.Name = "btn_xemdon";
             this.btn_xemdon.Size = new System.Drawing.Size(77, 76);
             this.btn_xemdon.TabIndex = 62;
@@ -264,27 +274,18 @@
             this.comboBox1.Size = new System.Drawing.Size(128, 21);
             this.comboBox1.TabIndex = 63;
             // 
-            // cbVoucher
+            // txt_tongtien
             // 
-            this.cbVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(56)))), ((int)(((byte)(69)))));
-            this.cbVoucher.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
-            this.cbVoucher.FormattingEnabled = true;
-            this.cbVoucher.Location = new System.Drawing.Point(241, 163);
-            this.cbVoucher.Name = "cbVoucher";
-            this.cbVoucher.Size = new System.Drawing.Size(137, 21);
-            this.cbVoucher.TabIndex = 64;
-            this.cbVoucher.SelectedIndexChanged += new System.EventHandler(this.cbVoucher_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(115, 160);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 30);
-            this.label2.TabIndex = 79;
-            this.label2.Text = "Voucher:";
+            this.txt_tongtien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(56)))), ((int)(((byte)(69)))));
+            this.txt_tongtien.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txt_tongtien.BackgroundImage")));
+            this.txt_tongtien.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.txt_tongtien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
+            this.txt_tongtien.Icon = ((System.Drawing.Image)(resources.GetObject("txt_tongtien.Icon")));
+            this.txt_tongtien.Location = new System.Drawing.Point(241, 202);
+            this.txt_tongtien.Name = "txt_tongtien";
+            this.txt_tongtien.Size = new System.Drawing.Size(194, 42);
+            this.txt_tongtien.TabIndex = 81;
+            this.txt_tongtien.text = "";
             // 
             // frmdatdonhang
             // 
@@ -317,7 +318,6 @@
         private System.Windows.Forms.DataGridView dtg_chitiet;
         private System.Windows.Forms.DataGridView dtg_doan;
         private System.Windows.Forms.Label label1;
-        private Bunifu.Framework.UI.BunifuTextbox txt_tongtien;
         private System.Windows.Forms.Label label3;
         private Bunifu.Framework.UI.BunifuTileButton btn_xemdon;
         private Bunifu.Framework.UI.BunifuThinButton2 btn_dathang;
@@ -325,6 +325,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox cbVoucher;
         private System.Windows.Forms.Label label2;
+        private Bunifu.Framework.UI.BunifuTextbox txt_tongtien;
     }
 }
 

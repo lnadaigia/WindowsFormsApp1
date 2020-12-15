@@ -50,7 +50,15 @@ namespace WindowsFormsApp1.DAO
 			return table;
 		}
 
+		public DataTable locHoaDon(String sql)
+		{
+			SqlCommand command = new SqlCommand(sql, db.GetConnection);
+			SqlDataAdapter adapter = new SqlDataAdapter(command);
+			DataTable table = new DataTable();
+			adapter.Fill(table);
+			return table;
 
+		}
 		public bool updatect(DataTable ct, int maban)
 		{
 			SqlCommand insertCommand = new SqlCommand("themchitiet", db.GetConnection);
@@ -148,77 +156,68 @@ namespace WindowsFormsApp1.DAO
 		}
 
 
-			public int getCurrentMahoadon()
+		public int getTongbill(int mahoadon)
+		{
+			SqlCommand command = new SqlCommand("  SELECT Tongbill FROM Hoadon WHere Mahoadon=@mahoadon", db.GetConnection);
+			command.Parameters.Add("@mahoadon", SqlDbType.Int).Value = mahoadon;
+			SqlDataAdapter adapter = new SqlDataAdapter(command);
+			DataTable table = new DataTable();
+			adapter.Fill(table);
+			if (table.Rows.Count > 0)
+				return int.Parse(table.Rows[0][0].ToString());
+			return 0;
+		}
+		public int getCurrentMahoadon(int maban)
+		{
+			SqlCommand command = new SqlCommand(" SELECT Mahoadon FROM Hoadon WHERE Maban=@MaBan AND convert(date,Thoigian)=CONVERT(date,GETDATE()) AND Trangthai=0", db.GetConnection);
+			command.Parameters.Add("@Maban", SqlDbType.Int).Value = maban;
+			SqlDataAdapter adapter = new SqlDataAdapter(command);
+			DataTable table = new DataTable();
+			adapter.Fill(table);
+			if (table.Rows.Count > 0)
+				return int.Parse(table.Rows[0][0].ToString());
+			return 0;
+		}
+		public bool DatHang(HoaDon hd)
+		{
+			SqlCommand command = new SqlCommand("insert into Hoadon (Maban,Thoigian,Tongbill,Manv,mavoucher,Trangthai) values(@Maban,@Thoigian,@Tongbill,@Manv,@mavoucher,@Trangthai)", db.GetConnection);
+			command.Parameters.Add("@Maban", SqlDbType.Int).Value = hd.Maban;
+			command.Parameters.Add("@Thoigian", SqlDbType.DateTime).Value = hd.Thoigian;
+			command.Parameters.Add("@Tongbill", SqlDbType.Float).Value = hd.Tongbill;
+			command.Parameters.Add("@Manv", SqlDbType.Int).Value = hd.Manv;
+			command.Parameters.Add("@mavoucher", SqlDbType.Int).Value = hd.Mavoucher;
+			command.Parameters.Add("@Trangthai", SqlDbType.Bit).Value = hd.Trangthai;
+			db.openConection();
+			if (command.ExecuteNonQuery() == 1)
 			{
-				SqlCommand command = new SqlCommand("select MAX(Mahoadon)  from hoadon", db.GetConnection);
-				SqlDataAdapter adapter = new SqlDataAdapter(command);
-				db.openConection();
-
-				object a = command.ExecuteScalar();
-				int b = int.Parse(a.ToString());
-				if (b != 0)
-				{
-					db.closedConection();
-					return b;
-				}
-				else
-				{
-					db.closedConection();
-					return 0;
-				}
+				db.closedConection();
+				return true;
 			}
-			public bool DatHang(HoaDon hd)
+			else
 			{
-				string query = hd.Mavoucher == 0 ? "null" : "@mavoucher";
-				SqlCommand command = new SqlCommand("insert into Hoadon (Maban,Thoigian,Tongbill,Manv,mavoucher,Trangthai) values(@Maban,@Thoigian,@Tongbill,@Manv,"+query+",@Trangthai)", db.GetConnection);
-				command.Parameters.Add("@Maban", SqlDbType.Int).Value = hd.Maban;
-				command.Parameters.Add("@Thoigian", SqlDbType.DateTime).Value = hd.Thoigian;
-				command.Parameters.Add("@Tongbill", SqlDbType.Float).Value = hd.Tongbill;
-				command.Parameters.Add("@Manv", SqlDbType.Int).Value = hd.Manv;
-				command.Parameters.Add("@mavoucher", SqlDbType.Int).Value = hd.Mavoucher;
-				command.Parameters.Add("@Trangthai", SqlDbType.Bit).Value = hd.Trangthai;
-				db.openConection();
-				if (command.ExecuteNonQuery() == 1)
-				{
-					db.closedConection();
-					return true;
-				}
-				else
-				{
-					db.closedConection();
-					return false;
-				}
-
+				db.closedConection();
+				return false;
 			}
-			
-			public bool ThanhToan(int mahoadon)
+		}
+		public bool ThanhToan(int mahoadon)
+		{
+
+			SqlCommand command = new SqlCommand("UPDATE HoaDon SET	Trangthai=1 WHERE Mahoadon=@Mahoadon	", db.GetConnection);
+			command.Parameters.Add("@Mahoadon", SqlDbType.Int).Value = mahoadon;
+
+			db.openConection();
+			if (command.ExecuteNonQuery() == 1)
 			{
-
-				SqlCommand command = new SqlCommand("UPDATE HoaDon SET	Trangthai=1 WHERE Mahoadon=@Mahoadon	", db.GetConnection);
-				command.Parameters.Add("@Mahoadon", SqlDbType.Int).Value = mahoadon;
-
-				db.openConection();
-				if (command.ExecuteNonQuery() == 1)
-				{
-					db.closedConection();
-					return true;
-				}
-				else
-				{
-					db.closedConection();
-					return false;
-				}
-
+				db.closedConection();
+				return true;
 			}
-			public DataTable locHoaDon(String sql)
+			else
 			{
-				SqlCommand command = new SqlCommand(sql, db.GetConnection);
-				SqlDataAdapter adapter = new SqlDataAdapter(command);
-				DataTable table = new DataTable();
-				adapter.Fill(table);
-				return table;
-
+				db.closedConection();
+				return false;
 			}
+		}
+		
 		}
 	}
 

@@ -115,7 +115,7 @@ namespace WindowsFormsApp1.DAO
 				objTrans.Commit();
 				t = true;
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				objTrans.Rollback();
 				
