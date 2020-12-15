@@ -141,7 +141,7 @@ namespace WindowsFormsApp1
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(103)))), ((int)(((byte)(113)))));
             this.panel1.Location = new System.Drawing.Point(574, 73);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(118, 1);
             this.panel1.TabIndex = 66;
@@ -154,7 +154,7 @@ namespace WindowsFormsApp1
             this.txt_ma.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_ma.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txt_ma.Location = new System.Drawing.Point(172, 24);
-            this.txt_ma.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_ma.Margin = new System.Windows.Forms.Padding(2);
             this.txt_ma.Name = "txt_ma";
             this.txt_ma.Size = new System.Drawing.Size(160, 29);
             this.txt_ma.TabIndex = 65;
@@ -174,7 +174,7 @@ namespace WindowsFormsApp1
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.Location = new System.Drawing.Point(34, 69);
+            this.dataGridView1.Location = new System.Drawing.Point(5, 73);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -193,7 +193,7 @@ namespace WindowsFormsApp1
             this.dataGridView1.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(2);
             this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
             this.dataGridView1.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.Size = new System.Drawing.Size(364, 145);
+            this.dataGridView1.Size = new System.Drawing.Size(438, 214);
             this.dataGridView1.TabIndex = 40;
             this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
@@ -207,7 +207,7 @@ namespace WindowsFormsApp1
             this.txt_tenma.ForeColor = System.Drawing.Color.White;
             this.txt_tenma.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txt_tenma.Location = new System.Drawing.Point(574, 46);
-            this.txt_tenma.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_tenma.Margin = new System.Windows.Forms.Padding(2);
             this.txt_tenma.Name = "txt_tenma";
             this.txt_tenma.Size = new System.Drawing.Size(118, 25);
             this.txt_tenma.TabIndex = 67;
@@ -222,7 +222,7 @@ namespace WindowsFormsApp1
             this.txt_discount.ForeColor = System.Drawing.Color.White;
             this.txt_discount.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txt_discount.Location = new System.Drawing.Point(574, 262);
-            this.txt_discount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_discount.Margin = new System.Windows.Forms.Padding(2);
             this.txt_discount.Name = "txt_discount";
             this.txt_discount.Size = new System.Drawing.Size(118, 25);
             this.txt_discount.TabIndex = 69;
@@ -233,7 +233,7 @@ namespace WindowsFormsApp1
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(103)))), ((int)(((byte)(113)))));
             this.panel2.Location = new System.Drawing.Point(574, 291);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(118, 1);
             this.panel2.TabIndex = 68;
@@ -288,7 +288,7 @@ namespace WindowsFormsApp1
             this.btn_them.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
             this.btn_them.IdleForecolor = System.Drawing.Color.White;
             this.btn_them.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
-            this.btn_them.Location = new System.Drawing.Point(47, 238);
+            this.btn_them.Location = new System.Drawing.Point(60, 323);
             this.btn_them.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_them.Name = "btn_them";
             this.btn_them.Size = new System.Drawing.Size(120, 49);
@@ -314,7 +314,7 @@ namespace WindowsFormsApp1
             this.btn_sua.IdleFillColor = System.Drawing.Color.White;
             this.btn_sua.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
             this.btn_sua.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
-            this.btn_sua.Location = new System.Drawing.Point(180, 238);
+            this.btn_sua.Location = new System.Drawing.Point(193, 323);
             this.btn_sua.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_sua.Name = "btn_sua";
             this.btn_sua.Size = new System.Drawing.Size(120, 49);
@@ -340,7 +340,7 @@ namespace WindowsFormsApp1
             this.btn_xoa.IdleFillColor = System.Drawing.Color.White;
             this.btn_xoa.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
             this.btn_xoa.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
-            this.btn_xoa.Location = new System.Drawing.Point(313, 238);
+            this.btn_xoa.Location = new System.Drawing.Point(326, 323);
             this.btn_xoa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_xoa.Name = "btn_xoa";
             this.btn_xoa.Size = new System.Drawing.Size(120, 49);
@@ -366,7 +366,7 @@ namespace WindowsFormsApp1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
-            this.ClientSize = new System.Drawing.Size(772, 350);
+            this.ClientSize = new System.Drawing.Size(772, 480);
             this.Controls.Add(this.bunifuSeparator1);
             this.Controls.Add(this.btn_xoa);
             this.Controls.Add(this.btn_sua);
