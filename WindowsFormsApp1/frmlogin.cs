@@ -17,7 +17,11 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-       
+        void MoveIndicator(Control control)
+        {
+            indicator.Left = control.Left;
+            indicator.Width = control.Width;
+        }
         private void btn_login_Click(object sender, EventArgs e)
         {
             try
@@ -49,15 +53,68 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            button2.ForeColor = Color.White;
+            button1.ForeColor = Color.FromArgb(89, 121, 254);
+            MoveIndicator((Control)sender);
             frmmaunhanvien frm = new frmmaunhanvien();
             frm.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            button1.ForeColor = Color.White;
+            button2.ForeColor = Color.FromArgb(89, 121, 254);
+            MoveIndicator((Control)sender);
             frmmau frm = new frmmau();
             frm.ShowDialog();
         }
+
+        private void frmlogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_cancer_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+}
+namespace GlobalVariables
+{
+    public static class Globals
+    {
+        // parameterless constructor required for static class
+        static Globals()
+        {
+            Maban = 1234;
+            NumberofPeople = 0;
+            NV = 1;
+            Mahoadon = 30;
+        } // default value
+
+        // public get, and private set for strict access control
+        public static int Mahoadon { get; private set; }
+        public static int Maban { get; private set; }
+        public static int NumberofPeople { get; private set; }
+        public static int NV { get; private set; }
+        // GlobalInt can be changed only via this method
+        public static void SetMaban(int newInt)
+        {
+            Maban = newInt;
+        }
+        public static void SetMahoadon(int newInt)
+        {
+            Mahoadon = newInt;
+        }
+        public static void SetNumbleOfpeople(int newInt)
+        {
+            NumberofPeople = newInt;
+        }
+        public static void SetNV(int newInt)
+        {
+            NV = newInt;
+        }
+
     }
 }

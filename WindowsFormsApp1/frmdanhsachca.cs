@@ -56,5 +56,11 @@ namespace WindowsFormsApp1
         {
             
         }
+
+        private void btn_capnhat_Click(object sender, EventArgs e)
+        {
+            frmchiacav2 frm = new frmchiacav2();
+            frm.ShowDialog();
+        }
     }
 }

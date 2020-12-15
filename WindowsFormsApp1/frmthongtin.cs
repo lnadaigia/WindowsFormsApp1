@@ -41,7 +41,7 @@ namespace WindowsFormsApp1
         {
             string idql = txt_idql.Text;
             string hovaten = txt_hovaten.Text;
-            DateTime namsinh = dt_namsinh.Value;
+            DateTime namsinh = dt_nsinh.Value;
             string sdt = txt_sdt.Text;
             string cmnd = txt_cmnd.Text;
             if (idql==""||hovaten==""||sdt==""||cmnd=="")
@@ -82,6 +82,11 @@ namespace WindowsFormsApp1
         {
             frmdoimk frm = new frmdoimk();
             frm.ShowDialog();
+        }
+
+        private void dt_nsinh_onValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

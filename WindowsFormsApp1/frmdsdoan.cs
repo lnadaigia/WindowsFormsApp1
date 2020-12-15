@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-       
+
         void loaddoan()
         {
             DAOMonAn monan = new DAOMonAn();
@@ -52,52 +52,19 @@ namespace WindowsFormsApp1
 
         int id_doan = 0;
         DAOMonAn ma = new DAOMonAn();
-        private void dataGridView1_Click(object sender, EventArgs e)
+
+        private void frmdsdoan_Load(object sender, EventArgs e)
         {
             try
             {
-                foreach (DataGridViewRow row in dataGridView2.Rows)
-                {
-                    row.Cells[2].Value = false;
-                    row.Cells[3].Value = 0;
-                }
-                id_doan = (int)dataGridView1.CurrentRow.Cells[0].Value;
-                txt_tendoan.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-
-                DataTable table = ma.getNguyenlieutheomonan(id_doan);
-                foreach (DataGridViewRow gridViewRow in dataGridView2.Rows)
-                {
-                    
-                    int id_nguyenlieu = (int)gridViewRow.Cells[0].Value;
-                    foreach (DataRow row in table.Rows)
-                    {
-                        int id_nl = (int)row.ItemArray[1];
-                        if (id_nguyenlieu == id_nl)
-                        {
-                            gridViewRow.Cells[2].Value = true;
-                            gridViewRow.Cells[3].Value = row.ItemArray[2];
-                            break;
-                        }
-                    }
-                }
-            }
-            catch(Exception ex) { MessageBox.Show(ex.Message); }
-            
-            
-        }
-
-        private void frmthemdoan_nguyenlieu_Load(object sender, EventArgs e)
-        {
-			try
-			{
                 loaddoan();
                 loadnguyenlieu();
 
-			}
-			catch
-			{
+            }
+            catch
+            {
 
-			}
+            }
         }
 
         private void btn_themdoan_Click(object sender, EventArgs e)
@@ -123,7 +90,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                if (MessageBox.Show("bạn có muốn xóa "+ txt_tendoan.Text, "xóa món ăn", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("bạn có muốn xóa " + txt_tendoan.Text, "xóa món ăn", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     MonAn m = new MonAn();
                     m.Tenmonan = txt_tendoan.Text;
@@ -159,13 +126,13 @@ namespace WindowsFormsApp1
                 }
                 loaddoan();
             }
-            catch(Exception ex) { MessageBox.Show(ex.ToString()); }
-
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
 
 
         }
         DAONguyenLieu nl = new DAONguyenLieu();
-        private void txt_themnl_Click(object sender, EventArgs e)
+
+        private void btn_themnl_Click(object sender, EventArgs e)
         {
             try
             {
@@ -206,7 +173,7 @@ namespace WindowsFormsApp1
             }
             catch { }
         }
-        
+        int id_nl = 0;
         private void btn_suanl_Click(object sender, EventArgs e)
         {
             try
@@ -226,7 +193,7 @@ namespace WindowsFormsApp1
             }
             catch { }
         }
-        int id_nl = 0;
+
         private void dataGridView2_Click(object sender, EventArgs e)
         {
             try
@@ -256,27 +223,55 @@ namespace WindowsFormsApp1
                         if ((bool)row.Cells[2].Value)
                         {
                             dt.Rows.Add((int)row.Cells[0].Value, id_doan, float.Parse(row.Cells[3].Value.ToString()));
+                            
                         }
                         else
                         {
                             dt2.Rows.Add((int)row.Cells[0].Value, id_doan, float.Parse(row.Cells[3].Value.ToString()));
                         }
+                        
                     }
-                   
-                    ma.xoact(dt2,id_doan);
-                    ma.updatect(dt,id_doan);
+                    ma.xoact(dt2, id_doan);
+                    ma.updatect(dt, id_doan);
 
-                    
+
                 }
                 loaddoan();
                 loadnguyenlieu();
             }
-            catch (Exception ex){ MessageBox.Show(ex.Message); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void txt_tennl_Validating(object sender, CancelEventArgs e)
+        private void dataGridView1_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                foreach (DataGridViewRow row in dataGridView2.Rows)
+                {
+                    row.Cells[2].Value = false;
+                    row.Cells[3].Value = 0;
+                }
+                id_doan = (int)dataGridView1.CurrentRow.Cells[0].Value;
+                txt_tendoan.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+
+                DataTable table = ma.getNguyenlieutheomonan(id_doan);
+                foreach (DataGridViewRow gridViewRow in dataGridView2.Rows)
+                {
+
+                    int id_nguyenlieu = (int)gridViewRow.Cells[0].Value;
+                    foreach (DataRow row in table.Rows)
+                    {
+                        int id_nl = (int)row.ItemArray[1];
+                        if (id_nguyenlieu == id_nl)
+                        {
+                            gridViewRow.Cells[2].Value = true;
+                            gridViewRow.Cells[3].Value = row.ItemArray[2];
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
-	}
+    }
 }

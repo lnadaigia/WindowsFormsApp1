@@ -17,12 +17,16 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             loadngay();
-           
+            loadgio();
         }
         void loadngay()
         {
-            this.lb_ngay.Text += DateTime.Now.ToShortDateString();
+            this.lb_ngay.Text= DateTime.Now.ToShortDateString();
  
+        }
+        void loadgio()
+        {
+            this.lb_gio.Text = DateTime.Now.ToLongTimeString();
         }
       
         private string id;
@@ -36,11 +40,6 @@ namespace WindowsFormsApp1
         TimeSpan gio=new TimeSpan(0,0,0);
         void loadvieclam()
         {
-            
-
-            
-
-            
         }
       
         private void frmnhanvien_Load(object sender, EventArgs e)
@@ -61,7 +60,7 @@ namespace WindowsFormsApp1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lb_gio.Text = DateTime.Now.ToLongTimeString();
+            this.lb_gio.Text = DateTime.Now.ToLongTimeString();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public DataTable getNguyenLieutheongay()
 		{
-			SqlCommand command = new SqlCommand("select NguyenLieu.tenNL,isnull(m.gia,0) as 'gia',isnull(m.tongsoluong,0) as 'soluong' from NguyenLieu  left join Nguyenlieutheongay as m on m.Manl=NguyenLieu.Manl and ngay=convert(date,getdate())", db.GetConnection);
+			SqlCommand command = new SqlCommand("select nguyenlieu.manl,NguyenLieu.tenNL,isnull(m.gia,0) as 'gia',isnull(m.tongsoluong,0) as 'soluong' from NguyenLieu  left join Nguyenlieutheongay as m on m.Manl=NguyenLieu.Manl and ngay=convert(date,getdate()) ORDER BY nguyenlieu.manl", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			DataTable table = new DataTable();
 			adapter.Fill(table);
@@ -79,6 +79,52 @@ namespace WindowsFormsApp1.DAO
 				db.closedConection();
 				return false;
 			}
+
+		}
+		public float gettonggia()
+        {
+			SqlCommand command = new SqlCommand("select sum(ISNULL(gia,0)*tongsoluong) from Nguyenlieutheongay where ngay=convert(date,getdate())", db.GetConnection);
+			SqlDataAdapter adapter = new SqlDataAdapter(command);
+			DataTable table = new DataTable();
+			adapter.Fill(table);
+			if (table.Rows.Count > 0)
+				return float.Parse(table.Rows[0][0].ToString());
+			return 0;
+		}
+		public bool updategia_nguyenlieu(DataTable ct)
+		{
+			bool t = false;
+			db.openConection();
+			SqlTransaction objTrans = db.GetConnection.BeginTransaction();
+			SqlCommand command = new SqlCommand("update Nguyenlieutheongay set gia=@gia where ngay=convert(date,getdate()) and manl=@manl", db.GetConnection, objTrans);
+			command.Parameters.Add("@gia", SqlDbType.Float);
+			command.Parameters.Add("@manl", SqlDbType.Int);
+			
+
+			try
+			{
+				
+				foreach (DataRow row in ct.Rows)
+				{
+
+					command.Parameters[0].Value = float.Parse(row[1].ToString());
+					command.Parameters[1].Value = (int)row[0];
+
+					command.ExecuteNonQuery();
+				}
+				objTrans.Commit();
+				t = true;
+			}
+			catch (Exception ex)
+			{
+				objTrans.Rollback();
+				
+			}
+			finally
+			{
+				db.closedConection();
+			}
+			return t;
 
 		}
 

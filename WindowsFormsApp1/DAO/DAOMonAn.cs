@@ -17,7 +17,7 @@ namespace WindowsFormsApp1.DAO
 			SqlCommand command = new SqlCommand(
 			"select ma.tenmonan,sum(ct.Soluong) as 'so luong' ,sum((m.gia*ct.Soluong)) as 'thanhtien' " +
 			"from Chitiethoadon as ct, Hoadon as hd, Monan as ma, Monantheongay as m " +
-			"where hd.Mahoadon = ct.Mahoadon and m.ngay = CONVERT(date, getdate()) " +
+			"where hd.Mahoadon = ct.Mahoadon and  m.ngay=convert(date,hd.Thoigian) " +
 			"and m.Mamonan = ct.Mamonan and ma.Mamonan = m.Mamonan " +
 			query+
 			" group by ma.tenmonan", db.GetConnection);

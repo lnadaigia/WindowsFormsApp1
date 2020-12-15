@@ -11,7 +11,10 @@ namespace WindowsFormsApp1.Model
 		private int mahoadon;
 		private int mamonan;
 		private int soluong;
+		public ChiTietHoaDon()
+        {
 
+        }
 		public ChiTietHoaDon(int mahoadon, int mamonan, int soluong)
 		{
 			this.mahoadon = mahoadon;

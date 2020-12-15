@@ -21,29 +21,30 @@ namespace WindowsFormsApp1
 
         private void frmdsnhanvien_Load(object sender, EventArgs e)
         {
-            loadnv();
-
+            try
+            {
+                loadnv();
+            }
+            catch { }
         }
-		
+
         void loadnv()
         {
-			DAONhanVien nv = new DAONhanVien();
-			DataTable dt = new DataTable();
-			dt = nv.getNhanVien();
-			try
-			{
-				dataGridView1.DataSource = dt;
-			}
-			catch { }
-		}
+            DAONhanVien nv = new DAONhanVien();
+            DataTable dt = new DataTable();
+            dt = nv.getNhanVien();
+           
+                dataGridView1.DataSource = dt;
+           
+        }
 
-       
+
 
         private void btn_sua_Click(object sender, EventArgs e)
         {
             string idnv = txt_idnv.Text;
             string hovaten = txt_hovaten.Text;
-            DateTime namsinh = dt_namsinh.Value;
+            DateTime namsinh = dt_nsinh.Value;
             string sdt = txt_sdt.Text;
             string cmnd = txt_cmnd.Text;
             if (rong())
@@ -76,7 +77,7 @@ namespace WindowsFormsApp1
             }
             txt_idnv.Text = "";
             txt_hovaten.Text = "";
-            dt_namsinh.Value = DateTime.Now;
+            dt_nsinh.Value = DateTime.Now;
             txt_sdt.Text = "";
             txt_cmnd.Text = "";
            
@@ -92,14 +93,18 @@ namespace WindowsFormsApp1
         {
             txt_idnv.Text = "";
             txt_hovaten.Text = "";
-            dt_namsinh.Value = DateTime.Now;
+            dt_nsinh.Value = DateTime.Now;
             txt_sdt.Text = "";
             txt_cmnd.Text = "";
         }
 
         private void btn_refresh_Click(object sender, EventArgs e)
         {
-            loadnv();
+            try
+            {
+                loadnv();
+            }
+            catch { }
         }
 
         private void btn_timid_Click(object sender, EventArgs e)
@@ -111,7 +116,7 @@ namespace WindowsFormsApp1
         {
             txt_idnv.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             txt_hovaten.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            dt_namsinh.Value = (DateTime)dataGridView1.CurrentRow.Cells[2].Value;
+            dt_nsinh.Value = (DateTime)dataGridView1.CurrentRow.Cells[2].Value;
             txt_sdt.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             txt_cmnd.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
 
@@ -152,6 +157,48 @@ namespace WindowsFormsApp1
             }
         }
 
-       
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txt_user_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txt_cmnd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txt_sdt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                txt_idnv.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                txt_hovaten.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                txt_sdt.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                dt_nsinh.Value = (DateTime)dataGridView1.CurrentRow.Cells[3].Value;
+                txt_cmnd.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        MY_DB db = new MY_DB();
+        int row = 0;
         private void frmmuanguyenlieu_Load(object sender, EventArgs e)
         {
             try
@@ -32,21 +32,8 @@ namespace WindowsFormsApp1
             }
             catch { }
         }
-        int row = 0;
-        private void dtg_doan_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                numericUpDown1.Visible = true;
-                int x = dtg_doan.CurrentRow.Index;
-                row = x;
-                Rectangle rectangle = dtg_doan.GetCellDisplayRectangle(0, x, true);
-                numericUpDown1.Location = new Point(465, rectangle.Y);
-                numericUpDown1.Value = (int)dtg_doan.Rows[row].Cells[3].Value;
-            }
-            catch { }
-        }
-
+        
+      
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             dtg_doan.Rows[row].Cells[3].Value = numericUpDown1.Value;
@@ -59,23 +46,27 @@ namespace WindowsFormsApp1
         }
         void load_nguyen_lieu()
         {
-
             DAONguyenLieu nl = new DAONguyenLieu();
             dtg_nguyenlieu_theongay.DataSource = nl.getNguyenLieutheongay();
             dtg_nguyenlieu_theongay.AllowUserToAddRows = false;
-            dtg_nguyenlieu_theongay.ReadOnly = true;
+            dtg_nguyenlieu_theongay.ReadOnly = false;
+            txt_tongtien.text = nl.gettonggia().ToString();
         }
-        private void btn_xemdonhang_Click(object sender, EventArgs e)
+      
+        
+       
+
+        private void btn_them_Click(object sender, EventArgs e)
         {
             MonAnTheoNgay ma = new MonAnTheoNgay();
             DAODoAntheongay dao = new DAODoAntheongay();
             try
             {
-                
+
                 ma.Mamonan = (int)dtg_doan.CurrentRow.Cells[0].Value;
                 ma.Gia = float.Parse(dtg_doan.CurrentRow.Cells[2].Value.ToString());
-                ma.Soluong= (int)dtg_doan.CurrentRow.Cells[3].Value;
-                if (dao.themMonAntheongay(ma)==false)
+                ma.Soluong = (int)dtg_doan.CurrentRow.Cells[3].Value;
+                if (dao.themMonAntheongay(ma) == false)
                 {
                     MessageBox.Show("Thêm món ăn thành công");
                 }
@@ -86,8 +77,9 @@ namespace WindowsFormsApp1
                 load_doan_theo_ngay();
                 load_nguyen_lieu();
             }
-            catch(Exception a){ 
-                MessageBox.Show(a.ToString()); 
+            catch (Exception a)
+            {
+                MessageBox.Show(a.ToString());
             }
         }
 
@@ -143,6 +135,40 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(a.ToString());
             }
+        }
+
+        private void dtg_doan_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+               
+                numericUpDown1.Visible = true;
+                int x = dtg_doan.CurrentRow.Index;
+                row = x;
+                Rectangle rectangle = dtg_doan.GetCellDisplayRectangle(0, x, true);
+                numericUpDown1.Location = new Point(465, rectangle.Y);
+                numericUpDown1.Value = (int)dtg_doan.Rows[row].Cells[3].Value;
+            }
+            catch (Exception ex) { MessageBox.Show(ex + ""); }
+        }
+
+        private void btn_luugia_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DAONguyenLieu nl = new DAONguyenLieu();
+                DataTable ct = new DataTable();
+                ct.Columns.Add(new DataColumn("manl", typeof(int)));
+                ct.Columns.Add(new DataColumn("gia", typeof(float)));
+                foreach (DataGridViewRow row in dtg_nguyenlieu_theongay.Rows)
+                {
+                    ct.Rows.Add((int)row.Cells[0].Value, float.Parse(row.Cells[2].Value.ToString()));
+                }
+               
+                nl.updategia_nguyenlieu(ct);
+                load_nguyen_lieu();
+            }
+            catch (Exception ex) { MessageBox.Show(ex + ""); }
         }
     }
 }

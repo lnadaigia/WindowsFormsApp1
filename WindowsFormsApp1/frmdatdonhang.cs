@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GlobalVariables;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.DAO;
+using WindowsFormsApp1.Model;
 
 namespace WindowsFormsApp1
 {
@@ -18,57 +20,24 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-        private string ban="2";
-        private int madonhang = 1;
-        public int setma_donhang
-        {
-            set { madonhang = value; }
-        }
-        public string setban
-        {
-            set { this.ban = value; }
-        }
-       
-        void loaddoan()
-        {
-           
-        }
         void loadkhach()
         {
             int[] mang = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             comboBox1.DataSource = mang;
+        }
+        void loadVoucher()
+        {
+            DAOVoucher a = new DAOVoucher();
+            cbVoucher.DataSource = a.getvoucher();
+            cbVoucher.DisplayMember = "mavoucher";
+            cbVoucher.ValueMember = "Discount";
+
         }
         void loadmonan()
         {
             DAODoAntheongay doan = new DAODoAntheongay();
             dtg_doan.DataSource = doan.getMonAndeban();
         }
-        DAOHoaDon hd = new DAOHoaDon();
-        void loadhoadon()
-        {
-            DataTable dh = hd.getHoaDonbyban(1);
-            dt = dh.Clone();
-            foreach (DataRow row in dh.Rows)
-            {
-                dt.Rows.Add(row[0],row[1],row[2],row[3],row[4]);
-            }
-            dtg_chitiet.DataSource = dt;
-            foreach (DataGridViewRow row in dtg_doan.Rows)
-            {
-                int soluong = 0;
-                foreach (DataGridViewRow r in dtg_chitiet.Rows)
-                {
-                    if (r.Cells[0].Value.ToString() == row.Cells[0].Value.ToString())
-                    {
-                        soluong = (int)r.Cells[2].Value;
-                    }
-                }
-                row.Cells[4].Value = soluong;
-            }
-
-        }
-        DataTable dt = new DataTable();
-       
         private void Form1_Load(object sender, EventArgs e)
         {
             try
@@ -76,130 +45,106 @@ namespace WindowsFormsApp1
                 dtg_doan.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dtg_chitiet.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dtg_doan.AllowUserToAddRows = false;
-                dtg_chitiet.AllowUserToAddRows = false;
+                dtg_chitiet.AllowUserToDeleteRows = false;
                 dtg_doan.ReadOnly = true;
                 dtg_chitiet.ReadOnly = true;
                 numericUpDown1.Visible = false;
                 loadkhach();
                 loadmonan();
-                loadhoadon();
-
-                /*
-                dt.Columns.Add(new DataColumn("mamonan", typeof(int)));
-                dt.Columns.Add(new DataColumn("tenmonan", typeof(string)));
-                dt.Columns.Add(new DataColumn("soluong", typeof(int)));
-                dt.Columns.Add(new DataColumn("gia", typeof(float)));
-                dt.Columns.Add(new DataColumn("thanhtien", typeof(float)));
-                */
-                
-             
+                loadVoucher();
 
             }
             catch { }
 
-           
 
         }
-        int row=1;
+        int row = 0;
         int max = 0;
-        private void dataGridView1_Click(object sender, EventArgs e)
+
+        private void dtg_doan_Click(object sender, EventArgs e)
         {
             try
             {
                 numericUpDown1.Visible = true;
-           
                 max = (int)dtg_doan.CurrentRow.Cells[3].Value + (int)dtg_doan.CurrentRow.Cells[4].Value;
                 numericUpDown1.Maximum = max;
-                row= dtg_doan.CurrentRow.Index;
-
-
-                Rectangle rectangle = dtg_doan.GetCellDisplayRectangle(0, row, true);
+                int x = dtg_doan.CurrentRow.Index;
+                row = x;
+                Rectangle rectangle = dtg_doan.GetCellDisplayRectangle(0, x, true);
                 numericUpDown1.Location = new Point(465, rectangle.Y);
-                //numericUpDown1.Value = (int)dtg_doan.Rows[row].Cells[4].Value;
-                numericUpDown1.Value = (int)dtg_doan.CurrentRow.Cells[4].Value;
+                numericUpDown1.Value = (int)dtg_doan.Rows[row].Cells[4].Value;
             }
-            catch (Exception ex){ MessageBox.Show(ex.ToString()); }
+            catch { }
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            try
-            {
-                //MessageBox.Show("" + max+" "+ dtg_doan.Rows[row].Cells[3].Value+" "+ dtg_doan.Rows[row].Cells[4].Value);
-                if (max == (int)dtg_doan.Rows[row].Cells[3].Value + (int)dtg_doan.Rows[row].Cells[4].Value)
-                {
-                    dtg_doan.Rows[row].Cells[4].Value = numericUpDown1.Value;
-                    dtg_doan.Rows[row].Cells[3].Value = max - numericUpDown1.Value;
-                    loaddonhang();
-                }
-                
-            }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); 
+            dtg_doan.Rows[row].Cells[4].Value = numericUpDown1.Value;
+            dtg_doan.Rows[row].Cells[3].Value = max - numericUpDown1.Value;
         }
-    }
- 
-        //int hang = 0;
-        void loaddonhang()
-        {
-            int mamonan = (int)dtg_doan.Rows[row].Cells[0].Value;
-            string tenmonan = dtg_doan.Rows[row].Cells[1].Value.ToString();
-            int soluong = (int)dtg_doan.Rows[row].Cells[4].Value;
-            float gia = float.Parse(dtg_doan.Rows[row].Cells[2].Value.ToString());
-            float thanhtien = gia * soluong;
-            int dem = 0;
-            foreach(DataRow row in dt.Rows)
-            {
-                if (row.ItemArray[0].ToString() == mamonan.ToString())
-                {
-                    row[2] = soluong;
-                    row[4] = thanhtien;
-                }
-                else
-                    dem++;
-            }
-            if(dt.Rows.Count==dem)
-                dt.Rows.Add(mamonan, tenmonan, soluong, gia, thanhtien);
-            float tong = 0;
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                DataRow row = dt.Rows[i];
-                if (row[4].ToString() == "0")
-                {
-                    row.Delete();
-                }
-                else
-                    tong = tong + float.Parse(row[4].ToString());
-            }
-            dtg_chitiet.DataSource = dt;
-            txt_tongtien.Text = tong.ToString();
+        float tongtien = 0;
 
-        }
-        private void btn_xemdonhang_Click(object sender, EventArgs e)
+        private void btn_xemdon_Click(object sender, EventArgs e)
         {
-           
+            dtg_chitiet.DataSource = dtg_doan.DataSource;
+            tongtien = 0;
+
+
+            for (int i = 0; i < dtg_chitiet.Rows.Count - 1; i++)
+            {
+                try
+                {
+                    // MessageBox.Show(dtg_chitiet.Rows[i].Cells[1].Value.ToString());
+                    tongtien += int.Parse(dtg_chitiet.Rows[i].Cells[4].Value.ToString()) * float.Parse(dtg_chitiet.Rows[i].Cells[2].Value.ToString());
+                }
+                catch
+                {
+                    MessageBox.Show("Failed");
+                }
+
+            }
+
+            txt_tongtien.text=tongtien.ToString();
         }
 
         private void btn_dathang_Click(object sender, EventArgs e)
         {
             try
             {
-                DataTable ct = new DataTable();
-                ct.Columns.Add(new DataColumn("mamonan", typeof(int)));
-                ct.Columns.Add(new DataColumn("soluong", typeof(int)));
-                foreach (DataRow row in dt.Rows)
+                HoaDon hd = new HoaDon();
+                
+                hd.Maban = Globals.Maban;
+                hd.Manv = Globals.NV;
+                hd.Thoigian = DateTime.Now;
+                hd.Tongbill = tongtien;
+                hd.Trangthai = false;
+                hd.Mavoucher = cbVoucher.Items.Count>0?int.Parse(cbVoucher.Text):0;
+                DAOHoaDon a = new DAOHoaDon();
+                DAOChiTietHoaDon DCT = new DAOChiTietHoaDon();
+                a.DatHang(hd);
+                int mahoadon = a.getCurrentMahoadon();
+                for (int i = 0; i < dtg_chitiet.Rows.Count - 1; i++)
                 {
-                    ct.Rows.Add(row[0],row[2]);
+                    int soluong = int.Parse(dtg_chitiet.Rows[i].Cells[4].Value.ToString());
+                    ChiTietHoaDon ct = new ChiTietHoaDon();
+                    if (soluong != 0)
+                    {
+                        ct.Mahoadon = mahoadon;
+                        ct.Mamonan = int.Parse(dtg_chitiet.Rows[i].Cells[0].Value.ToString());
+                        ct.Soluong = soluong;
+                        DCT.Themvaochitiethoadon(ct);
+                    }
                 }
-                //hd.updatect(ct,1);
-                hd.themchitiet(ct, 15);
-                loadkhach();
-                loadmonan();
-                loadhoadon();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Dat hang thanh cong");
+                Globals.SetMahoadon(mahoadon);
+                //update trang thai ban
+                DAOTable tb = new DAOTable();
+                tb.UpdatetableStatus(Globals.Maban, 0);
 
+            }
+            catch (SqlException oke)
+            {
+                MessageBox.Show(oke.Message);
             }
         }
 
@@ -207,22 +152,34 @@ namespace WindowsFormsApp1
         {
             try
             {
-                if (MessageBox.Show("bạn có muốn thanh toán hóa đơn không", "thanh toán", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DAOHoaDon a = new DAOHoaDon();
+                a.ThanhToan(Globals.Mahoadon);
+                MessageBox.Show("Thanh toan thanh cong");
+                //update trang thai ban
+                DAOTable tb = new DAOTable();
+                tb.UpdatetableStatus(Globals.Maban, 1);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void cbVoucher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            float a = tongtien;
+            try
+            {
+                //MessageBox.Show(cbVoucher.Text.ToString());
+                if (cbVoucher.SelectedValue != null)
                 {
-                    if (hd.thanhtoan(1))
-                    {
-                        MessageBox.Show("thanh toán thành công");
-                        loadkhach();
-                        loadhoadon();
-                        loadmonan();
-                    }
-                    else
-                        MessageBox.Show("thanh toán thất bại");
+                    //MessageBox.Show(cbVoucher.SelectedValue.ToString());
+                    a = tongtien * float.Parse(cbVoucher.SelectedValue.ToString());
+                    this.txt_tongtien.Text = a.ToString();
                 }
             }
-            catch (SqlException ex)
+            catch
             {
-                MessageBox.Show(ex.ToString());
 
             }
         }
