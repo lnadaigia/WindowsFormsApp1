@@ -104,11 +104,12 @@ create table Chitiethoadon
 )
 go
 
+drop function bandangsd
 create function bandangsd()
 returns table
 as
 	return select maban from hoadon
-	where convert(date,Hoadon.Thoigian)=convert(date,getdate()) and trangthai=0
+	where Hoadon.Thoigian=convert(date,getdate()) and trangthai=0
 go
 
 create function monan_daban(@mamonan int)
@@ -165,7 +166,7 @@ begin
 
 end
 go
-drop trigger if exists  xoa_monan_theongay
+drop trigger   xoa_monan_theongay
 go
 create trigger xoa_monan_theongay on monantheongay for delete
 as
@@ -189,15 +190,15 @@ begin
 end
 go
 
-drop trigger if exists  ban_sd
+
 go
-create trigger ban_sd on hoadon for insert ,update
+create trigger ban_sd on Hoadon for insert ,update
 as
 begin
 	declare @maban int
 	select @maban=maban from inserted
 	if(@maban in(select * from bandangsd()))
-	 rollback
+		rollback
 end
 go
 drop trigger if exists Chitiet_hoadon
@@ -276,3 +277,7 @@ select ct.Mamonan,isnull(sum(ct.Soluong),0) as 'soluong_daban',convert(date,hd.T
 	where hd.Mahoadon=ct.Mahoadon and convert(date,hd.Thoigian)=CONVERT(date,getdate()) 
 	group by ct.Mamonan,convert(date,hd.Thoigian)
 go
+
+
+
+insert into Hoadon (Maban,Thoigian,Tongbill,Manv,mavoucher,Trangthai) values(31,'2020-12-15',2000,1,2,0)

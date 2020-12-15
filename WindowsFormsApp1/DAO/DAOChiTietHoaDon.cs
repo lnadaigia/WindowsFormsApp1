@@ -41,5 +41,14 @@ namespace WindowsFormsApp1.DAO
 				return false;
 			}
 		}
+		public DataTable getcurrentChitiethoadon(int mahoadon)
+		{
+			SqlCommand command = new SqlCommand("SELECT Monan.Mamonan,Monan.tenmonan,Monantheongay.gia,Chitiethoadon.Soluong from Chitiethoadon,Monan,Monantheongay WHere Chitiethoadon.Mamonan = Monan.Mamonan AND Monantheongay.Mamonan = Monan.Mamonan AND Chitiethoadon.Mahoadon = @mahoadon AND Monantheongay.ngay = CONVERT(date, getdate())", db.GetConnection);
+			command.Parameters.Add("@mahoadon", SqlDbType.Int).Value = mahoadon;
+			SqlDataAdapter adapter = new SqlDataAdapter(command);
+			DataTable table = new DataTable();
+			adapter.Fill(table);
+			return table;
+		}
 	}
 }

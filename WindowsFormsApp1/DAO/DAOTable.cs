@@ -14,6 +14,23 @@ namespace WindowsFormsApp1.DAO
     {
         MY_DB db = new MY_DB();
 
+        public bool KTBanDangSD(int maban)
+        {
+            SqlCommand command = new SqlCommand("select maban from hoadon where Hoadon.Thoigian = convert(date, getdate()) and trangthai = 0 and maban=@maban", db.GetConnection);
+            command.Parameters.Add("@maban", SqlDbType.Int).Value = maban;
+            db.openConection();
+            if (Convert.ToInt32(command.ExecuteScalar()) != 0)
+            {
+                db.closedConection();
+                return true;
+            }
+            else
+            {
+                db.closedConection();
+                return false;
+            }
+        }
+
         public List<Table> LoadTable()
         {
             List<Table> tableList = new List<Table>();

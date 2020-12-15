@@ -12,6 +12,7 @@ using WindowsFormsApp1.DAO;
 using WindowsFormsApp1.Model;
 using GlobalVariables;
 
+
 namespace WindowsFormsApp1
 {
     public partial class frmdatdonhang : Form
@@ -53,6 +54,16 @@ namespace WindowsFormsApp1
             DAODoAntheongay doan = new DAODoAntheongay();
             dtg_doan.DataSource = doan.getMonAndeban();
         }
+        void loadChiTietHoaDon()
+        {
+            DAOTable ban = new DAOTable();
+            DAOHoaDon hd = new DAOHoaDon();
+            if (ban.KTBanDangSD(Globals.Maban))
+            {
+                dtg_chitiet.DataSource = Globals.Chitiethoadon;
+                txt_tongtien.Text = hd.getTongbill(Globals.Mahoadon).ToString();
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             try
@@ -67,7 +78,7 @@ namespace WindowsFormsApp1
                 loadkhach();
                 loadmonan();
                 loadVoucher();
-
+                loadChiTietHoaDon();
             }
             catch { }
 
@@ -103,7 +114,33 @@ namespace WindowsFormsApp1
 
         private void btn_xemdonhang_Click(object sender, EventArgs e)
         {
-            dtg_chitiet.DataSource = dtg_doan.DataSource;
+            
+            DataTable table = (DataTable)dtg_doan.DataSource;
+            DataTable b = new DataTable();
+            b.Columns.Add("Mamonan", typeof(int));
+            b.Columns.Add("Gia", typeof(float));
+            b.Columns.Add("tongsoluong", typeof(int));
+            b.Columns.Add("soluong_con", typeof(int));
+            b.Columns.Add("soluong",typeof(float));
+            //dtg_chitiet.DataSource = dtg_doan.DataSource;
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                
+                if (Convert.ToInt32(table.Rows[i].ItemArray[4]) != 0)
+                {
+                    DataRow row = b.NewRow();
+
+                    row[0] = table.Rows[i].ItemArray[0].ToString();
+                    row[1] = table.Rows[i].ItemArray[1].ToString();
+                    row[2] = table.Rows[i].ItemArray[2].ToString();
+                    row[3] = table.Rows[i].ItemArray[3].ToString();
+                    row[4] = table.Rows[i].ItemArray[4].ToString();
+                    b.Rows.Add(row);
+                }
+
+            }
+
+            dtg_chitiet.DataSource = b;
             tongtien = 0;
             
 
@@ -130,14 +167,15 @@ namespace WindowsFormsApp1
                 HoaDon hd = new HoaDon();
                 hd.Maban = Globals.Maban;
                 hd.Manv = Globals.NV;
-                hd.Thoigian = DateTime.Now;
+
+                hd.Thoigian = Convert.ToDateTime(DateTime.Now.ToShortDateString());
                 hd.Tongbill = tongtien;
                 hd.Trangthai = false;
                 hd.Mavoucher = int.Parse(cbVoucher.Text);
                 DAOHoaDon a = new DAOHoaDon();
                 DAOChiTietHoaDon DCT = new DAOChiTietHoaDon();
                 a.DatHang(hd);
-                int mahoadon = a.getCurrentMahoadon();
+                int mahoadon = a.getCurrentMahoadon(Globals.Maban);
                 for (int i = 0; i < dtg_chitiet.Rows.Count - 1; i++)
                 {
                     int soluong = int.Parse(dtg_chitiet.Rows[i].Cells[4].Value.ToString());

@@ -279,6 +279,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Bunifu_UI_v1.52.dll" />
+    <Content Include="MetroFramework.Design.dll" />
+    <Content Include="MetroFramework.dll" />
+    <Content Include="MetroFramework.Fonts.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

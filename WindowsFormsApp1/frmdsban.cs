@@ -57,7 +57,19 @@ namespace WindowsFormsApp1
             object a = bt.Tag;
             Globals.SetMaban ( Convert.ToInt32(a));
             frmdatdonhang frm = new frmdatdonhang();
+            DAOHoaDon hd = new DAOHoaDon();
+            // kt xem ban co dang su dung hay ko 
+            DAOTable ban = new DAOTable();
+            DAOChiTietHoaDon ct = new DAOChiTietHoaDon();
+            if (ban.KTBanDangSD(Globals.Maban))
+            {
+                Globals.SetMahoadon(hd.getCurrentMahoadon(Globals.Maban));
+                Globals.SetChiTietHoaDon(ct.getcurrentChitiethoadon(Globals.Mahoadon));
+                
+            }    
 
+
+            
             frm.Show();
             frm.FormClosed += Frm_FormClosed;
         }

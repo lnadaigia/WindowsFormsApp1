@@ -21,15 +21,35 @@ namespace WindowsFormsApp1.DAO
 			adapter.Fill(table);
 			return table;
 		}
-
-		public int getCurrentMahoadon()
+		public int getTongbill(int mahoadon)
 		{
-			SqlCommand command = new SqlCommand("select MAX(Mahoadon)  from hoadon", db.GetConnection);
+			SqlCommand command = new SqlCommand("  SELECT Tongbill FROM Hoadon WHere Mahoadon=@mahoadon", db.GetConnection);
+			command.Parameters.Add("@mahoadon", SqlDbType.Int).Value = mahoadon;
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			db.openConection();
 
 			object a = command.ExecuteScalar();
-            int b = int.Parse(a.ToString());
+			int b = int.Parse(a.ToString());
+			if (b != 0)
+			{
+				db.closedConection();
+				return b;
+			}
+			else
+			{
+				db.closedConection();
+				return 0;
+			}
+		}
+		public int getCurrentMahoadon(int maban)
+		{
+			SqlCommand command = new SqlCommand(" SELECT Mahoadon FROM Hoadon WHERE Maban=@MaBan AND Thoigian=CONVERT(date,GETDATE()) AND Trangthai=0", db.GetConnection);
+			command.Parameters.Add("@Maban", SqlDbType.Int).Value = maban;
+			SqlDataAdapter adapter = new SqlDataAdapter(command);
+			db.openConection();
+			
+			object a = command.ExecuteScalar();
+			int b= int.Parse(a.ToString());		
             if (b != 0)
             {
                 db.closedConection();
