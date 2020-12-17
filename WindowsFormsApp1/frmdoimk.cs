@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -51,7 +52,22 @@ namespace WindowsFormsApp1
         {
 
         }
+        public static string HashPasswordUsingMD5(string password)
+        {
+            using (var md5 = MD5.Create())
+            {
+                byte[] passwordBytes = Encoding.ASCII.GetBytes(password);
 
+                byte[] hash = md5.ComputeHash(passwordBytes);
+
+                var stringBuilder = new StringBuilder();
+
+                for (int i = 0; i < hash.Length; i++)
+                    stringBuilder.Append(hash[i].ToString("X2"));
+
+                return stringBuilder.ToString();
+            }
+        }
         private void btn_doimk_Click_1(object sender, EventArgs e)
         {
             try
@@ -70,9 +86,9 @@ namespace WindowsFormsApp1
                     {
                         DAONhanVien nv = new DAONhanVien();
                         NhanVien NV = nv.getNhanVienByID(Globals.NV);
-                        if (txt_mkcu.Text == NV.Password && txt_mkmoi.Text == txt_mkmoi2.Text)
+                        if (HashPasswordUsingMD5(txt_mkcu.Text) == NV.Password && txt_mkmoi.Text == txt_mkmoi2.Text)
                         {
-                            NV.Password = txt_mkmoi.Text;
+                            NV.Password = HashPasswordUsingMD5(txt_mkmoi.Text);
                             nv.suaNV(NV);
                             MessageBox.Show("Doi mat khau thanh cong");
                         }

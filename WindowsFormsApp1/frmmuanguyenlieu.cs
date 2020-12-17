@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GlobalVariables;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,6 +32,12 @@ namespace WindowsFormsApp1
                 numericUpDown1.Visible = false;
             }
             catch { }
+
+            if (Globals.role=="employee")
+            {
+
+                btn_luugia.Hide();
+            }    
         }
         
       

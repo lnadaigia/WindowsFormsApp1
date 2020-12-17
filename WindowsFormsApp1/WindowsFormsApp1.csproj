@@ -296,5 +296,10 @@
   <ItemGroup>
     <None Include="Resources\icon_table.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="MetroFramework.Design.dll" />
+    <Content Include="MetroFramework.dll" />
+    <Content Include="MetroFramework.Fonts.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

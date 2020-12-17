@@ -104,16 +104,16 @@ namespace WindowsFormsApp1.DAO
         }
         public bool themNV(NhanVien nv)
 		{
-			SqlCommand command = new SqlCommand("insert into NhanVien (hoten,SoDT,ngaysinh,luong,UserName,Password) values( @hoten, @sdt, @ngaysinh, @luong,@username,@password)", mydb.GetConnection);
-			//command.Parameters.Add("@manv", SqlDbType.Int).Value = nv.MaNv;
+			SqlCommand command = new SqlCommand("insert into NhanVien (hoten,SoDT,ngaysinh,luong,UserName,Password,MaNQL,Role) values( @hoten, @sdt, @ngaysinh, @luong,@username,@password,@MaNQL,@Role)", mydb.GetConnection);
 			command.Parameters.Add("@hoten", SqlDbType.NVarChar).Value = nv.Hoten;
 			command.Parameters.Add("@sdt", SqlDbType.NVarChar).Value = nv.Sdt;
 			command.Parameters.Add("@ngaysinh", SqlDbType.Date).Value = nv.Ngaysinh;
 			command.Parameters.Add("@luong", SqlDbType.Float).Value = nv.Luong;
             command.Parameters.Add("@username", SqlDbType.NVarChar).Value = nv.Username;
             command.Parameters.Add("@password", SqlDbType.NVarChar).Value = nv.Password;
-            //command.Parameters.Add("@manql", SqlDbType.Int).Value = nv.MaNql;
-            mydb.openConection();
+            command.Parameters.Add("@MaNQL", SqlDbType.Int).Value = nv.MaNql;
+			command.Parameters.Add("@Role", SqlDbType.NVarChar).Value = nv.Role;
+			mydb.openConection();
 			if(command.ExecuteNonQuery() == 1)
 			{
 				mydb.closedConection();

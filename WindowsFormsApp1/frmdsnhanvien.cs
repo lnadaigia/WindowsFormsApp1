@@ -1,10 +1,12 @@
-﻿using System;
+﻿using GlobalVariables;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -70,7 +72,7 @@ namespace WindowsFormsApp1
         }
         bool rong()
         {
-            if(txt_idnv.Text==""||txt_hovaten.Text==""||txt_sdt.Text==""||txt_luong.Text=="")
+            if(txt_hovaten.Text==""||txt_sdt.Text==""||txt_luong.Text=="")
             return true;
             return false;
         }
@@ -175,7 +177,22 @@ namespace WindowsFormsApp1
 
         }
 
-        
+        public static string HashPasswordUsingMD5(string password)
+        {
+            using (var md5 = MD5.Create())
+            {
+                byte[] passwordBytes = Encoding.ASCII.GetBytes(password);
+
+                byte[] hash = md5.ComputeHash(passwordBytes);
+
+                var stringBuilder = new StringBuilder();
+
+                for (int i = 0; i < hash.Length; i++)
+                    stringBuilder.Append(hash[i].ToString("X2"));
+
+                return stringBuilder.ToString();
+            }
+        }
 
         private void dataGridView1_Click_1(object sender, EventArgs e)
         {
@@ -237,15 +254,25 @@ namespace WindowsFormsApp1
                 DAONhanVien nv = new DAONhanVien();
                 NhanVien NV = new NhanVien();
                 NV.Sdt = txt_sdt.Text;
-                NV.MaNv = int.Parse(txt_idnv.Text);
+                //NV.MaNv = int.Parse(txt_idnv.Text);
                 NV.Hoten = txt_hovaten.Text;
                 // MessageBox.Show(NV.Hoten);
                 NV.Luong = float.Parse(txt_luong.Text);
                 NV.Sdt = txt_sdt.Text;
                 NV.Ngaysinh = Convert.ToDateTime(dt_nsinh.Value);
                 NV.Username = txt_username.Text;
-                NV.Password = txt_password.Text;
+                NV.Password = HashPasswordUsingMD5(txt_password.Text);
+                NV.MaNql = Globals.NV;
+                NV.Role = "employee";
+                //MessageBox.Show(NV.Luong.ToString());
+                //MessageBox.Show(NV.Hoten.ToString());
+                //MessageBox.Show(NV.Sdt.ToString());
+                //MessageBox.Show(NV.Username.ToString());
+                //MessageBox.Show(NV.Password.ToString());
+                //MessageBox.Show(NV.MaNql.ToString());
+                //MessageBox.Show(NV.Role.ToString());
                 nv.themNV(NV);
+                //txt_password.Text = NV.Password;
             }
         
     }
@@ -268,7 +295,7 @@ namespace WindowsFormsApp1
                 NV.Sdt = txt_sdt.Text;
                 NV.Ngaysinh =Convert.ToDateTime(dt_nsinh.Value);
                 NV.Username = txt_username.Text;
-                NV.Password = txt_password.Text;
+                NV.Password = HashPasswordUsingMD5(txt_password.Text);
                 nv.suaNV(NV);
             }
         }
@@ -284,7 +311,14 @@ namespace WindowsFormsApp1
                 DAONhanVien nv = new DAONhanVien();
                 NhanVien NV = new NhanVien();
                 NV.MaNv = int.Parse(txt_idnv.Text);
-                nv.xoaNV(NV.MaNv);
+                if (NV.MaNv != Globals.NV)
+                {
+                    nv.xoaNV(NV.MaNv);
+                }
+                else
+                {
+                    MessageBox.Show("Ban đang xóa tài khoản của chính bạn ");
+                }
             }
         }
 
