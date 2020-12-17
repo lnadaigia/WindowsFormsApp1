@@ -76,6 +76,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\DAOChiTietHoaDon.cs" />
+    <Compile Include="DAO\DAODoAntheongay.cs" />
+    <Compile Include="DAO\DAOHoaDon.cs" />
+    <Compile Include="DAO\DAOMonAn.cs" />
+    <Compile Include="DAO\DAONguyenLieu.cs" />
+    <Compile Include="DAO\DAONhanVien.cs" />
+    <Compile Include="DAO\DAOTable.cs" />
+    <Compile Include="DAO\DAOVoucher.cs" />
     <Compile Include="frmdatdonhang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +192,14 @@
     <Compile Include="frmVoucher.Designer.cs">
       <DependentUpon>frmVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\ChiTietHoaDon.cs" />
+    <Compile Include="Model\HoaDon.cs" />
+    <Compile Include="Model\MonAn.cs" />
+    <Compile Include="Model\MonAnTheoNgay.cs" />
+    <Compile Include="Model\NguyenLieu.cs" />
+    <Compile Include="Model\NhanVien.cs" />
+    <Compile Include="Model\Table.cs" />
+    <Compile Include="Model\Voucher.cs" />
     <Compile Include="MY_DB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -249,6 +265,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -275,6 +292,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_table.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

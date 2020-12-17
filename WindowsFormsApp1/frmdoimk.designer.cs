@@ -109,6 +109,7 @@
             this.btn_doimk.Size = new System.Drawing.Size(160, 60);
             this.btn_doimk.TabIndex = 76;
             this.btn_doimk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_doimk.Click += new System.EventHandler(this.btn_doimk_Click_1);
             // 
             // btn_cancer
             // 
@@ -148,6 +149,7 @@
             this.txt_mkcu.Name = "txt_mkcu";
             this.txt_mkcu.Size = new System.Drawing.Size(157, 31);
             this.txt_mkcu.TabIndex = 80;
+            this.txt_mkcu.TextChanged += new System.EventHandler(this.txt_mkcu_TextChanged);
             // 
             // panel1
             // 
@@ -171,6 +173,7 @@
             this.txt_mkmoi.Name = "txt_mkmoi";
             this.txt_mkmoi.Size = new System.Drawing.Size(157, 31);
             this.txt_mkmoi.TabIndex = 82;
+            this.txt_mkmoi.TextChanged += new System.EventHandler(this.txt_mkmoi_TextChanged);
             // 
             // panel2
             // 
@@ -194,6 +197,7 @@
             this.txt_mkmoi2.Name = "txt_mkmoi2";
             this.txt_mkmoi2.Size = new System.Drawing.Size(157, 31);
             this.txt_mkmoi2.TabIndex = 84;
+            this.txt_mkmoi2.TextChanged += new System.EventHandler(this.txt_mkmoi2_TextChanged);
             // 
             // panel3
             // 

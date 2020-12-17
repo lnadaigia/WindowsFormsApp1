@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmthongtin));
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,9 +42,10 @@
             this.txt_hovaten = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txt_sdt = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txt_cmnd = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.dt_nsinh = new Bunifu.Framework.UI.BunifuDatepicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.txt_username = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.SuspendLayout();
             // 
             // label7
@@ -58,17 +58,6 @@
             this.label7.Size = new System.Drawing.Size(27, 23);
             this.label7.TabIndex = 38;
             this.label7.Text = "ID";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(82, 334);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 23);
-            this.label6.TabIndex = 35;
-            this.label6.Text = "CMND";
             // 
             // label5
             // 
@@ -151,6 +140,7 @@
             this.btn_sua.Size = new System.Drawing.Size(189, 70);
             this.btn_sua.TabIndex = 61;
             this.btn_sua.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click_1);
             // 
             // btn_doimk
             // 
@@ -176,6 +166,7 @@
             this.btn_doimk.Size = new System.Drawing.Size(189, 70);
             this.btn_doimk.TabIndex = 62;
             this.btn_doimk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_doimk.Click += new System.EventHandler(this.btn_doimk_Click_1);
             // 
             // panel1
             // 
@@ -227,27 +218,6 @@
             this.txt_sdt.Size = new System.Drawing.Size(335, 31);
             this.txt_sdt.TabIndex = 68;
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(103)))), ((int)(((byte)(113)))));
-            this.panel4.Location = new System.Drawing.Point(75, 397);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(335, 1);
-            this.panel4.TabIndex = 71;
-            // 
-            // txt_cmnd
-            // 
-            this.txt_cmnd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
-            this.txt_cmnd.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
-            this.txt_cmnd.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_cmnd.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_cmnd.ForeColor = System.Drawing.Color.White;
-            this.txt_cmnd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txt_cmnd.Location = new System.Drawing.Point(75, 360);
-            this.txt_cmnd.Name = "txt_cmnd";
-            this.txt_cmnd.Size = new System.Drawing.Size(335, 31);
-            this.txt_cmnd.TabIndex = 70;
-            // 
             // dt_nsinh
             // 
             this.dt_nsinh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(56)))), ((int)(((byte)(69)))));
@@ -256,22 +226,58 @@
             this.dt_nsinh.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dt_nsinh.FormatCustom = null;
             this.dt_nsinh.Location = new System.Drawing.Point(474, 292);
-            this.dt_nsinh.Margin = new System.Windows.Forms.Padding(6);
+            this.dt_nsinh.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.dt_nsinh.Name = "dt_nsinh";
             this.dt_nsinh.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dt_nsinh.Size = new System.Drawing.Size(221, 44);
+            this.dt_nsinh.Size = new System.Drawing.Size(250, 67);
             this.dt_nsinh.TabIndex = 72;
             this.dt_nsinh.Value = new System.DateTime(2020, 12, 6, 22, 43, 10, 50);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(82, 336);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 23);
+            this.label2.TabIndex = 97;
+            this.label2.Text = "Username";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(103)))), ((int)(((byte)(113)))));
+            this.panel5.Location = new System.Drawing.Point(75, 399);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(335, 1);
+            this.panel5.TabIndex = 100;
+            // 
+            // txt_username
+            // 
+            this.txt_username.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
+            this.txt_username.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
+            this.txt_username.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_username.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_username.ForeColor = System.Drawing.Color.White;
+            this.txt_username.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txt_username.Location = new System.Drawing.Point(75, 362);
+            this.txt_username.Name = "txt_username";
+            this.txt_username.Size = new System.Drawing.Size(335, 31);
+            this.txt_username.TabIndex = 99;
+            this.txt_username.TextChanged += new System.EventHandler(this.txt_username_TextChanged);
             // 
             // frmthongtin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
-            this.ClientSize = new System.Drawing.Size(739, 590);
+            this.ClientSize = new System.Drawing.Size(739, 527);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.txt_username);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.dt_nsinh);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.txt_cmnd);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.txt_sdt);
             this.Controls.Add(this.panel2);
@@ -282,7 +288,6 @@
             this.Controls.Add(this.txt_idql);
             this.Controls.Add(this.lb_quanli);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -299,7 +304,6 @@
 
         #endregion
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -312,8 +316,9 @@
         private WindowsFormsControlLibrary1.BunifuCustomTextbox txt_hovaten;
         private System.Windows.Forms.Panel panel3;
         private WindowsFormsControlLibrary1.BunifuCustomTextbox txt_sdt;
-        private System.Windows.Forms.Panel panel4;
-        private WindowsFormsControlLibrary1.BunifuCustomTextbox txt_cmnd;
         private Bunifu.Framework.UI.BunifuDatepicker dt_nsinh;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel5;
+        private WindowsFormsControlLibrary1.BunifuCustomTextbox txt_username;
     }
 }

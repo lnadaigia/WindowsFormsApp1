@@ -22,10 +22,10 @@ namespace WindowsFormsApp1.DAO
 		}
 		public DataTable getMonAndeban()
 		{
-			SqlCommand command = new SqlCommand("select m.Mamonan,m.gia,m.tongsoluong,(m.tongsoluong-isnull(ham.soluong_daban,0)) as 'soluong_con',0 as 'soluong'  " +
+			SqlCommand command = new SqlCommand("select m.Mamonan,ma.tenmonan,m.gia,(m.tongsoluong-isnull(ham.soluong_daban,0)) as 'soluong_con',0 as 'soluong'   " +
 				"from Monantheongay as m " +
 				"left join dsmonan() as ham " +
-				"on m.Mamonan=ham.Mamonan where m.ngay=convert(date,getdate())", db.GetConnection);
+				"on m.Mamonan=ham.Mamonan and m.ngay=ham.ngay, Monan as ma where m.Mamonan=ma.Mamonan and m.ngay=convert(date,getdate())", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			DataTable table = new DataTable();
 			adapter.Fill(table);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GlobalVariables;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.DAO;
+using WindowsFormsApp1.Model;
 
 namespace WindowsFormsApp1
 {
@@ -22,48 +25,66 @@ namespace WindowsFormsApp1
         {
             set { id = value; }
         }
-       
+
+        //static DAONhanVien nv;
+        //static NhanVien NV;
+        
         void load()
         {
-            string query = "select * from quanli where idql=@i";
-            lb_quanli.Text = "chức vụ: quản lí";
-            if (id[0] == 'n')
+            //string query = "select * from NhanVien where manv = @manv";
+            //lb_quanli.Text = "Chức vụ: Quản lý";
+            //if (id[0] == 'n')
+            //{
+            //    query = "select * from NhanVien where manv = @manv";
+            //    lb_quanli.Text = "Chức vụ: Nhân viên";
+            //}
+            //SqlCommand command = new SqlCommand(query);
+            //command.Parameters.Add("@manv", SqlDbType.NVarChar).Value = id;
+            DAONhanVien nv = new DAONhanVien();
+            NhanVien NVien = new NhanVien();
+            NVien = nv.getNhanVienByID(Globals.NV);
+            txt_idql.Text = NVien.MaNv.ToString();
+            txt_hovaten.Text = NVien.Hoten;
+            txt_sdt.Text = NVien.Sdt;
+            txt_username.Text = NVien.Username;
+            dt_nsinh.Value = NVien.Ngaysinh;
+            if (NVien.Role=="manager")
             {
-                query = "select * from nhanvien where idnv=@i";
-                lb_quanli.Text = "chức vụ: nhân viên";
+                lb_quanli.Text = "Chức vụ: Quản lý";
             }
-            SqlCommand command = new SqlCommand(query);
-            command.Parameters.Add("@i", SqlDbType.NVarChar).Value = id;
-           
-          
+            else
+            {
+                lb_quanli.Text = "Chức vụ: Nhân viên";
+            }
         }
         void sua()
         {
-            string idql = txt_idql.Text;
+            string manv = txt_idql.Text;
             string hovaten = txt_hovaten.Text;
             DateTime namsinh = dt_nsinh.Value;
             string sdt = txt_sdt.Text;
-            string cmnd = txt_cmnd.Text;
-            if (idql==""||hovaten==""||sdt==""||cmnd=="")
+            string uname = txt_username.Text;
+            if (manv == ""||hovaten==""||sdt==""||uname=="")
             {
                 MessageBox.Show("không được để trống");
             }
             else
             {
-                
-               
+                DAONhanVien nv = new DAONhanVien();
+                NhanVien NV = nv.getNhanVienByID(Globals.NV);
+                NV.Sdt = txt_sdt.Text;
+                NV.MaNv = int.Parse(txt_idql.Text);
+                NV.Hoten = txt_hovaten.Text;
+                NV.Sdt = txt_sdt.Text;
+                NV.Ngaysinh = Convert.ToDateTime(dt_nsinh.Value);
+                NV.Username = txt_username.Text;
+                nv.suaNV(NV);
+                MessageBox.Show("Sua thong tin thanh cong");
             }
         }
         private void frmthongtin_Load(object sender, EventArgs e)
         {
-            try
-            {
-               
-            }
-            catch
-            {
-
-            }
+            load();
         }
 
         private void btn_sua_Click(object sender, EventArgs e)
@@ -87,6 +108,34 @@ namespace WindowsFormsApp1
         private void dt_nsinh_onValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_username_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_doimk_Click_1(object sender, EventArgs e)
+        {
+            frmdoimk frm = new frmdoimk();
+            frm.ShowDialog();
+        }
+
+        private void btn_sua_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                sua();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

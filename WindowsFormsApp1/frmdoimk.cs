@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GlobalVariables;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.DAO;
+using WindowsFormsApp1.Model;
 
 namespace WindowsFormsApp1
 {
@@ -23,13 +26,33 @@ namespace WindowsFormsApp1
         {
             set { id=value; }
         }
-
+        //void load()
+        //{
+        //    DAONhanVien nv = new DAONhanVien();
+        //    NhanVien NVien = new NhanVien();
+        //    NVien = nv.getNhanVienByID(Globals.NV);
+        //}
         private void btn_cancer_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-       
-        private void btn_doimk_Click(object sender, EventArgs e)
+
+        private void txt_mkcu_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_mkmoi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_mkmoi2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_doimk_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -45,15 +68,21 @@ namespace WindowsFormsApp1
                     }
                     else
                     {
-                        
+                        DAONhanVien nv = new DAONhanVien();
+                        NhanVien NV = nv.getNhanVienByID(Globals.NV);
+                        if (txt_mkcu.Text == NV.Password && txt_mkmoi.Text == txt_mkmoi2.Text)
+                        {
+                            NV.Password = txt_mkmoi.Text;
+                            nv.suaNV(NV);
+                            MessageBox.Show("Doi mat khau thanh cong");
+                        }
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-           
         }
     }
 }

@@ -212,6 +212,7 @@
             this.btn_login.Size = new System.Drawing.Size(131, 60);
             this.btn_login.TabIndex = 104;
             this.btn_login.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click_1);
             // 
             // panel1
             // 

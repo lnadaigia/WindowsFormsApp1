@@ -39,3 +39,39 @@ and m.ngay=CONVERT(date,getdate()) and m.Mamonan=ct.Mamonan and ma.Mamonan=m.Mam
 select * from Hoadon where CONVERT(date,Hoadon.Thoigian)=convert(date,GETDATE())
 select * from Monantheongay where ngay=CONVERT(date,getdate())
 go
+select m.Mamonan,m.gia,m.tongsoluong,(m.tongsoluong-ham.soluong_daban) as 'soluong_con',0 as 'soluong' from Monantheongay as m right join
+(
+	select ct.Mamonan,isnull(sum(ct.Soluong),0) as 'soluong_daban',convert(date,hd.Thoigian) as 'ngay' 
+	from Chitiethoadon as ct,hoadon as hd 
+	where hd.Mahoadon=ct.Mahoadon and convert(date,hd.Thoigian)=CONVERT(date,getdate()) 
+	group by ct.Mamonan,convert(date,hd.Thoigian)
+) as ham
+on m.Mamonan=ham.Mamonan and m.ngay=ham.ngay
+go
+drop procedure if exists themdonhang
+go
+
+execute themdonhang 4,1,2
+
+
+go
+
+select hd.Mahoadon,ct.Mamonan,ma.tenmonan,ct.Soluong ,m.gia,(m.gia*ct.Soluong) as 'thanhtien' 
+from Chitiethoadon as ct, Hoadon as hd, Monan as ma, Monantheongay as m 
+where hd.Mahoadon = ct.Mahoadon and CONVERT(date, hd.Thoigian) = convert(date, GETDATE()) 
+and m.ngay = CONVERT(date, getdate()) and m.Mamonan = ct.Mamonan and ma.Mamonan = m.Mamonan 
+
+
+select ct.Mamonan,ma.tenmonan,ct.Soluong ,m.gia,(m.gia*ct.Soluong) as 'thanhtien'
+from Chitiethoadon as ct,Hoadon as hd ,Monan as ma,Monantheongay as m
+where hd.Mahoadon=ct.Mahoadon and CONVERT(date,hd.Thoigian)=convert(date,GETDATE()) 
+and m.ngay=CONVERT(date,getdate()) and m.Mamonan=ct.Mamonan and ma.Mamonan=m.Mamonan and hd.Maban=1 and hd.Trangthai=0
+
+select sum(tong.tongtien) from (
+select ma.Mamonan,ma.ngay,sum(ma.gia*ct.Soluong) tongtien
+from Monantheongay as ma ,
+Hoadon as hd,Chitiethoadon as ct
+where ct.Mamonan=ma.Mamonan and ct.Mahoadon=hd.Mahoadon 
+and ma.ngay=convert(date,hd.Thoigian) 
+group by ma.Mamonan,ma.ngay
+) as tong where Mamonan=2
