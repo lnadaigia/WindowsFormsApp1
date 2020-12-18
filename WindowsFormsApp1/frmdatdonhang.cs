@@ -128,13 +128,14 @@ namespace WindowsFormsApp1
             dtg_chitiet.DataSource = b;
             tongtien = 0;
 
-
+            
             for (int i = 0; i < dtg_chitiet.Rows.Count - 1; i++)
             {
                 try
                 {
-                    // MessageBox.Show(dtg_chitiet.Rows[i].Cells[1].Value.ToString());
-                    tongtien += int.Parse(dtg_chitiet.Rows[i].Cells[1].Value.ToString()) * int.Parse(dtg_chitiet.Rows[i].Cells[4].Value.ToString());
+                    //MessageBox.Show(dtg_chitiet.Rows[i].Cells[2].Value.ToString());
+                   // MessageBox.Show(dtg_chitiet.Rows[i].Cells[3].Value.ToString());
+                    tongtien += int.Parse(dtg_chitiet.Rows[i].Cells[2].Value.ToString()) * int.Parse(dtg_chitiet.Rows[i].Cells[3].Value.ToString());
                 }
                 catch
                 {
@@ -142,6 +143,7 @@ namespace WindowsFormsApp1
                 }
 
             }
+           // MessageBox.Show(tongtien.ToString());
             this.txt_tongtien.Text = tongtien.ToString();
         }
 
