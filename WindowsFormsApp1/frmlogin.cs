@@ -22,57 +22,7 @@ namespace WindowsFormsApp1
         
         private void btn_login_Click(object sender, EventArgs e)
         {
-            {
-                MY_DB db = new MY_DB();
-                try
-                {
-                    if (txt_user.Text == "" || txt_pass.Text == "")
-                    {
-                        MessageBox.Show("không được để trống");
-                    }
-                    else
-                    {
-                        SqlCommand command = new SqlCommand("SELECT MaNV,Role from NhanVien WHERE NhanVien.UserName=@user AND Password=@pass", db.GetConnection);
-                        command.Parameters.Add("@user", SqlDbType.NVarChar).Value = txt_user.Text;
-                        command.Parameters.Add("@pass", SqlDbType.NVarChar).Value = txt_pass.Text;
-                        SqlDataAdapter adapter = new SqlDataAdapter(command);
-                        DataTable table = new DataTable();
-                        adapter.Fill(table);
 
-
-                        // MessageBox.Show(table.Rows.Count.ToString());
-                        for (int i = 0; i < table.Rows.Count; i++)
-                        {
-
-                            if (table.Rows[i].ItemArray[0] != null)
-                            {
-                                string a = table.Rows[i].ItemArray[1].ToString();
-                                if (a == "employee")
-                                {
-                                    Globals.SetNV(Convert.ToInt32(table.Rows[i].ItemArray[0]));
-                                    frmmaunhanvien frm = new frmmaunhanvien();
-                                    frm.ShowDialog();
-                                }
-                                else
-                                {
-                                    Globals.SetNV(Convert.ToInt32(table.Rows[i].ItemArray[0]));
-                                    frmmau frm = new frmmau();
-                                    frm.ShowDialog();
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("ban da nhap sai ten tai khoan hoac mat khau");
-                            }
-
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
         }
         private void btn_cancer_Click(object sender, EventArgs e)
         {
@@ -158,6 +108,14 @@ namespace WindowsFormsApp1
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void txt_pass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_login_Click_1(this, new EventArgs());
             }
         }
     }

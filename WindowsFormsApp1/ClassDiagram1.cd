@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WindowsFormsApp1.DAO.DAOChiTietHoaDon" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAABgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAO\DAOChiTietHoaDon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.DAO.DAODoAntheongay" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQQAAAxAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAO\DAODoAntheongay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.DAO.DAOHoaDon" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAABAQAIAAABDAEAAAAAGAAAAAIAAEAAAABAA=</HashCode>
+      <FileName>DAO\DAOHoaDon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.DAO.DAOMonAn" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAQCAAQggABAAAAAABAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>DAO\DAOMonAn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.DAO.DAONguyenLieu" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAIAAQAAIAAAAAIAAAAAEAAAAAAAAgAAgAAAA=</HashCode>
+      <FileName>DAO\DAONguyenLieu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.DAO.DAONhanVien" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAgCAEoAAgAAAAAAAAAAAAUAA=</HashCode>
+      <FileName>DAO\DAONhanVien.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.DAO.DAOTable" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAQAAAAAAAAAAAAgAAAAAAAAAAgCAAAAAA=</HashCode>
+      <FileName>DAO\DAOTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.DAO.DAOVoucher" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAQAABAIAAAAAAAAAAAAAAAAAAAARAAAAA=</HashCode>
+      <FileName>DAO\DAOVoucher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmchiacav2" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAUAAADABABBEAACAQBBCCBiBAABAAIAAAIhAAAA=</HashCode>
+      <FileName>frmchiacav2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmdanhsachca" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACECABIgABCAAAhCAAgBACgAAAIQAwAAABg=</HashCode>
+      <FileName>frmdanhsachca.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmdatdonhang" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEBAoADEAAJAQBACIIAAGAAABEADAAAQAAQAAAAQ=</HashCode>
+      <FileName>frmdatdonhang.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmdoimk" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAExCAEACAAABAAABDAAAACAQAgAIAAAAAAAQIAAgI=</HashCode>
+      <FileName>frmdoimk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmdsban" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEEAAAAgACAAACAEAACAAAASAAAAAAAAAAAAAIAAAQQ=</HashCode>
+      <FileName>frmdsban.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmdscanhanvien" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAIBCAAACAAABCAAgBAAAgAAIAAAAAABQ=</HashCode>
+      <FileName>frmdscanhanvien.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmdsdoan" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>yQAAEAAAACCAABAAAECigAASABgAABAAAIAwgxABAQA=</HashCode>
+      <FileName>frmdsdoan.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmdshoadon" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAJAGgACDgABiCAAABCAgADAAIAAFAIAQgAAAA=</HashCode>
+      <FileName>frmdshoadon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmdsnhanvien" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YlEEAAhGACiIEBgEAYCAGAcCAIgCgAsAAAQAIYggKAA=</HashCode>
+      <FileName>frmdsnhanvien.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmlogin" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAEEICAAgBAAAACAAAACAAAgAAgAAAAIAQBAAAI=</HashCode>
+      <FileName>frmlogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmmau" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAJgYACaQ4KIEhBAWCCABCAYA+YARAUEGBhQBSgEA=</HashCode>
+      <FileName>frmmau.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmmaunhanvien" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAJAQACaAIKAEBBkSCAABCAAA6YADAUEEBhQBSgkA=</HashCode>
+      <FileName>frmmaunhanvien.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmmuanguyenlieu" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oAMAAAAAACEAABAEAACAAIACAAQBAABAAEAABIgAAAQ=</HashCode>
+      <FileName>frmmuanguyenlieu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmnhanvien" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAABQQAGAAIFABAACAAAACAIgBIAAgCAEQAQBAAgA=</HashCode>
+      <FileName>frmnhanvien.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmquanli" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQABgQQACAAABABAACBAIACAIgDMAAgCAAAAQBABAQ=</HashCode>
+      <FileName>frmquanli.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmthongke" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKAEACJACAAADAQhgCAAABCAAgAgAAQAAQQAQAABAA=</HashCode>
+      <FileName>frmthongke.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmthongtin" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABCwgAKAAIBAAAQCAgAACIAACEIBAAAAAAQggogA=</HashCode>
+      <FileName>frmthongtin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.frmVoucher" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YAEBAIABACAAABAGAACAAAACAIgAgABAAAAQAYgAEEA=</HashCode>
+      <FileName>frmVoucher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.MY_DB" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAEABAAAAA=</HashCode>
+      <FileName>MY_DB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.Program" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GlobalVariables.Globals" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAIAAAAgAAAIABACADIAAAAAAAAAAAQABCAAAAA=</HashCode>
+      <FileName>frmlogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.Model.ChiTietHoaDon" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAIAAAACIAAAACAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Model\ChiTietHoaDon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.Model.HoaDon" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAEAAAAAAAAAAAAACAAAAIgAAACAAgAIEAIACBQBAA=</HashCode>
+      <FileName>Model\HoaDon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.Model.MonAn" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAJAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\MonAn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.Model.MonAnTheoNgay" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAEAAAABAIAAAACAAAAAAAAAQAAAAEAgAAAA=</HashCode>
+      <FileName>Model\MonAnTheoNgay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.Model.NguyenLieu" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAIAAAAAAAAAAABAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Model\NguyenLieu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.Model.NhanVien" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAECAAAAAJAAAASUwAAEBMAAAAAAAACAAAAAgAABAg=</HashCode>
+      <FileName>Model\NhanVien.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.Model.Table" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAIAAAAgAAAAAAAACAAAAAgAAAAAIAAAACQBAAA=</HashCode>
+      <FileName>Model\Table.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.Model.Voucher" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAgAAAAKAAAAAgAAIAAAACAgAABAIAgAQ=</HashCode>
+      <FileName>Model\Voucher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.Properties.Resources" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.Properties.Settings" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAQAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

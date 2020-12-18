@@ -72,32 +72,48 @@ namespace WindowsFormsApp1
         {
             try
             {
-                if (txt_mkcu.Text == "" || txt_mkmoi.Text == "" || txt_mkmoi2.Text == "")
+            if (txt_mkcu.Text == "" || txt_mkmoi.Text == "" || txt_mkmoi2.Text == "")
+            {
+                MessageBox.Show("không được để rỗng");
+            }
+            else
+            {
+                if (txt_mkmoi.Text != txt_mkmoi2.Text)
                 {
-                    MessageBox.Show("không được để rỗng");
+                    MessageBox.Show("mật khẩu mới phải có độ dài bằng nhau");
                 }
                 else
                 {
-                    if (txt_mkmoi.Text != txt_mkmoi2.Text)
+                    DAONhanVien nv = new DAONhanVien();
+                    NhanVien NV = nv.getNhanVienByID(Globals.NV);
+                    //MessageBox.Show(NV.Password);
+                    //MessageBox.Show(HashPasswordUsingMD5(txt_mkcu.Text).ToLower());
+                    if (HashPasswordUsingMD5(txt_mkcu.Text).ToLower() == NV.Password && txt_mkmoi.Text == txt_mkmoi2.Text)
                     {
-                        MessageBox.Show("mật khẩu mới phải có độ dài bằng nhau");
-                    }
-                    else
-                    {
-                        DAONhanVien nv = new DAONhanVien();
-                        NhanVien NV = nv.getNhanVienByID(Globals.NV);
-                        if (HashPasswordUsingMD5(txt_mkcu.Text) == NV.Password && txt_mkmoi.Text == txt_mkmoi2.Text)
-                        {
-                            NV.Password = HashPasswordUsingMD5(txt_mkmoi.Text);
-                            nv.suaNV(NV);
-                            MessageBox.Show("Doi mat khau thanh cong");
-                        }
+                        //MessageBox.Show(NV.Password);
+                        NV.Password = HashPasswordUsingMD5(txt_mkmoi.Text);
+                        nv.suaNV(NV);
+                        MessageBox.Show("Doi mat khau thanh cong");
                     }
                 }
+            }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_cancer_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txt_mkmoi2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_doimk_Click_1(this, new EventArgs());
             }
         }
     }

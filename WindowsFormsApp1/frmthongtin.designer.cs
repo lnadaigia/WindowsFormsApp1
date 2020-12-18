@@ -223,10 +223,10 @@
             this.dt_nsinh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(56)))), ((int)(((byte)(69)))));
             this.dt_nsinh.BorderRadius = 45;
             this.dt_nsinh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
-            this.dt_nsinh.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dt_nsinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dt_nsinh.FormatCustom = null;
             this.dt_nsinh.Location = new System.Drawing.Point(474, 292);
-            this.dt_nsinh.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dt_nsinh.Margin = new System.Windows.Forms.Padding(6);
             this.dt_nsinh.Name = "dt_nsinh";
             this.dt_nsinh.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dt_nsinh.Size = new System.Drawing.Size(250, 67);

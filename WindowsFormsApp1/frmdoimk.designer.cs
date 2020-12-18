@@ -135,6 +135,7 @@
             this.btn_cancer.Size = new System.Drawing.Size(160, 60);
             this.btn_cancer.TabIndex = 78;
             this.btn_cancer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_cancer.Click += new System.EventHandler(this.btn_cancer_Click_1);
             // 
             // txt_mkcu
             // 
@@ -198,6 +199,7 @@
             this.txt_mkmoi2.Size = new System.Drawing.Size(157, 31);
             this.txt_mkmoi2.TabIndex = 84;
             this.txt_mkmoi2.TextChanged += new System.EventHandler(this.txt_mkmoi2_TextChanged);
+            this.txt_mkmoi2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_mkmoi2_KeyDown);
             // 
             // panel3
             // 

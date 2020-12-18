@@ -101,6 +101,8 @@
             this.txt_pass.PasswordChar = '*';
             this.txt_pass.Size = new System.Drawing.Size(243, 31);
             this.txt_pass.TabIndex = 73;
+            //this.txt_pass.Enter += new System.EventHandler(this.btn_login_Click_1);
+            this.txt_pass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_pass_KeyDown);
             // 
             // panel3
             // 
@@ -173,6 +175,7 @@
             this.btn_login.TabIndex = 104;
             this.btn_login.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_login.Click += new System.EventHandler(this.btn_login_Click_1);
+            this.btn_login.Enter += new System.EventHandler(this.btn_cancer_Click_1);
             // 
             // frmlogin
             // 

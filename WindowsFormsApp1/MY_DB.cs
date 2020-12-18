@@ -10,7 +10,7 @@ namespace WindowsFormsApp1
 {
     class MY_DB
     {
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-18TCVFK\SQLEXPRESS;Initial Catalog=DBMS;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-4TIS50PB\MSSQLSERVER01;Initial Catalog=DBMS;Integrated Security=True");
         public SqlConnection GetConnection
         {
             get { return con; }

@@ -210,6 +210,7 @@
             // 
             this.dt_nsinh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(56)))), ((int)(((byte)(69)))));
             this.dt_nsinh.BorderRadius = 45;
+            this.dt_nsinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dt_nsinh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
             this.dt_nsinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dt_nsinh.FormatCustom = null;
@@ -494,7 +495,7 @@
             // 
             this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(103)))), ((int)(((byte)(113)))));
-            this.bunifuSeparator1.LineThickness = 72;
+            this.bunifuSeparator1.LineThickness = 108;
             this.bunifuSeparator1.Location = new System.Drawing.Point(402, 25);
             this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(6);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
