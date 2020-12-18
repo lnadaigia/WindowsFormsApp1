@@ -76,6 +76,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\DAOCa.cs" />
+    <Compile Include="DAO\DAOChiaca.cs" />
     <Compile Include="DAO\DAOChiTietHoaDon.cs" />
     <Compile Include="DAO\DAODoAntheongay.cs" />
     <Compile Include="DAO\DAOHoaDon.cs" />
@@ -192,6 +194,8 @@
     <Compile Include="frmVoucher.Designer.cs">
       <DependentUpon>frmVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Ca.cs" />
+    <Compile Include="Model\Chiaca.cs" />
     <Compile Include="Model\ChiTietHoaDon.cs" />
     <Compile Include="Model\HoaDon.cs" />
     <Compile Include="Model\MonAn.cs" />

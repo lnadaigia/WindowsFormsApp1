@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Bunifu.Framework.UI.BunifuDatepicker dt_sau;
-            Bunifu.Framework.UI.BunifuDatepicker dt_dau;
-            Bunifu.Framework.UI.BunifuDatepicker dt_ngay;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmdanhsachca));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dt_sau = new Bunifu.Framework.UI.BunifuDatepicker();
+            this.dt_dau = new Bunifu.Framework.UI.BunifuDatepicker();
+            this.dt_ngay = new Bunifu.Framework.UI.BunifuDatepicker();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_check = new Bunifu.Framework.UI.BunifuThinButton2();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,70 +45,67 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_search = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btn_capnhat = new Bunifu.Framework.UI.BunifuTileButton();
-            dt_sau = new Bunifu.Framework.UI.BunifuDatepicker();
-            dt_dau = new Bunifu.Framework.UI.BunifuDatepicker();
-            dt_ngay = new Bunifu.Framework.UI.BunifuDatepicker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dt_sau
             // 
-            dt_sau.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(56)))), ((int)(((byte)(69)))));
-            dt_sau.BorderRadius = 45;
-            dt_sau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dt_sau.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
-            dt_sau.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            dt_sau.FormatCustom = null;
-            dt_sau.Location = new System.Drawing.Point(468, 113);
-            dt_sau.Margin = new System.Windows.Forms.Padding(6);
-            dt_sau.Name = "dt_sau";
-            dt_sau.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            dt_sau.Size = new System.Drawing.Size(199, 44);
-            dt_sau.TabIndex = 58;
-            dt_sau.Value = new System.DateTime(2020, 12, 6, 18, 53, 56, 232);
+            this.dt_sau.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(56)))), ((int)(((byte)(69)))));
+            this.dt_sau.BorderRadius = 45;
+            this.dt_sau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dt_sau.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
+            this.dt_sau.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dt_sau.FormatCustom = null;
+            this.dt_sau.Location = new System.Drawing.Point(468, 113);
+            this.dt_sau.Margin = new System.Windows.Forms.Padding(6);
+            this.dt_sau.Name = "dt_sau";
+            this.dt_sau.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dt_sau.Size = new System.Drawing.Size(199, 44);
+            this.dt_sau.TabIndex = 58;
+            this.dt_sau.Value = new System.DateTime(2020, 12, 6, 18, 53, 56, 232);
             // 
             // dt_dau
             // 
-            dt_dau.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(56)))), ((int)(((byte)(69)))));
-            dt_dau.BorderRadius = 45;
-            dt_dau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dt_dau.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
-            dt_dau.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            dt_dau.FormatCustom = null;
-            dt_dau.Location = new System.Drawing.Point(194, 113);
-            dt_dau.Margin = new System.Windows.Forms.Padding(6);
-            dt_dau.Name = "dt_dau";
-            dt_dau.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            dt_dau.Size = new System.Drawing.Size(192, 44);
-            dt_dau.TabIndex = 57;
-            dt_dau.Value = new System.DateTime(2020, 12, 6, 18, 53, 56, 232);
+            this.dt_dau.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(56)))), ((int)(((byte)(69)))));
+            this.dt_dau.BorderRadius = 45;
+            this.dt_dau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dt_dau.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
+            this.dt_dau.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dt_dau.FormatCustom = null;
+            this.dt_dau.Location = new System.Drawing.Point(194, 113);
+            this.dt_dau.Margin = new System.Windows.Forms.Padding(6);
+            this.dt_dau.Name = "dt_dau";
+            this.dt_dau.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dt_dau.Size = new System.Drawing.Size(192, 44);
+            this.dt_dau.TabIndex = 57;
+            this.dt_dau.Value = new System.DateTime(2020, 12, 6, 18, 53, 56, 232);
             // 
             // dt_ngay
             // 
-            dt_ngay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(56)))), ((int)(((byte)(69)))));
-            dt_ngay.BorderRadius = 45;
-            dt_ngay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dt_ngay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
-            dt_ngay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            dt_ngay.FormatCustom = null;
-            dt_ngay.Location = new System.Drawing.Point(282, 57);
-            dt_ngay.Margin = new System.Windows.Forms.Padding(6);
-            dt_ngay.Name = "dt_ngay";
-            dt_ngay.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            dt_ngay.Size = new System.Drawing.Size(278, 44);
-            dt_ngay.TabIndex = 53;
-            dt_ngay.Value = new System.DateTime(2020, 12, 6, 18, 53, 56, 232);
+            this.dt_ngay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(56)))), ((int)(((byte)(69)))));
+            this.dt_ngay.BorderRadius = 45;
+            this.dt_ngay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dt_ngay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
+            this.dt_ngay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dt_ngay.FormatCustom = null;
+            this.dt_ngay.Location = new System.Drawing.Point(282, 57);
+            this.dt_ngay.Margin = new System.Windows.Forms.Padding(6);
+            this.dt_ngay.Name = "dt_ngay";
+            this.dt_ngay.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dt_ngay.Size = new System.Drawing.Size(278, 44);
+            this.dt_ngay.TabIndex = 53;
+            this.dt_ngay.Value = new System.DateTime(2020, 12, 6, 18, 53, 56, 232);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btn_check);
-            this.panel1.Controls.Add(dt_ngay);
+            this.panel1.Controls.Add(this.dt_ngay);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.rdb_all);
-            this.panel1.Controls.Add(dt_sau);
+            this.panel1.Controls.Add(this.dt_sau);
             this.panel1.Controls.Add(this.rdb_ngay);
-            this.panel1.Controls.Add(dt_dau);
+            this.panel1.Controls.Add(this.dt_dau);
             this.panel1.Controls.Add(this.rdb_khoang);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 2);
@@ -141,6 +138,7 @@
             this.btn_check.Size = new System.Drawing.Size(121, 56);
             this.btn_check.TabIndex = 60;
             this.btn_check.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_check.Click += new System.EventHandler(this.btn_check_Click_1);
             // 
             // label1
             // 
@@ -161,6 +159,7 @@
             this.rdb_all.TabStop = true;
             this.rdb_all.Text = "   All";
             this.rdb_all.UseVisualStyleBackColor = true;
+            this.rdb_all.CheckedChanged += new System.EventHandler(this.rdb_all_CheckedChanged);
             // 
             // rdb_ngay
             // 
@@ -186,7 +185,6 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -199,7 +197,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.Location = new System.Drawing.Point(69, 260);
+            this.dataGridView1.Location = new System.Drawing.Point(69, 270);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -219,7 +217,7 @@
             this.dataGridView1.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(2);
             this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
             this.dataGridView1.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.Size = new System.Drawing.Size(768, 379);
+            this.dataGridView1.Size = new System.Drawing.Size(768, 369);
             this.dataGridView1.TabIndex = 41;
             // 
             // txt_search
@@ -233,6 +231,7 @@
             this.txt_search.Name = "txt_search";
             this.txt_search.Size = new System.Drawing.Size(157, 31);
             this.txt_search.TabIndex = 69;
+            this.txt_search.TextChanged += new System.EventHandler(this.txt_search_TextChanged);
             // 
             // panel2
             // 
@@ -266,6 +265,7 @@
             this.btn_search.Size = new System.Drawing.Size(160, 60);
             this.btn_search.TabIndex = 77;
             this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click_1);
             // 
             // btn_capnhat
             // 
@@ -325,5 +325,8 @@
         private System.Windows.Forms.Panel panel2;
         private Bunifu.Framework.UI.BunifuThinButton2 btn_search;
         private Bunifu.Framework.UI.BunifuTileButton btn_capnhat;
+        private Bunifu.Framework.UI.BunifuDatepicker dt_sau;
+        private Bunifu.Framework.UI.BunifuDatepicker dt_dau;
+        private Bunifu.Framework.UI.BunifuDatepicker dt_ngay;
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.DAO;
 
 namespace WindowsFormsApp1
 {
@@ -20,21 +21,11 @@ namespace WindowsFormsApp1
 
         private void frmchiaca_Load(object sender, EventArgs e)
         {
-            loadcatatca(); ;
+            DAOChiaca cc = new DAOChiaca();
+            dataGridView1.DataSource = cc.getDanhSachChiaCa();
         }
       
-        void loadcatheongay()
-        {
-           
-        }
-        void  loadcatatca()
-        {
-            
-        }
-        void loadtheokhoang()
-        {
-           
-        }
+        
        
         private void bn_capnhat_Click(object sender, EventArgs e)
         {
@@ -42,25 +33,51 @@ namespace WindowsFormsApp1
             frm.ShowDialog();
         }
 
-        private void btn_caquanli_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void btn_check_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void btn_search_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void btn_capnhat_Click(object sender, EventArgs e)
         {
             frmchiacav2 frm = new frmchiacav2();
             frm.ShowDialog();
+        }
+
+        private void btn_check_Click_1(object sender, EventArgs e)
+        {
+            if (rdb_ngay.Checked == true)
+            {
+                DAOChiaca cc = new DAOChiaca();
+                DateTime a = DateTime.Parse(dt_ngay.Value.ToString());
+                dataGridView1.DataSource = cc.getDanhSachChiaCaTheoNgay(a);
+            }
+            if (rdb_khoang.Checked == true)
+            {
+                DAOChiaca cc = new DAOChiaca();
+                DateTime a = DateTime.Parse(dt_dau.Value.ToString());
+                DateTime b = DateTime.Parse(dt_sau.Value.ToString());
+                dataGridView1.DataSource = cc.getDanhSachChiaCaTheoKhoang(a, b);
+            }
+        }
+
+        private void btn_search_Click_1(object sender, EventArgs e)
+        {
+
+            DAOChiaca cc = new DAOChiaca();
+            string a = txt_search.Text;
+            //MessageBox.Show(txt_search.Text);
+            dataGridView1.DataSource = cc.Search(a);
+        }
+
+        private void txt_search_TextChanged(object sender, EventArgs e)
+        {
+            DAOChiaca cc = new DAOChiaca();
+            string a = txt_search.Text;
+            //MessageBox.Show(txt_search.Text);
+            dataGridView1.DataSource = cc.Search(a);
+        }
+
+        private void rdb_all_CheckedChanged(object sender, EventArgs e)
+        {
+            DAOChiaca cc = new DAOChiaca();
+            dataGridView1.DataSource = cc.getDanhSachChiaCa();
         }
     }
 }

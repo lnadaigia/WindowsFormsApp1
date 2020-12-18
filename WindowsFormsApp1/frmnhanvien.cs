@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GlobalVariables;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.DAO;
 
 namespace WindowsFormsApp1
 {
@@ -28,35 +30,16 @@ namespace WindowsFormsApp1
         {
             this.lb_gio.Text = DateTime.Now.ToLongTimeString();
         }
-      
-        private string id;
-        public string setid
-        {
-            set { id = value; }
-        }
 
-       
-       
-        TimeSpan gio=new TimeSpan(0,0,0);
-        void loadvieclam()
-        {
-        }
       
         private void frmnhanvien_Load(object sender, EventArgs e)
         {
-           
+            DAOCa ca = new DAOCa();
+            dataGridView1.DataSource = ca.getDanhSachCaChoNV(Globals.NV);
         }
        
 
-        private void btn_checkin_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btn_checkout_Click(object sender, EventArgs e)
-        {
-           
-        }
+      
 
         private void timer1_Tick(object sender, EventArgs e)
         {

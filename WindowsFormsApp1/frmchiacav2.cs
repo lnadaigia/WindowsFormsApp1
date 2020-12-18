@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.DAO;
 
 namespace WindowsFormsApp1
 {
@@ -24,20 +25,14 @@ namespace WindowsFormsApp1
         {
            try
             {
-               
+                DAOCa ca = new DAOCa();
+                dataGridView1.DataSource = ca.getDanhSachCa();
+                DAOChiaca cc = new DAOChiaca();
+                dataGridView2.DataSource = cc.getDanhSachChiaCa();
             }
             catch { }
         }
-        void chiatheokhoang(List<string> id)
-        {
-          
-
-        }
-        void chiaca(List<string> id)
-        {
-           
-     
-        }
+       
         private void btn_themca_Click(object sender, EventArgs e)
         {
             try
