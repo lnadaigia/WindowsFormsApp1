@@ -124,11 +124,10 @@ namespace WindowsFormsApp1
                 }
 
             }
-
             dtg_chitiet.DataSource = b;
-            tongtien = 0;
+            tongtien = 0;   
 
-            
+            txt_tongtien.Text = "sa";
             for (int i = 0; i < dtg_chitiet.Rows.Count - 1; i++)
             {
                 try
@@ -144,7 +143,7 @@ namespace WindowsFormsApp1
 
             }
            // MessageBox.Show(tongtien.ToString());
-            this.txt_tongtien.Text = tongtien.ToString();
+            this.txt_tongtien.text = tongtien.ToString();
         }
 
         private void btn_dathang_Click(object sender, EventArgs e)
