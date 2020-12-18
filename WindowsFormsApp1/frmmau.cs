@@ -27,26 +27,29 @@ namespace WindowsFormsApp1
         {
             if (imgNumber == 1)
             {
-                slidePic.ImageLocation = string.Format(@"Images\1.jpg");
+                //slidePic.ImageLocation = string.Format(@"Images\1.jpg");
+                slidePic.Image = Properties.Resources._1;
                 slidePic.BackgroundImageLayout = ImageLayout.Stretch;
                 imgNumber = 2;
                 img_1.Checked = true;
             }
             else if (imgNumber == 2)
             {
-                slidePic.ImageLocation = string.Format(@"Images\2.jpg");
+                //slidePic.ImageLocation = string.Format(@"Images\2.jpg");
+                slidePic.Image = Properties.Resources._2;
                 slidePic.BackgroundImageLayout = ImageLayout.Stretch;
                 imgNumber = 3;
                 img_2.Checked = true;
             }
             else
             {
-                slidePic.ImageLocation = string.Format(@"Images\3.jpg");
+                //slidePic.ImageLocation = string.Format(@"Images\3.jpg");
+                slidePic.Image = Properties.Resources._3;
                 slidePic.BackgroundImageLayout = ImageLayout.Stretch;
                 imgNumber = 1;
                 img_3.Checked = true;
             }
-            imgNumber++;
+            //imgNumber++;
         }
         public string setid
         {
@@ -162,7 +165,7 @@ namespace WindowsFormsApp1
         private void img_1_Click(object sender, EventArgs e)
         {
             timer1.Stop();
-            slidePic.ImageLocation = string.Format(@"Images\1.jpg");
+            slidePic.Image = Properties.Resources._1;
             slidePic.BackgroundImageLayout = ImageLayout.Stretch;
             imgNumber = 2;
             timer1.Start();
@@ -171,7 +174,7 @@ namespace WindowsFormsApp1
         private void img_2_Click(object sender, EventArgs e)
         {
             timer1.Stop();
-            slidePic.ImageLocation = string.Format(@"Images\2.jpg");
+            slidePic.Image = Properties.Resources._2;
             slidePic.BackgroundImageLayout = ImageLayout.Stretch;
             imgNumber = 3;
             timer1.Start();
@@ -180,7 +183,7 @@ namespace WindowsFormsApp1
         private void img_3_Click(object sender, EventArgs e)
         {
             timer1.Stop();
-            slidePic.ImageLocation = string.Format(@"Images\3.jpg");
+            slidePic.Image = Properties.Resources._3;
             slidePic.BackgroundImageLayout = ImageLayout.Stretch;
             imgNumber = 1;
             timer1.Start();

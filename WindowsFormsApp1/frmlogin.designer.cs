@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmlogin));
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.txt_user = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txt_pass = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
@@ -40,11 +38,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_cancer = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btn_login = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.indicator = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.indicator)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -52,9 +46,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(76, 288);
+            this.label2.Location = new System.Drawing.Point(102, 317);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 19);
+            this.label2.Size = new System.Drawing.Size(82, 23);
             this.label2.TabIndex = 12;
             this.label2.Text = "Password";
             // 
@@ -64,45 +59,13 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(76, 221);
+            this.label1.Location = new System.Drawing.Point(102, 235);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(71, 19);
+            this.label1.Size = new System.Drawing.Size(87, 23);
             this.label1.TabIndex = 10;
             this.label1.Text = "Username";
-            // 
-            // button1
-            // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(169, 37);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Nhân viên";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(169, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(169, 37);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Quản lí";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // txt_user
             // 
@@ -112,19 +75,19 @@
             this.txt_user.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_user.ForeColor = System.Drawing.Color.White;
             this.txt_user.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txt_user.Location = new System.Drawing.Point(74, 242);
-            this.txt_user.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_user.Location = new System.Drawing.Point(100, 261);
+            this.txt_user.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_user.Name = "txt_user";
-            this.txt_user.Size = new System.Drawing.Size(182, 25);
+            this.txt_user.Size = new System.Drawing.Size(243, 31);
             this.txt_user.TabIndex = 71;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(103)))), ((int)(((byte)(113)))));
-            this.panel2.Location = new System.Drawing.Point(74, 269);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Location = new System.Drawing.Point(100, 294);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(182, 1);
+            this.panel2.Size = new System.Drawing.Size(243, 1);
             this.panel2.TabIndex = 70;
             // 
             // txt_pass
@@ -135,19 +98,22 @@
             this.txt_pass.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_pass.ForeColor = System.Drawing.Color.White;
             this.txt_pass.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txt_pass.Location = new System.Drawing.Point(74, 310);
-            this.txt_pass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_pass.Location = new System.Drawing.Point(100, 345);
+            this.txt_pass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_pass.Name = "txt_pass";
-            this.txt_pass.Size = new System.Drawing.Size(182, 25);
+            this.txt_pass.PasswordChar = '*';
+            this.txt_pass.Size = new System.Drawing.Size(243, 31);
             this.txt_pass.TabIndex = 73;
+            this.txt_pass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_pass_KeyDown_1);
+            this.txt_pass.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_pass_KeyUp);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(103)))), ((int)(((byte)(113)))));
-            this.panel3.Location = new System.Drawing.Point(74, 336);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Location = new System.Drawing.Point(100, 377);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(182, 1);
+            this.panel3.Size = new System.Drawing.Size(243, 1);
             this.panel3.TabIndex = 72;
             // 
             // pictureBox1
@@ -157,9 +123,9 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(338, 136);
+            this.pictureBox1.Size = new System.Drawing.Size(451, 167);
             this.pictureBox1.TabIndex = 74;
             this.pictureBox1.TabStop = false;
             // 
@@ -181,10 +147,10 @@
             this.btn_cancer.IdleFillColor = System.Drawing.Color.White;
             this.btn_cancer.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
             this.btn_cancer.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
-            this.btn_cancer.Location = new System.Drawing.Point(176, 368);
-            this.btn_cancer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_cancer.Location = new System.Drawing.Point(235, 436);
+            this.btn_cancer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_cancer.Name = "btn_cancer";
-            this.btn_cancer.Size = new System.Drawing.Size(98, 49);
+            this.btn_cancer.Size = new System.Drawing.Size(131, 60);
             this.btn_cancer.TabIndex = 105;
             this.btn_cancer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_cancer.Click += new System.EventHandler(this.btn_cancer_Click_1);
@@ -207,44 +173,20 @@
             this.btn_login.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
             this.btn_login.IdleForecolor = System.Drawing.Color.White;
             this.btn_login.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
-            this.btn_login.Location = new System.Drawing.Point(56, 368);
-            this.btn_login.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_login.Location = new System.Drawing.Point(75, 436);
+            this.btn_login.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_login.Name = "btn_login";
-            this.btn_login.Size = new System.Drawing.Size(98, 49);
+            this.btn_login.Size = new System.Drawing.Size(131, 60);
             this.btn_login.TabIndex = 104;
             this.btn_login.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_login.Click += new System.EventHandler(this.btn_login_Click_1);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.indicator);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 136);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(338, 37);
-            this.panel1.TabIndex = 106;
-            // 
-            // indicator
-            // 
-            this.indicator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(121)))), ((int)(((byte)(254)))));
-            this.indicator.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("indicator.BackgroundImage")));
-            this.indicator.Location = new System.Drawing.Point(0, 35);
-            this.indicator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.indicator.Name = "indicator";
-            this.indicator.Size = new System.Drawing.Size(169, 4);
-            this.indicator.TabIndex = 24;
-            this.indicator.TabStop = false;
-            // 
             // frmlogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(82)))));
-            this.ClientSize = new System.Drawing.Size(338, 483);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(451, 581);
             this.Controls.Add(this.btn_cancer);
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.pictureBox1);
@@ -255,13 +197,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmlogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmlogin";
             this.Load += new System.EventHandler(this.frmlogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.indicator)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,8 +211,6 @@
         #endregion
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private WindowsFormsControlLibrary1.BunifuCustomTextbox txt_user;
         private System.Windows.Forms.Panel panel2;
         private WindowsFormsControlLibrary1.BunifuCustomTextbox txt_pass;
@@ -279,7 +218,5 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private Bunifu.Framework.UI.BunifuThinButton2 btn_cancer;
         private Bunifu.Framework.UI.BunifuThinButton2 btn_login;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox indicator;
     }
 }

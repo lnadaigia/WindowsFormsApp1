@@ -28,18 +28,23 @@ namespace WindowsFormsApp1
             {
                 Button bt = new Button()
                 {
-                    Width = Convert.ToInt32(Table.tbwidth),
-                    Height = Convert.ToInt32(Table.tbHeight)
+                    Width = 120,
+                    Height = 120,
+                    Image = Properties.Resources.icon_table,
+                    FlatStyle = FlatStyle.Flat
                 };
+                bt.FlatAppearance.BorderSize = 0;
                 switch (item.TableStatus1)
                 {
                     case "Available":
-                        bt.BackColor = Color.BlueViolet;
-                        bt.Text = item.Tenban + Environment.NewLine + item.TableStatus1;
+                        bt.BackColor = Color.FromArgb(89, 121, 254);
+                        bt.Text = item.Tenban;
+                        //bt.Text = item.Tenban + Environment.NewLine + item.TableStatus1;
                         break;
                     default:
-                        bt.BackColor = Color.Red;
-                        bt.Text = item.Tenban + Environment.NewLine + item.TableStatus1 + Environment.NewLine;
+                        bt.BackColor = Color.FromArgb(196, 57, 248);
+                        bt.Text = item.Tenban;
+                        //bt.Text = item.Tenban + Environment.NewLine + item.TableStatus1;
                         break;
 
                 }
@@ -87,19 +92,21 @@ namespace WindowsFormsApp1
                 
                 Button bt = new Button()
                 {
-                    Width = Convert.ToInt32(Table.tbwidth),
-                    Height = Convert.ToInt32(Table.tbHeight)
+                    Width = 120,
+                    Height = 120,
+                    Image = Properties.Resources.icon_table,
+                    FlatStyle = FlatStyle.Flat
                 };
+                bt.FlatAppearance.BorderSize = 0;
                 switch (item.TableStatus1)
                 {
                     case "Available":
-                        bt.BackColor = Color.BlueViolet;
-                        bt.Text = item.Tenban + Environment.NewLine + item.TableStatus1;
+                        bt.BackColor = Color.FromArgb(89, 121, 254);
+                        bt.Text = item.Tenban;
                         break;
                     default:
-                        bt.BackColor = Color.Red;
-
-                        bt.Text = item.Tenban + Environment.NewLine + item.TableStatus1 + Environment.NewLine;
+                        bt.BackColor = Color.FromArgb(196, 57, 248);
+                        bt.Text = item.Tenban;
                         break;
 
                 }
@@ -109,14 +116,31 @@ namespace WindowsFormsApp1
             }
 
         }
+        //////////////////////////////////////////////////////////
 
-        private void btRefresh_Click(object sender, EventArgs e)
+        private void btn_them_Click(object sender, EventArgs e)
         {
-            flp.Controls.Clear();
-            createButton();
+            DAOTable a = new DAOTable();
+
+            Table b = new Table();
+
+            b = a.addTable();
+            Button bt = new Button()
+            {
+                Width = 120,
+                Height = 120,
+                Image = Properties.Resources.icon_table,
+                FlatStyle = FlatStyle.Flat
+            };
+            bt.FlatAppearance.BorderSize = 0;
+            bt.BackColor = Color.FromArgb(89, 121, 254);
+            bt.Text = b.Tenban;
+            bt.Tag = b.Maban;
+            bt.Click += Bt_Click;
+            flp.Controls.Add(bt);
         }
 
-        private void btDelete_Click(object sender, EventArgs e)
+        private void btn_xoa_Click(object sender, EventArgs e)
         {
             DAOTable a = new DAOTable();
             int ID = a.deleteTable();
@@ -131,23 +155,12 @@ namespace WindowsFormsApp1
             createButton();
         }
 
-        private void btAddTabel_Click(object sender, EventArgs e)
+        private void btn_refr_Click(object sender, EventArgs e)
         {
-            DAOTable a = new DAOTable();
-
-            Table b = new Table();
-
-            b = a.addTable();
-            Button bt = new Button()
-            {
-                Width = Convert.ToInt32(Table.tbwidth),
-                Height = Convert.ToInt32(Table.tbHeight)
-            };
-            bt.BackColor = Color.BlueViolet;
-            bt.Text = b.Tenban + Environment.NewLine + b.TableStatus1;
-            bt.Tag = b.Maban;
-            bt.Click += Bt_Click;
-            flp.Controls.Add(bt);
+            flp.Controls.Clear();
+            createButton();
         }
+        ///////////////////////////////////////////////
+
     }
 }

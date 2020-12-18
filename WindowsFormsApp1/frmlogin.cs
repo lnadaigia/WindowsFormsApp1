@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,35 +19,17 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-        void MoveIndicator(Control control)
-        {
-            indicator.Left = control.Left;
-            indicator.Width = control.Width;
-        }
-       
 
+        private void btn_login_Click(object sender, EventArgs e)
+        {
+
+        }
         private void btn_cancer_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            button2.ForeColor = Color.White;
-            button1.ForeColor = Color.FromArgb(89, 121, 254);
-            MoveIndicator((Control)sender);
-            frmmaunhanvien frm = new frmmaunhanvien();
-            frm.ShowDialog();
-        }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            button1.ForeColor = Color.White;
-            button2.ForeColor = Color.FromArgb(89, 121, 254);
-            MoveIndicator((Control)sender);
-            frmmau frm = new frmmau();
-            frm.ShowDialog();
-        }
 
         private void frmlogin_Load(object sender, EventArgs e)
         {
@@ -57,7 +40,29 @@ namespace WindowsFormsApp1
         {
             this.Close();
         }
+        public static string HashPasswordUsingMD5(string password)
+        {
+            using (var md5 = MD5.Create())
+            {
+                byte[] passwordBytes = Encoding.ASCII.GetBytes(password);
 
+                byte[] hash = md5.ComputeHash(passwordBytes);
+
+                var stringBuilder = new StringBuilder();
+
+                for (int i = 0; i < hash.Length; i++)
+                    stringBuilder.Append(hash[i].ToString("X2"));
+
+                return stringBuilder.ToString();
+            }
+        }
+        private void txt_pass_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_login_Click_1(this, new EventArgs());
+            }
+        }
         private void btn_login_Click_1(object sender, EventArgs e)
         {
             MY_DB db = new MY_DB();
@@ -71,28 +76,30 @@ namespace WindowsFormsApp1
                 {
                     SqlCommand command = new SqlCommand("SELECT MaNV,Role from NhanVien WHERE NhanVien.UserName=@user AND Password=@pass", db.GetConnection);
                     command.Parameters.Add("@user", SqlDbType.NVarChar).Value = txt_user.Text;
-                    command.Parameters.Add("@pass", SqlDbType.NVarChar).Value = txt_pass.Text;
+                    command.Parameters.Add("@pass", SqlDbType.NVarChar).Value = HashPasswordUsingMD5(txt_pass.Text);
+                    //MessageBox.Show(HashPasswordUsingMD5(txt_pass.Text));
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable table = new DataTable();
                     adapter.Fill(table);
 
-
                     // MessageBox.Show(table.Rows.Count.ToString());
                     for (int i = 0; i < table.Rows.Count; i++)
                     {
-
                         if (table.Rows[i].ItemArray[0] != null)
                         {
                             string a = table.Rows[i].ItemArray[1].ToString();
+
                             if (a == "employee")
                             {
                                 Globals.SetNV(Convert.ToInt32(table.Rows[i].ItemArray[0]));
+                                Globals.SetRole("employee");
                                 frmmaunhanvien frm = new frmmaunhanvien();
                                 frm.ShowDialog();
                             }
                             else
                             {
                                 Globals.SetNV(Convert.ToInt32(table.Rows[i].ItemArray[0]));
+                                Globals.SetRole("manager");
                                 frmmau frm = new frmmau();
                                 frm.ShowDialog();
                             }
@@ -110,6 +117,14 @@ namespace WindowsFormsApp1
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void txt_pass_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_login_Click_1(this, new EventArgs());
+            }
+        }
     }
 }
 namespace GlobalVariables
@@ -124,17 +139,24 @@ namespace GlobalVariables
             NumberofPeople = 0;
             NV = 1;
             Mahoadon = 30;
+            role = "employee";
             DataTable l = new DataTable();
             Chitiethoadon = l;
         } // default value
 
         // public get, and private set for strict access control
+        public static string role { get; private set; }
         public static int Mahoadon { get; private set; }
         public static DataTable Chitiethoadon { get; private set; }
         public static int Maban { get; private set; }
         public static int NumberofPeople { get; private set; }
         public static int NV { get; private set; }
+        //public static string NRole { get; private set; }
         // GlobalInt can be changed only via this method
+        public static void SetRole(string roles)
+        {
+            role = roles;
+        }
         public static void SetMaban(int newInt)
         {
             Maban = newInt;
@@ -155,6 +177,9 @@ namespace GlobalVariables
         {
             Chitiethoadon = a;
         }
+        //public static void SetNRole(string newString)
+        //{
+        //    NRole = newString;
+        //}
     }
 }
-

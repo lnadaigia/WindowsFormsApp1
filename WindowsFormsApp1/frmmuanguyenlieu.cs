@@ -23,12 +23,11 @@ namespace WindowsFormsApp1
         int row = 0;
         private void frmmuanguyenlieu_Load(object sender, EventArgs e)
         {
+            numericUpDown1.Visible = false;
             try
             {
                 load_doan_theo_ngay();
                 load_nguyen_lieu();
-
-                numericUpDown1.Visible = false;
             }
             catch { }
         }
@@ -144,9 +143,10 @@ namespace WindowsFormsApp1
                
                 numericUpDown1.Visible = true;
                 int x = dtg_doan.CurrentRow.Index;
+                int y = x * dtg_doan.CurrentRow.Height;
                 row = x;
                 Rectangle rectangle = dtg_doan.GetCellDisplayRectangle(0, x, true);
-                numericUpDown1.Location = new Point(465, rectangle.Y);
+                numericUpDown1.Location = new Point(475, 47 + y);
                 numericUpDown1.Value = (int)dtg_doan.Rows[row].Cells[3].Value;
             }
             catch (Exception ex) { MessageBox.Show(ex + ""); }

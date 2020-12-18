@@ -109,6 +109,7 @@
             this.btn_doimk.Size = new System.Drawing.Size(160, 60);
             this.btn_doimk.TabIndex = 76;
             this.btn_doimk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_doimk.Click += new System.EventHandler(this.btn_doimk_Click);
             // 
             // btn_cancer
             // 
@@ -134,6 +135,7 @@
             this.btn_cancer.Size = new System.Drawing.Size(160, 60);
             this.btn_cancer.TabIndex = 78;
             this.btn_cancer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_cancer.Click += new System.EventHandler(this.btn_cancer_Click_2);
             // 
             // txt_mkcu
             // 
@@ -194,6 +196,8 @@
             this.txt_mkmoi2.Name = "txt_mkmoi2";
             this.txt_mkmoi2.Size = new System.Drawing.Size(157, 31);
             this.txt_mkmoi2.TabIndex = 84;
+            this.txt_mkmoi2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_mkmoi2_KeyDown_1);
+            this.txt_mkmoi2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_mkmoi2_KeyUp);
             // 
             // panel3
             // 
