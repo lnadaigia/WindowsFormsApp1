@@ -20,6 +20,14 @@ namespace WindowsFormsApp1.DAO
 			adapter.Fill(table);
 			return table;
 		}
+		public DataTable getDanhSachCaDeChiaCa()
+		{
+			SqlCommand command = new SqlCommand(" SELECT Maca,Tenca,GioBatDau,GioKetThuc FROM Ca", db.GetConnection);
+			SqlDataAdapter adapter = new SqlDataAdapter(command);
+			DataTable table = new DataTable();
+			adapter.Fill(table);
+			return table;
+		}
 		public DataTable getDanhSachCaChoNV(int manv)
 		{
 			SqlCommand command = new SqlCommand("SELECT Ca.Tenca, Ca.GioBatDau,Ca.GioKetThuc FROM Ca,ChiaCa,NhanVien WHERE Ca.Maca=ChiaCa.Maca AND ChiaCa.Manv=NhanVien.MaNV  AND NhanVien.MaNV=@manv AND ChiaCa.ngay=CONVERT(Date,getdate())", db.GetConnection);

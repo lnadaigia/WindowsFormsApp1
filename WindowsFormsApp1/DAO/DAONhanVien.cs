@@ -22,6 +22,15 @@ namespace WindowsFormsApp1.DAO
             adapter.Fill(table);
             return table;
         }
+
+        public DataTable getNhanVienDeChiaCa()
+        {
+            SqlCommand command = new SqlCommand("  SELECT MaNV,Hoten,SoDT,Ngaysinh FROM NhanVien where Role='employee'", mydb.GetConnection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
         public NhanVien getNhanVienByID(int manv)
         {
             NhanVien nv = new NhanVien();

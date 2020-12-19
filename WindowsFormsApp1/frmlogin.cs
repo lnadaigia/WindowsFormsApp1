@@ -83,7 +83,12 @@ namespace WindowsFormsApp1
                     adapter.Fill(table);
 
                     // MessageBox.Show(table.Rows.Count.ToString());
-                    for (int i = 0; i < table.Rows.Count; i++)
+                    int count= table.Rows.Count;
+                    if (count ==0)
+                    {
+                        MessageBox.Show("ban da nhap sai ten tai khoan hoac mat khau");
+                    }
+                    for (int i = 0; i <count ; i++)
                     {
                         if (table.Rows[i].ItemArray[0] != null)
                         {
@@ -104,10 +109,7 @@ namespace WindowsFormsApp1
                                 frm.ShowDialog();
                             }
                         }
-                        else
-                        {
-                            MessageBox.Show("ban da nhap sai ten tai khoan hoac mat khau");
-                        }
+                       
 
                     }
                 }
