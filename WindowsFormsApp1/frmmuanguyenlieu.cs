@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GlobalVariables;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,6 +29,14 @@ namespace WindowsFormsApp1
             {
                 load_doan_theo_ngay();
                 load_nguyen_lieu();
+                if(Globals.role=="employee")
+                {
+                    btn_them.Visible = false;
+                    btn_xoa.Visible = false;
+                    btn_sua.Visible = false;
+                    btn_luugia.Visible = false;
+                    numericUpDown1.Visible = false;
+                }    
             }
             catch { }
         }
