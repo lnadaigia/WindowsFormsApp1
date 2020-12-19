@@ -151,9 +151,9 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-            catch
+            catch(SqlException ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
