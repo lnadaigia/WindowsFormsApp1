@@ -15,17 +15,14 @@ namespace WindowsFormsApp1.DAO
 		public DataTable getChiTietHoaDon(int mahoadon)
 		{
 			
-			SqlCommand command = new SqlCommand("select ct.Mamonan,ma.tenmonan,ct.Soluong ,m.gia,(m.gia*ct.Soluong) as 'thanhtien' " +
-				"from Chitiethoadon as ct, Hoadon as hd, Monan as ma, Monantheongay as m " +
-				"where hd.Mahoadon = ct.Mahoadon and CONVERT(date, hd.Thoigian) = m.ngay " +
-				"and m.Mamonan = ct.Mamonan and ma.Mamonan = m.Mamonan and hd.Mahoadon = @mahd", db.GetConnection);
+			SqlCommand command = new SqlCommand("select * from getchitietbymahd(@mahd)", db.GetConnection);
 			command.Parameters.Add("@mahd", SqlDbType.Int).Value = mahoadon;
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			DataTable table = new DataTable();
 			adapter.Fill(table);
 			return table;
 		}
-
+		//
 		public bool Themvaochitiethoadon(ChiTietHoaDon hd)
 		{
 			SqlCommand command = new SqlCommand(" EXEC themdonhang @mahoadon=@ma,@mamonan=@mamon,@soluong=@sl", db.GetConnection);

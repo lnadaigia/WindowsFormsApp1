@@ -231,7 +231,7 @@ namespace WindowsFormsApp1
                         }
                         
                     }
-                    ma.xoact(dt2, id_doan);
+                    //ma.xoact(dt2, id_doan);
                     ma.updatect(dt, id_doan);
 
 

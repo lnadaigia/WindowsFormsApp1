@@ -17,9 +17,7 @@ namespace WindowsFormsApp1.DAO
 		public DataTable thongkedoanhthu(int thang)
 		{
 			SqlCommand command = new SqlCommand(
-			"select convert(date,hd.Thoigian) as 'ngay', sum(Tongbill) as 'doanh thu' " +
-			"from hoadon as hd " +
-			"where MONTH(hd.Thoigian) = @thang group by convert(date,hd.Thoigian)", db.GetConnection);
+			"select * from thongkedoanhthu(@thang)", db.GetConnection);
 
 			command.Parameters.Add("@thang", SqlDbType.Int).Value = thang;
 			//command.Parameters.Add("@nam", SqlDbType.Int).Value = DateTime.Now.Year;
@@ -30,11 +28,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public DataTable getHoaDonbyban(int maban)
 		{
-			SqlCommand command = new SqlCommand("select ct.Mamonan,ma.tenmonan,ct.Soluong ,m.gia,(m.gia*ct.Soluong) as 'thanhtien' " +
-				"from Chitiethoadon as ct, Hoadon as hd, Monan as ma, Monantheongay as m " +
-				"where hd.Mahoadon = ct.Mahoadon and CONVERT(date, hd.Thoigian) = convert(date, GETDATE()) " +
-				"and m.ngay = CONVERT(date, getdate()) and m.Mamonan = ct.Mamonan and ma.Mamonan = m.Mamonan " +
-				"and hd.Maban = @maban and hd.Trangthai = 0", db.GetConnection);
+			SqlCommand command = new SqlCommand("select * from getHoaDonbyban(@maban)", db.GetConnection);
 			command.Parameters.Add("@maban", SqlDbType.Int).Value = maban;
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			DataTable table = new DataTable();
@@ -180,7 +174,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public bool DatHang(HoaDon hd)
 		{
-			SqlCommand command = new SqlCommand("insert into Hoadon (Maban,Thoigian,Tongbill,Manv,mavoucher,Trangthai) values(@Maban,@Thoigian,@Tongbill,@Manv,@mavoucher,@Trangthai)", db.GetConnection);
+			SqlCommand command = new SqlCommand("execute DatHang @Maban,@Thoigian,@Tongbill,@Manv,@mavoucher,@Trangthai", db.GetConnection);
 			command.Parameters.Add("@Maban", SqlDbType.Int).Value = hd.Maban;
 			command.Parameters.Add("@Thoigian", SqlDbType.DateTime).Value = hd.Thoigian;
 			command.Parameters.Add("@Tongbill", SqlDbType.Float).Value = hd.Tongbill;
@@ -202,7 +196,7 @@ namespace WindowsFormsApp1.DAO
 		public bool ThanhToan(int mahoadon)
 		{
 
-			SqlCommand command = new SqlCommand("UPDATE HoaDon SET	Trangthai=1 WHERE Mahoadon=@Mahoadon	", db.GetConnection);
+			SqlCommand command = new SqlCommand("execute ThanhToan @Mahoadon	", db.GetConnection);
 			command.Parameters.Add("@Mahoadon", SqlDbType.Int).Value = mahoadon;
 
 			db.openConection();

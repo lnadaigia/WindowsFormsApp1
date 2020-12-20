@@ -22,7 +22,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public DataTable getNguyenLieutheongay()
 		{
-			SqlCommand command = new SqlCommand("select nguyenlieu.manl,NguyenLieu.tenNL,isnull(m.gia,0) as 'gia',isnull(m.tongsoluong,0) as 'soluong' from NguyenLieu  left join Nguyenlieutheongay as m on m.Manl=NguyenLieu.Manl and ngay=convert(date,getdate()) ORDER BY nguyenlieu.manl", db.GetConnection);
+			SqlCommand command = new SqlCommand("select * from getNguyenLieutheongay() as nl ORDER BY nl.manl", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			DataTable table = new DataTable();
 			adapter.Fill(table);
@@ -30,7 +30,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public bool themnl(NguyenLieu nl)
 		{
-			SqlCommand command = new SqlCommand("insert into NguyenLieu values (@ten)", db.GetConnection);
+			SqlCommand command = new SqlCommand("execute themnl @ten", db.GetConnection);
 			//command.Parameters.Add("@ma", SqlDbType.Int).Value = nl.Manguyenlieu;
 			command.Parameters.Add("@ten", SqlDbType.NVarChar).Value = nl.Tennguyenlieu;
 			db.openConection();
@@ -48,7 +48,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public bool suanl(NguyenLieu nl)
 		{
-			SqlCommand command = new SqlCommand("update NguyenLieu set tenNL=@ten where Manl=@ma", db.GetConnection);
+			SqlCommand command = new SqlCommand("execute suanl @ten,@ma", db.GetConnection);
 			command.Parameters.Add("@ma", SqlDbType.Int).Value = nl.Manguyenlieu;
 			command.Parameters.Add("@ten", SqlDbType.NVarChar).Value = nl.Tennguyenlieu;
 			db.openConection();
@@ -66,7 +66,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public bool xoanl(NguyenLieu nl)
 		{
-			SqlCommand command = new SqlCommand("delete from NguyenLieu where Manl=@ma", db.GetConnection);
+			SqlCommand command = new SqlCommand("execute xoanl @ma", db.GetConnection);
 			command.Parameters.Add("@ma", SqlDbType.NVarChar).Value = nl.Manguyenlieu;
 			db.openConection();
 			if (command.ExecuteNonQuery() == 1)
@@ -96,7 +96,7 @@ namespace WindowsFormsApp1.DAO
 			bool t = false;
 			db.openConection();
 			SqlTransaction objTrans = db.GetConnection.BeginTransaction();
-			SqlCommand command = new SqlCommand("update Nguyenlieutheongay set gia=@gia where ngay=convert(date,getdate()) and manl=@manl", db.GetConnection, objTrans);
+			SqlCommand command = new SqlCommand("execute updategia_nguyenlieu @manl,@gia", db.GetConnection, objTrans);
 			command.Parameters.Add("@gia", SqlDbType.Float);
 			command.Parameters.Add("@manl", SqlDbType.Int);
 			

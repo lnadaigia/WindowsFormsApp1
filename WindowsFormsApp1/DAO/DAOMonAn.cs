@@ -51,24 +51,31 @@ namespace WindowsFormsApp1.DAO
 		}
 		public bool updatect(DataTable ct,int mamonan)
 		{
-			SqlCommand insertCommand = new SqlCommand("themct", db.GetConnection);
+			bool t = false;
+			db.openConection();
+			SqlTransaction objTrans = db.GetConnection.BeginTransaction();
+
+			SqlCommand insertCommand = new SqlCommand("themct", db.GetConnection, objTrans);
 			insertCommand.CommandType = CommandType.StoredProcedure;
 			insertCommand.Parameters.Add("@mamonan", SqlDbType.Int).Value = mamonan;
 			SqlParameter tvpParam = insertCommand.Parameters.AddWithValue("@bang", ct);
 			tvpParam.SqlDbType = SqlDbType.Structured;
-			db.openConection();
-			// Execute the command.  
-			
-			if (insertCommand.ExecuteNonQuery() == 1)
+			try
+			{		
+				insertCommand.ExecuteNonQuery();
+				objTrans.Commit();
+				t = true;
+			}
+			catch (Exception)
+			{
+				objTrans.Rollback();
+
+			}
+			finally
 			{
 				db.closedConection();
-				return true;
 			}
-			else
-			{
-				db.closedConection();
-				return false;
-			}
+			return t;
 		}
 		public bool xoact(DataTable ct,int mamonan)
 		{
@@ -96,7 +103,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public bool themmonan(MonAn nl)
 		{
-			SqlCommand command = new SqlCommand("insert into Monan values (@ten)", db.GetConnection);
+			SqlCommand command = new SqlCommand("execute themmonan @ten", db.GetConnection);
 			//command.Parameters.Add("@ma", SqlDbType.Int).Value = nl.Mamonan;
 			command.Parameters.Add("@ten", SqlDbType.NVarChar).Value = nl.Tenmonan;
 			db.openConection();
@@ -114,7 +121,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public bool suamonan(MonAn nl)
 		{
-			SqlCommand command = new SqlCommand("update Monan set tenmonan=@ten where Mamonan=@ma", db.GetConnection);
+			SqlCommand command = new SqlCommand("execute suamonan @ten,@ma", db.GetConnection);
 			command.Parameters.Add("@ma", SqlDbType.Int).Value = nl.Mamonan;
 			command.Parameters.Add("@ten", SqlDbType.NVarChar).Value = nl.Tenmonan;
 			db.openConection();
@@ -132,7 +139,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public bool xoamonan(MonAn nl)
 		{
-			SqlCommand command = new SqlCommand("delete from Monan where Mamonan=@ma", db.GetConnection);
+			SqlCommand command = new SqlCommand("execute xoamonan @ma", db.GetConnection);
 			command.Parameters.Add("@ma", SqlDbType.Int).Value = nl.Mamonan;
 			command.Parameters.Add("@ten", SqlDbType.NVarChar).Value = nl.Tenmonan;
 			db.openConection();
