@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.DAO
         MY_DB db = new MY_DB();
         public bool KTBanDangSD(int maban)
         {
-            SqlCommand command = new SqlCommand("select maban from hoadon where convert(date,Hoadon.Thoigian) = convert(date, getdate()) and trangthai = 0 and maban=@maban", db.GetConnection);
+            SqlCommand command = new SqlCommand("EXEC KTBanDangSD @maban=@maban", db.GetConnection);
             command.Parameters.Add("@maban", SqlDbType.Int).Value = maban;
             db.openConection();
             if (Convert.ToInt32(command.ExecuteScalar()) != 0)
@@ -35,7 +35,7 @@ namespace WindowsFormsApp1.DAO
             List<Table> tableList = new List<Table>();
             try
             {
-                string query = "SELECT * FROM Ban";
+                string query = "select * from LoadTable";
                 SqlConnection connect = db.GetConnection;
                 SqlCommand cmd = new SqlCommand(query, connect);
                 connect.Open();
@@ -69,7 +69,7 @@ namespace WindowsFormsApp1.DAO
                 connect.Open();
                 if (connect.State == System.Data.ConnectionState.Open)
                 {
-                    string query = "INSERT INTO dbo.Ban (Tenban ,Trangthai ,SoLuongKhach)VALUES  (@Tenban,@Trangthai,@SoLuongKhach )";
+                    string query = "EXEC addTable @Tenban=@Tenban,@Trangthai=@Trangthai,@SoLuongKhach=@SoLuongKhach";
                     string query1 = "SELECT COUNT(Maban) FROM dbo.Ban";
                     SqlCommand cmd = new SqlCommand(query, connect);
                     SqlCommand cmd1 = new SqlCommand(query1, connect);
@@ -110,7 +110,7 @@ namespace WindowsFormsApp1.DAO
 
                 if (connect.State == System.Data.ConnectionState.Open)
                 {
-                    string query = "DELETE dbo.Ban WHERE Maban=@ID";
+                    string query = "EXEC deleteTable @ID=@ID";
                     string query1 = "SELECT MAX(Maban) FROM dbo.Ban";
                     SqlCommand cmd1 = new SqlCommand(query1, connect);
                     SqlCommand cmd = new SqlCommand(query, connect);
@@ -141,7 +141,7 @@ namespace WindowsFormsApp1.DAO
         public bool UpdatetableStatus(int maban,int index)
         {
             
-            SqlCommand command = new SqlCommand("UPDATE Ban SET	Trangthai=@Trangthai WHERE Maban=@Maban	", db.GetConnection);
+            SqlCommand command = new SqlCommand("EXEC UpdatetableStatus @Trangthai=@Trangthai,@Maban=@Maban	", db.GetConnection);
             command.Parameters.Add("@Maban", SqlDbType.Int).Value = maban;
             if (index == 1)
             {

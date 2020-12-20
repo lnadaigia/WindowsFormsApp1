@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.DAO
 		Voucher vc = new Voucher();
 		public DataTable getvoucher()
 		{
-			SqlCommand command = new SqlCommand("select * from voucher", db.GetConnection);
+			SqlCommand command = new SqlCommand("SELECT * FROM getvoucher", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			DataTable table = new DataTable();
 			adapter.Fill(table);
@@ -23,7 +23,8 @@ namespace WindowsFormsApp1.DAO
 		}
 		public bool themVoucher(Voucher vc)
 		{
-			SqlCommand command = new SqlCommand("insert into voucher (ngaybatdau,ngayketthuc,ten,chitiet,Discount) values(@ngaybatdau,@ngayketthuc,@ten,@chitiet,@Discount)", db.GetConnection);
+			SqlCommand command = new SqlCommand("EXEC themVoucher @ngaybatdau=@ngaybatdau,@ngayketthuc=@ngayketthuc," +
+				"@ten=@ten,@chitiet=@chitiet,@Discount=@Discount", db.GetConnection);
 			command.Parameters.Add("@ten", SqlDbType.NVarChar).Value = vc.Ten;
 			command.Parameters.Add("@chitiet", SqlDbType.NVarChar).Value = vc.Chitiet;
 			command.Parameters.Add("@Discount", SqlDbType.Float).Value = vc.Discount;
@@ -43,7 +44,8 @@ namespace WindowsFormsApp1.DAO
 		}
 		public bool suaVoucher(Voucher vc)
 		{
-			SqlCommand command = new SqlCommand("update voucher  set ten=@ten,chitiet=@chitiet,Discount=@Discount,ngaybatdau=@ngaybatdau,ngayketthuc=@ngayketthuc where mavoucher=@mavoucher ", db.GetConnection);
+			SqlCommand command = new SqlCommand("EXEC suaVoucher @ngaybatdau=@ngaybatdau,@ngayketthuc=@ngayketthuc,@ten=@ten," +
+				"@chitiet=@chitiet,@Discount=@Discount,@mavoucher=@mavoucher", db.GetConnection);
 			command.Parameters.Add("@Ten", SqlDbType.NVarChar).Value = vc.Ten;
 			command.Parameters.Add("@mavoucher", SqlDbType.Int).Value = vc.Mavoucher;
 			command.Parameters.Add("@Chitiet", SqlDbType.NVarChar).Value = vc.Chitiet;
@@ -64,7 +66,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public bool xoaVoucher(Voucher vc)
 		{
-			SqlCommand command = new SqlCommand("delete from voucher where mavoucher=@mavoucher", db.GetConnection);
+			SqlCommand command = new SqlCommand("EXEC xoaVoucher @mavoucher=@mavoucher", db.GetConnection);
 			command.Parameters.Add("@mavoucher", SqlDbType.Int).Value = vc.Mavoucher;
 			db.openConection();
 			if (command.ExecuteNonQuery() == 1)
