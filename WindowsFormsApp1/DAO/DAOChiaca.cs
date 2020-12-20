@@ -13,7 +13,7 @@ namespace WindowsFormsApp1.DAO
 		MY_DB db = new MY_DB();
 		public DataTable getDanhSachChiaCaFrmChiaCa()
 		{
-			SqlCommand command = new SqlCommand("SELECT NhanVien.MaNV,Hoten,Ngaysinh,SoDT,Tenca,ngay,ChiaCa.Maca FROM ChiaCa,NhanVien,Ca WHERE ChiaCa.MaNV=NhanVIen.MaNV AND ChiaCa.Maca=Ca.Maca", db.GetConnection);
+			SqlCommand command = new SqlCommand("SELECT * FROM getDanhSachChiaCaFrmChiaCa()", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			DataTable table = new DataTable();
 			adapter.Fill(table);
@@ -21,7 +21,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public DataTable getDanhSachChiaCa()
 		{
-			SqlCommand command = new SqlCommand("SELECT NhanVien.MaNV,Hoten,Ngaysinh,SoDT,Tenca,ngay FROM ChiaCa,NhanVien,Ca WHERE ChiaCa.MaNV=NhanVIen.MaNV AND ChiaCa.Maca=Ca.Maca", db.GetConnection);
+			SqlCommand command = new SqlCommand("SELECT * FROM getDanhSachChiaCa()", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			DataTable table = new DataTable();
 			adapter.Fill(table);
@@ -29,7 +29,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public DataTable getDanhSachChiaCaTheoNgay(DateTime a)
 		{
-			SqlCommand command = new SqlCommand("SELECT NhanVien.MaNV,Hoten,Ngaysinh,SoDT,Tenca,ngay FROM ChiaCa,NhanVien,Ca WHERE ChiaCa.MaNV=NhanVIen.MaNV AND ChiaCa.Maca=Ca.Maca  AND ChiaCa.ngay=@ngay", db.GetConnection);
+			SqlCommand command = new SqlCommand("SELECT * FROM getDanhSachChiaCaTheoNgay(@ngay)", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			command.Parameters.Add("@ngay", SqlDbType.Date).Value = a;
 			DataTable table = new DataTable();
@@ -38,7 +38,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public DataTable getDanhSachChiaCaTheoKhoang(DateTime a, DateTime b)
 		{
-			SqlCommand command = new SqlCommand("SELECT NhanVien.MaNV,Hoten,Ngaysinh,SoDT,Tenca,ngay FROM ChiaCa,NhanVien,Ca WHERE ChiaCa.MaNV=NhanVIen.MaNV AND ChiaCa.Maca=Ca.Maca  AND ChiaCa.ngay BETWEEN @ngaybatdau AND  @ngayketthuc", db.GetConnection);
+			SqlCommand command = new SqlCommand("SELECT * FROM getDanhSachChiaCaTheoKhoang(@ngaybatdau,@ngayketthuc)", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			command.Parameters.Add("@ngaybatdau", SqlDbType.Date).Value = a;
 			command.Parameters.Add("@ngayketthuc", SqlDbType.Date).Value = b;
@@ -59,7 +59,7 @@ namespace WindowsFormsApp1.DAO
 
 		public bool ThemVaoChiaCa(int manv,int maca, DateTime a)
 		{
-			SqlCommand command = new SqlCommand(" INSERT INTO ChiaCa(Manv,Maca,ngay)VALUES (@manv,@maca,CONVERT(date,@date))", db.GetConnection);
+			SqlCommand command = new SqlCommand(" EXEC ThemVaoChiaCa @manv=@manv,@maca=@maca,@date=@date", db.GetConnection);
 			command.Parameters.Add("@manv", SqlDbType.Int).Value = manv;
 			command.Parameters.Add("@maca", SqlDbType.Int).Value = maca;
 			command.Parameters.Add("@date", SqlDbType.DateTime).Value = a;
@@ -78,7 +78,7 @@ namespace WindowsFormsApp1.DAO
 
 		public bool xoaChiaCa(int manv,int maca,DateTime ngay)
 		{
-			string sqlInsert = "DELETE FROM ChiaCa WHERE Manv=@Manv AND Maca=@Maca ANd ngay=CONVERT(date,@ngay) ";
+			string sqlInsert = "EXEC xoaChiaCa @manv=@manv,@maca=@maca,@ngay=@ngay";
 
 			// Configure the command and parameter.  
 			SqlCommand command = new SqlCommand(sqlInsert, db.GetConnection);
@@ -100,7 +100,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public bool SuaChiaCa(int manv, DateTime ngay)
 		{
-			string sqlInsert = "UPDATE ChiaCa SET ngay=CONVERT(date,@ngay) WHERE Manv=@manv";
+			string sqlInsert = "EXEC SuaChiaCa @manv=@manv,@ngay=@ngay";
 
 			// Configure the command and parameter.  
 			SqlCommand command = new SqlCommand(sqlInsert, db.GetConnection);

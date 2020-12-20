@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.DAO
 		MY_DB db = new MY_DB();
 		public DataTable getDanhSachCa()
 		{
-			SqlCommand command = new SqlCommand("select * FROM Ca", db.GetConnection);
+			SqlCommand command = new SqlCommand("SELECT * FROM getDanhSachCa", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			DataTable table = new DataTable();
 			adapter.Fill(table);
@@ -22,7 +22,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public DataTable getDanhSachCaDeChiaCa()
 		{
-			SqlCommand command = new SqlCommand(" SELECT Maca,Tenca,GioBatDau,GioKetThuc FROM Ca", db.GetConnection);
+			SqlCommand command = new SqlCommand(" select * from getDanhSachCaDeChiaCa", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			DataTable table = new DataTable();
 			adapter.Fill(table);
@@ -30,7 +30,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public DataTable getDanhSachCaChoNV(int manv)
 		{
-			SqlCommand command = new SqlCommand("SELECT Ca.Tenca, Ca.GioBatDau,Ca.GioKetThuc FROM Ca,ChiaCa,NhanVien WHERE Ca.Maca=ChiaCa.Maca AND ChiaCa.Manv=NhanVien.MaNV  AND NhanVien.MaNV=@manv AND ChiaCa.ngay=CONVERT(Date,getdate())", db.GetConnection);
+			SqlCommand command = new SqlCommand("select * FROM getDanhSachCaChoNV(@manv)", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			command.Parameters.Add("@manv", SqlDbType.Int).Value = manv;
 			DataTable table = new DataTable();
@@ -39,7 +39,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public DataTable getDanhSachNhanVienVaCa()
 		{
-			SqlCommand command = new SqlCommand("SELECT ChiaCa.*,Ca.Tenca,NhanVien.Hoten,NhanVien.SoDT,Ca.GioBatDau,Ca.GioKetThuc FROM ChiaCa,Ca,NhanVien where Ca.Maca=ChiaCa.Maca AND NhanVien.MaNV=ChiaCa.Manv AND ChiaCa.ngay = CONVERT(date, getdate()) AND CA.Maca in (SELECT Maca FROM Ca WHERE CONVERT(time, @gio) BETWEEN Ca.GioBatDau AND Ca.GioKetThuc)", db.GetConnection);
+			SqlCommand command = new SqlCommand("SELECT * FROM getDanhSachNhanVienVaCa(@gio)", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			command.Parameters.Add("@gio", SqlDbType.Time).Value = TimeSpan.Parse (DateTime.Now.ToString("HH:mm:ss"));
 			DataTable table = new DataTable();
@@ -49,7 +49,7 @@ namespace WindowsFormsApp1.DAO
 
 		public DataTable getDanhSachCaTheoNV(int manv)
 		{
-			SqlCommand command = new SqlCommand("SELECT ChiaCa.ngay,Ca.* FROM ChiaCa,Ca WHERE ChiaCa.Maca= Ca.Maca AND Manv=@MaNV", db.GetConnection);
+			SqlCommand command = new SqlCommand("SELECT * FROM getDanhSachCaTheoNV(@MaNV)", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			command.Parameters.Add("@MaNV", SqlDbType.Int).Value = manv;
 			DataTable table = new DataTable();
@@ -59,7 +59,7 @@ namespace WindowsFormsApp1.DAO
 
 		public DataTable getDanhSachCaTheoNVVaTheoNgay(int manv,DateTime a)
 		{
-			SqlCommand command = new SqlCommand("SELECT ChiaCa.ngay,Ca.* FROM ChiaCa,Ca WHERE ChiaCa.Maca= Ca.Maca AND Manv=@MaNV AND ChiaCa.ngay=CONVERT(date,@date)", db.GetConnection);
+			SqlCommand command = new SqlCommand("select * from getDanhSachCaTheoNVVaTheoNgay (@MaNV,@date)", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			command.Parameters.Add("@MaNV", SqlDbType.Int).Value = manv;
 			command.Parameters.Add("@date", SqlDbType.DateTime).Value = a;
@@ -69,7 +69,7 @@ namespace WindowsFormsApp1.DAO
 		}
 		public DataTable getDanhSachCaTheoNVVaTheoKhoang(int manv, DateTime a,DateTime b)
 		{
-			SqlCommand command = new SqlCommand("SELECT ChiaCa.ngay,Ca.* FROM ChiaCa,Ca WHERE ChiaCa.Maca= Ca.Maca AND Manv=@MaNV AND ChiaCa.ngay BETWEEN CONVERT(date,@dateT) AND CONVERT(date,@dateS) ", db.GetConnection);
+			SqlCommand command = new SqlCommand("select * from getDanhSachCaTheoNVVaTheoKhoang (@MaNV,@dateT,@dateS)", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 			command.Parameters.Add("@MaNV", SqlDbType.Int).Value = manv;
 			command.Parameters.Add("@dateT", SqlDbType.DateTime).Value = a;

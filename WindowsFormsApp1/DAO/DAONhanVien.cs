@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GlobalVariables;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -16,7 +17,7 @@ namespace WindowsFormsApp1.DAO
         NhanVien nv = new NhanVien();
         public DataTable getNhanVien()
         {
-            SqlCommand command = new SqlCommand("select * from NhanVien", mydb.GetConnection);
+            SqlCommand command = new SqlCommand("SELECT * FROM getNhanVien", mydb.GetConnection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable table = new DataTable();
             adapter.Fill(table);
@@ -25,7 +26,7 @@ namespace WindowsFormsApp1.DAO
 
         public DataTable getNhanVienDeChiaCa()
         {
-            SqlCommand command = new SqlCommand("  SELECT MaNV,Hoten,SoDT,Ngaysinh FROM NhanVien where Role='employee'", mydb.GetConnection);
+            SqlCommand command = new SqlCommand("  SELECT* FROM GetNhanVienDeChiaCa", mydb.GetConnection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable table = new DataTable();
             adapter.Fill(table);
@@ -34,7 +35,7 @@ namespace WindowsFormsApp1.DAO
         public NhanVien getNhanVienByID(int manv)
         {
             NhanVien nv = new NhanVien();
-            SqlCommand command = new SqlCommand("select * from NhanVien where manv = @manv", mydb.GetConnection);
+            SqlCommand command = new SqlCommand("EXEC SelectAllCustomers @manv = @manv;", mydb.GetConnection);
             command.Parameters.Add("@manv", SqlDbType.Int).Value = manv;
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable table = new DataTable();
@@ -60,39 +61,12 @@ namespace WindowsFormsApp1.DAO
             }
             return nv;
         }
-        //public List<NhanVien> LoadNV()
-        //{
-        //    List<NhanVien> nvList = new List<NhanVien>();
-        //    try
-        //    {
-        //        DataTable ds = getNhanVien();
-        //        foreach (DataRow item in ds.Rows)
-        //        {
-        //                NhanVien NV = new NhanVien();
-        //                NV.MaNv = int.Parse(ds.Rows[0][0].ToString());
-        //                NV.Hoten = ds.Rows[0][1].ToString();
-        //                NV.Sdt = ds.Rows[0][2].ToString();
-        //                NV.Ngaysinh = (DateTime)ds.Rows[0][3];
-        //                NV.Luong = float.Parse(ds.Rows[0][4].ToString());
-        //                NV.MaNql = int.Parse(ds.Rows[0][5].ToString());
-        //                NV.Username = ds.Rows[0][6].ToString();
-        //                NV.Password = ds.Rows[0][7].ToString();
-        //                NV.Role= ds.Rows[0][8].ToString();
-        //                nvList.Add(NV);
-        //        }
-        //        return nvList;
-        //    }
-        //    catch
-        //    {
-        //        MessageBox.Show("error happened", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //    return nvList;
-        //}
+       
         public DataTable GetNhanVienBySearch(NhanVien nv)
         {
             //List<NhanVien> nvDungList = new List<NhanVien>();
             //NhanVien nv = new NhanVien();
-            SqlCommand command = new SqlCommand("select * from NhanVien where Hoten like @hoten or UserName like @username", mydb.GetConnection);
+            SqlCommand command = new SqlCommand("EXEC GetNhanVienBySearch @hoten = @hoten,@username=@username", mydb.GetConnection);
             command.Parameters.Add("@hoten", SqlDbType.NVarChar).Value = nv.Hoten;
             command.Parameters.Add("@username", SqlDbType.NVarChar).Value = nv.Username;
             SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -104,7 +78,7 @@ namespace WindowsFormsApp1.DAO
         public DataTable GetNhanVienByID(int manv)
         {
             NhanVien nv = new NhanVien();
-            SqlCommand command = new SqlCommand("select * from NhanVien where manv = @manv", mydb.GetConnection);
+            SqlCommand command = new SqlCommand("EXEC GetNhanVienByID @manv = @manv;", mydb.GetConnection);
             command.Parameters.Add("@manv", SqlDbType.Int).Value = manv;
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable table = new DataTable();
@@ -113,7 +87,8 @@ namespace WindowsFormsApp1.DAO
         }
         public bool themNV(NhanVien nv)
         {
-            SqlCommand command = new SqlCommand("insert into NhanVien (hoten,SoDT,ngaysinh,luong,UserName,Password,MaNQL,Role) values( @hoten, @sdt, @ngaysinh, @luong,@username,@password,@MaNQL,@Role)", mydb.GetConnection);
+            SqlCommand command = new SqlCommand("EXEC themNV @hoten = @hoten,@username=@username,@sdt=@sdt" +
+                ",@ngaysinh=@ngaysinh,@luong=@luong,@password=@password,@MaNQL=@MaNQL,@Role=@Role", mydb.GetConnection);
             command.Parameters.Add("@hoten", SqlDbType.NVarChar).Value = nv.Hoten;
             command.Parameters.Add("@sdt", SqlDbType.NVarChar).Value = nv.Sdt;
             command.Parameters.Add("@ngaysinh", SqlDbType.Date).Value = nv.Ngaysinh;
@@ -138,7 +113,8 @@ namespace WindowsFormsApp1.DAO
         public bool suaNV(NhanVien nv)
         {
             //SqlCommand command = new SqlCommand("update NhanVien set hoten = @hoten, sdt = @sdt, ngaysinh = @ngaysinh, luong = @luong, manql = @manql where manv = @manv", mydb.GetConnection);
-            SqlCommand command = new SqlCommand("update NhanVien set hoten = @hoten, SoDT = @sdt, ngaysinh = @ngaysinh, luong = @luong,UserName = @username,Password = @password where manv = @manv", mydb.GetConnection);
+            SqlCommand command = new SqlCommand("EXEC suaNV @hoten = @hoten,@username=@username,@sdt=@sdt,@ngaysinh=@ngaysinh" +
+                ",@luong=@luong,@password=@password,@MaNQL=@MaNQL,@manv=@manv", mydb.GetConnection);
             command.Parameters.Add("@manv", SqlDbType.Int).Value = nv.MaNv;
             command.Parameters.Add("@hoten", SqlDbType.NVarChar).Value = nv.Hoten;
             command.Parameters.Add("@sdt", SqlDbType.NVarChar).Value = nv.Sdt;
@@ -146,7 +122,7 @@ namespace WindowsFormsApp1.DAO
             command.Parameters.Add("@luong", SqlDbType.Float).Value = nv.Luong;
             command.Parameters.Add("@username", SqlDbType.NVarChar).Value = nv.Username;
             command.Parameters.Add("@password", SqlDbType.NVarChar).Value = nv.Password;
-            //command.Parameters.Add("@manql", SqlDbType.Int).Value = nv.MaNql;
+            command.Parameters.Add("@manql", SqlDbType.Int).Value = Globals.NV;
             mydb.openConection();
             if (command.ExecuteNonQuery() == 1)
             {
@@ -161,7 +137,8 @@ namespace WindowsFormsApp1.DAO
         }
         public bool SuaNVkhongmk(NhanVien nv)
         {
-            SqlCommand command = new SqlCommand("update NhanVien set hoten = @hoten, SoDT = @sdt, ngaysinh = @ngaysinh, luong = @luong,UserName = @username where manv = @manv", mydb.GetConnection);
+            SqlCommand command = new SqlCommand("EXEC SuaNVkhongmk @hoten = @hoten,@username=@username,@sdt=@sdt," +
+                "@ngaysinh=@ngaysinh,@luong=@luong,@manv=@manv", mydb.GetConnection);
             command.Parameters.Add("@manv", SqlDbType.Int).Value = nv.MaNv;
             command.Parameters.Add("@hoten", SqlDbType.NVarChar).Value = nv.Hoten;
             command.Parameters.Add("@sdt", SqlDbType.NVarChar).Value = nv.Sdt;
@@ -184,7 +161,7 @@ namespace WindowsFormsApp1.DAO
         }
         public bool xoaNV(int manv)
         {
-            SqlCommand command = new SqlCommand("delete NhanVien where manv = @manv", mydb.GetConnection);
+            SqlCommand command = new SqlCommand("EXEC xoaNV @manv=@manv", mydb.GetConnection);
             command.Parameters.Add("@manv", SqlDbType.Int).Value = manv;
 
             mydb.openConection();

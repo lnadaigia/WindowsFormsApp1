@@ -111,6 +111,8 @@ as
 	where convert(date,Hoadon.Thoigian)=convert(date,getdate()) and trangthai=0
 go
 
+
+
 drop function if exists monan_daban
 go
 CREATE function monan_daban(@mamonan int,@mahoadon int)
