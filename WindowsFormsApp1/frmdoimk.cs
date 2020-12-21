@@ -47,22 +47,6 @@ namespace WindowsFormsApp1
         {
 
         }
-        public static string HashPasswordUsingMD5(string password)
-        {
-            using (var md5 = MD5.Create())
-            {
-                byte[] passwordBytes = Encoding.ASCII.GetBytes(password);
-
-                byte[] hash = md5.ComputeHash(passwordBytes);
-
-                var stringBuilder = new StringBuilder();
-
-                for (int i = 0; i < hash.Length; i++)
-                    stringBuilder.Append(hash[i].ToString("X2"));
-
-                return stringBuilder.ToString();
-            }
-        }
 
         private void txt_mkmoi2_KeyDown(object sender, KeyEventArgs e)
         {
@@ -92,10 +76,10 @@ namespace WindowsFormsApp1
                         NhanVien NV = nv.getNhanVienByID(Globals.NV);
                         //MessageBox.Show(NV.Password);
                         //MessageBox.Show(HashPasswordUsingMD5(txt_mkcu.Text));
-                        if (HashPasswordUsingMD5(txt_mkcu.Text) == NV.Password && txt_mkmoi.Text == txt_mkmoi2.Text)
+                        if (txt_mkcu.Text == NV.Password && txt_mkmoi.Text == txt_mkmoi2.Text)
                         {
                             //MessageBox.Show(NV.Password);
-                            NV.Password = HashPasswordUsingMD5(txt_mkmoi.Text);
+                            NV.Password = txt_mkmoi.Text;
                             nv.suaNV(NV);
                             MessageBox.Show("Doi mat khau thanh cong");
                         }

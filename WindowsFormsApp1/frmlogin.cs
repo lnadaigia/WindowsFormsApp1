@@ -40,22 +40,6 @@ namespace WindowsFormsApp1
         {
             this.Close();
         }
-        public static string HashPasswordUsingMD5(string password)
-        {
-            using (var md5 = MD5.Create())
-            {
-                byte[] passwordBytes = Encoding.ASCII.GetBytes(password);
-
-                byte[] hash = md5.ComputeHash(passwordBytes);
-
-                var stringBuilder = new StringBuilder();
-
-                for (int i = 0; i < hash.Length; i++)
-                    stringBuilder.Append(hash[i].ToString("X2"));
-
-                return stringBuilder.ToString();
-            }
-        }
         private void txt_pass_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -76,7 +60,7 @@ namespace WindowsFormsApp1
                 {
                     SqlCommand command = new SqlCommand("SELECT MaNV,Role from NhanVien WHERE NhanVien.UserName=@user AND Password=@pass", db.GetConnection);
                     command.Parameters.Add("@user", SqlDbType.NVarChar).Value = txt_user.Text;
-                    command.Parameters.Add("@pass", SqlDbType.NVarChar).Value = HashPasswordUsingMD5(txt_pass.Text);
+                    command.Parameters.Add("@pass", SqlDbType.NVarChar).Value = txt_pass.Text;
                     //MessageBox.Show(HashPasswordUsingMD5(txt_pass.Text));
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable table = new DataTable();
@@ -98,6 +82,7 @@ namespace WindowsFormsApp1
                             {
                                 Globals.SetNV(Convert.ToInt32(table.Rows[i].ItemArray[0]));
                                 Globals.SetRole("employee");
+                                //MessageBox.Show(Globals.role);
                                 frmmaunhanvien frm = new frmmaunhanvien();
                                 frm.ShowDialog();
                             }

@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
                         string dau = dt_dau.Value.ToString("yyyy-MM-dd");
                         string cuoi = dt_sau.Value.ToString("yyyy-MM-dd");
                         query = "select * from hoadon where convert(date,Hoadon.Thoigian) between '" + dau + "' and '" + cuoi + "'";
-                        MessageBox.Show(query);
+                       // MessageBox.Show(query);
                     }
                     else
                     {

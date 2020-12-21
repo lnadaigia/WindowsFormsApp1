@@ -177,22 +177,6 @@ namespace WindowsFormsApp1
 
         }
 
-        public static string HashPasswordUsingMD5(string password)
-        {
-            using (var md5 = MD5.Create())
-            {
-                byte[] passwordBytes = Encoding.ASCII.GetBytes(password);
-
-                byte[] hash = md5.ComputeHash(passwordBytes);
-
-                var stringBuilder = new StringBuilder();
-
-                for (int i = 0; i < hash.Length; i++)
-                    stringBuilder.Append(hash[i].ToString("X2"));
-
-                return stringBuilder.ToString();
-            }
-        }
 
         private void dataGridView1_Click_1(object sender, EventArgs e)
         {
@@ -242,7 +226,7 @@ namespace WindowsFormsApp1
                 NV.Sdt = txt_sdt.Text;
                 NV.Ngaysinh = Convert.ToDateTime(dt_nsinh.Value);
                 NV.Username = txt_username.Text;
-                NV.Password = HashPasswordUsingMD5(txt_password.Text);
+                NV.Password = txt_password.Text;
                 NV.MaNql = Globals.NV;
                 NV.Role = "employee";
                 nv.themNV(NV);
@@ -283,7 +267,7 @@ namespace WindowsFormsApp1
                     NV.Sdt = txt_sdt.Text;
                     NV.Ngaysinh = Convert.ToDateTime(dt_nsinh.Value);
                     NV.Username = txt_username.Text;
-                    NV.Password = HashPasswordUsingMD5(txt_password.Text);
+                    NV.Password = txt_password.Text;
                     nv.suaNV(NV);
                     MessageBox.Show("Sua thong tin nhan vien thanh cong");
                 }
