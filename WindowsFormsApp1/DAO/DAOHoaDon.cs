@@ -211,7 +211,26 @@ namespace WindowsFormsApp1.DAO
 				return false;
 			}
 		}
-		
+
+		public bool xoahoadon(int maban)
+		{
+
+			SqlCommand command = new SqlCommand("DELETE FROM Hoadon WHERE Mahoadon=@mahoadon", db.GetConnection);
+			command.Parameters.Add("@mahoadon", SqlDbType.Int).Value = maban;
+			db.openConection();
+			if (command.ExecuteNonQuery() == 1)
+			{
+				db.closedConection();
+				return true;
+			}
+			else
+			{
+				db.closedConection();
+				return false;
+			}
+
 		}
+		
+	}
 	}
 

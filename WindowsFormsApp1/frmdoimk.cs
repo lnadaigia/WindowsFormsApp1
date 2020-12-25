@@ -83,6 +83,10 @@ namespace WindowsFormsApp1
                             nv.suaNV(NV);
                             MessageBox.Show("Doi mat khau thanh cong");
                         }
+                        else
+                        {
+                            MessageBox.Show(" sai mat khau cu");
+                        }
                     }
                 }
             }

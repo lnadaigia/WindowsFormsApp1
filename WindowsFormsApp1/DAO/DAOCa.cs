@@ -41,6 +41,7 @@ namespace WindowsFormsApp1.DAO
 		{
 			SqlCommand command = new SqlCommand("SELECT * FROM getDanhSachNhanVienVaCa(@gio)", db.GetConnection);
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
+			
 			command.Parameters.Add("@gio", SqlDbType.Time).Value = TimeSpan.Parse (DateTime.Now.ToString("HH:mm:ss"));
 			DataTable table = new DataTable();
 			adapter.Fill(table);

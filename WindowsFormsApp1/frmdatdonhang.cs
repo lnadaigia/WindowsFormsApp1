@@ -127,7 +127,7 @@ namespace WindowsFormsApp1
             dtg_chitiet.DataSource = b;
             tongtien = 0;   
 
-            txt_tongtien.Text = "sa";
+            // txt_tongtien.Text = "sa";
             for (int i = 0; i < dtg_chitiet.Rows.Count - 1; i++)
             {
                 try
@@ -135,6 +135,7 @@ namespace WindowsFormsApp1
                     //MessageBox.Show(dtg_chitiet.Rows[i].Cells[2].Value.ToString());
                    // MessageBox.Show(dtg_chitiet.Rows[i].Cells[3].Value.ToString());
                     tongtien += int.Parse(dtg_chitiet.Rows[i].Cells[2].Value.ToString()) * int.Parse(dtg_chitiet.Rows[i].Cells[3].Value.ToString());
+                   // MessageBox.Show(tongtien.ToString());
                 }
                 catch
                 {
@@ -176,7 +177,6 @@ namespace WindowsFormsApp1
                 }
                 MessageBox.Show("Dat hang thanh cong");
                 Globals.SetMahoadon(mahoadon);
-                //update trang thai ban
                 DAOTable tb = new DAOTable();
                 tb.UpdatetableStatus(Globals.Maban, 0);
 

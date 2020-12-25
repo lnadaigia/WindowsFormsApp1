@@ -61,9 +61,9 @@ namespace WindowsFormsApp1
                 dataGridView1.DataSource = a.getvoucher();
 
             }
-            catch
+            catch(Exception s)
             {
-                MessageBox.Show("error");
+                MessageBox.Show(s.Message);
             }
         }
 
@@ -89,9 +89,9 @@ namespace WindowsFormsApp1
                 MessageBox.Show("sua thanh cong");
 
             }
-            catch
+            catch(Exception sq)
             {
-                MessageBox.Show("error");
+                MessageBox.Show(sq.Message);
             }
         }
 

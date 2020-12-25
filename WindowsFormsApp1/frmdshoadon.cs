@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GlobalVariables;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,6 +29,12 @@ namespace WindowsFormsApp1
         }
         private void frmdanhsachdonhang_Load(object sender, EventArgs e)
         {
+            if (Globals.role=="employee")
+            {
+                delete_button.Visible = false;
+            }    
+           
+
             try
             {
                 DAOHoaDon hd = new DAOHoaDon();
@@ -106,6 +113,23 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             { MessageBox.Show(ex.ToString()); }
+        }
+
+        private void delete_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int a = int.Parse(dtg_hoadon.CurrentRow.Cells[0].Value.ToString());
+                DAOHoaDon hd = new DAOHoaDon();
+                hd.xoahoadon(a);
+                DataTable tb = new DataTable();
+                tb = hd.getHoaDon();
+                dtg_hoadon.DataSource = tb;
+            }
+            catch (Exception lo)
+            {
+                MessageBox.Show(lo.Message);
+            }
         }
     }
 }

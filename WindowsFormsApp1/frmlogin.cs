@@ -77,7 +77,8 @@ namespace WindowsFormsApp1
                         if (table.Rows[i].ItemArray[0] != null)
                         {
                             string a = table.Rows[i].ItemArray[1].ToString();
-
+                            Globals.Setusername(txt_user.Text);
+                            Globals.Setpass(txt_pass.Text);
                             if (a == "employee")
                             {
                                 Globals.SetNV(Convert.ToInt32(table.Rows[i].ItemArray[0]));
@@ -129,10 +130,14 @@ namespace GlobalVariables
             role = "employee";
             DataTable l = new DataTable();
             Chitiethoadon = l;
+            username = "thilyvu";
+            pass = "0901";
         } // default value
 
         // public get, and private set for strict access control
         public static string role { get; private set; }
+        public static string username { get; private set; }
+        public static string pass { get; private set; }
         public static int Mahoadon { get; private set; }
         public static DataTable Chitiethoadon { get; private set; }
         public static int Maban { get; private set; }
@@ -143,6 +148,14 @@ namespace GlobalVariables
         public static void SetRole(string roles)
         {
             role = roles;
+        }
+        public static void Setusername(string roles)
+        {
+            username = roles;
+        }
+        public static void Setpass(string roles)
+        {
+            pass = roles;
         }
         public static void SetMaban(int newInt)
         {
